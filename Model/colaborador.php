@@ -131,8 +131,8 @@ class Colaborador {
 
     public function setData($dados)
     {
-        $this->setId($dados->id);
-        $this->setNome($dados->nome);
+        $this->setId(trim($dados->id));
+        $this->setNome(trim($dados->nome));
         $this->setCpf($dados->cpf);
         $this->setCelular($dados->celular);
         $this->setEmail($dados->email);

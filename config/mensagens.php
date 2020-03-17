@@ -4,7 +4,7 @@ class Mensagens {
 
     public function __construct(){}
 
-    public static function mensagem($msg) {
+    public static function erro($msg) {
         //alert - funcao javascript para mostrar uma mensagem em pop up
         //history.back() retornar a página anterior
         echo "<script>alert('$msg');history.back();</script>";

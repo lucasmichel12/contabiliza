@@ -2,32 +2,35 @@
 
 require_once("config/mensagens.php");
 require_once("MySqlPDO.php");
+require_once("Model/colaborador.php");
 
 
  $pdo = new Sql();
  $msg = new Mensagens();
  $func = new Funcoes();
+ $colaborador = new Colaborador();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $id = $nome = $cpf = $celular = $email = $login = $senha = $check = $admin = $ativo = "";
-
-        foreach ($_POST as $key => $value) {
-            if(isset($_POST[$key]))
-            {
-                $$key = trim($value);
-            }
-        }
-
-
-        if( !$senha === $check )
+        if(isset($_POST))
         {
-            $msg::mensagem("As senhas digitadas não conferem!");
-        } else {
-            $senhaEncrypt = password_hash($senha, PASSWORD_DEFAULT);
+            $colaborador->setData($_POST);
         }
 
-        $func::seExiste('colaborador', 'cpf', $cpf);
 
+        if( !$colaborador->getSenha() === $check )
+        {
+            $msg::erro("As senhas digitadas não conferem!");
+
+        } else {
+
+            $senhaEncrypt = password_hash($colaborador->getSenha(), PASSWORD_DEFAULT);
+            $func::seExiste('colaborador', 'cpf', $colaborador->getCpf());
+        }
+
+        
+        if(empty($id))
+        {
+        }
 
     }
