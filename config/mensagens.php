@@ -13,7 +13,7 @@ class Mensagens {
 
     public static function sucesso($msg, $link) {
 
-        return "<script>alert('$msg');window.location='$link';</script>";
+        echo "<script>alert('$msg');window.location='$link';</script>";
         exit;
 
 }

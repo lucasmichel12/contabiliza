@@ -1,7 +1,7 @@
 <?php
 
 require_once("MySqlPDO.php");
-require_once("Mensagens");
+require_once("Mensagens.php");
 
 
 Class Funcoes 
@@ -14,10 +14,10 @@ Class Funcoes
         $pdo = new Sql();
         $result = $pdo->select("SELECT id FROM $tabela WHERE $coluna = :valor ", array(":valor"=>$valor));
 
-        if(count($result) > 0)
+        if(isset($result->id))
         {   
             $msg = new Mensagens();
-            $msg::erro("Já existe um(a) $valor cadastrado na base de dados!");
+            $msg::erro("Já existe um(a) $coluna cadastrado na base de dados!");
         }
 
     }

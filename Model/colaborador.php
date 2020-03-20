@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 require_once("../config/MySqlPDO.php");
-
+require_once("../config/Mensagens.php");
 
 class Colaborador {
 
@@ -26,7 +26,7 @@ class Colaborador {
 
     
 
-    public function setId($id)
+    public function setId($id = 0)
     {
         $this->id = $id;
 
@@ -40,7 +40,35 @@ class Colaborador {
 
     public function setCpf($cpf)
     {
+        $msg = new Mensagens();
+        
+        // Extrai somente os números
+	    $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+	     
+	    // Verifica se foi informado todos os digitos corretamente
+	    if (strlen($cpf) != 11) {
+
+	        $msg->erro("O CPF precisa ter ao menos 11 números");
+	    }
+	    // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+	    if (preg_match('/(\d)\1{10}/', $cpf)) {
+
+	        $msg->erro("CPF inválido");
+	    }
+	    // Faz o calculo para validar o CPF
+	    for ($t = 9; $t < 11; $t++) {
+	        for ($d = 0, $c = 0; $c < $t; $c++) {
+	            $d += $cpf{$c} * (($t + 1) - $c);
+	        }
+	        $d = ((10 * $d) % 11) % 10;
+	        if ($cpf{$c} != $d) {
+
+	            $msg->erro("CPF inválido");
+	        }
+        }
+
         $this->cpf = $cpf;
+        
 
     }
 
@@ -86,7 +114,7 @@ class Colaborador {
  
     public function getId()
     {
-        return $this->id;
+        return intval($this->id);
     }
  
     public function getNome()
@@ -131,22 +159,22 @@ class Colaborador {
 
     public function setData($dados)
     {
-        $this->setId(trim($dados->id));
+        $this->setId(($dados->id));
         $this->setNome(trim($dados->nome));
-        $this->setCpf($dados->cpf);
-        $this->setCelular($dados->celular);
-        $this->setEmail($dados->email);
-        $this->setSenha($dados->senha);
-        $this->setLogin($dados->login);
-        $this->setAdmin($dados->admin);
-        $this->setAtivo($dados->ativo);
+        $this->setCpf(trim($dados->cpf));
+        $this->setCelular(trim($dados->celular));
+        $this->setEmail(trim($dados->email));
+        $this->setSenha(trim($dados->senha));
+        $this->setLogin(trim($dados->login));
+        $this->setAdmin(trim($dados->admin));
+        $this->setAtivo(trim($dados->ativo));
 
     }
 
     public function insert()
     {
         $sql = new Sql();
-        $stmt = $sql->select("CALL colaborador_insert(:id, :nome, :cpf, :celular, :email, :login, :senha, :admin, :ativo)",
+        $sql->query("CALL colaborador_insert(:id, :nome, :cpf, :celular, :email, :login, :senha, :admin, :ativo)",
         array(":id"=>$this->getId(),
               ":nome"=>$this->getNome(),
               ":cpf"=>$this->getCpf(),
@@ -158,15 +186,29 @@ class Colaborador {
               ":ativo"=>$this->getAtivo())
     );
 
-    return $stmt;
-
     }
 
-    public function getList()
+    public function update()
+    {
+
+        $sql = new Sql();
+        $sql->query("UPDATE colaborador SET nome = ?, cpf = ?, celular = ?, email = ?, login = ?, senha = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1",
+          array("1"=>$this->getNome(),
+                "2"=>$this->getCpf(),
+                "3"=>$this->getCelular(),
+                "4"=>$this->getEmail(),
+                "5"=>$this->getLogin(),
+                "6"=>$this->getSenha(),
+                "7"=>$this->getAdmin(),
+                "8"=>$this->getAtivo(),
+                "9"=>$this->getId()));
+    }
+
+    public function delete($id)
     {
         $sql = new Sql();
-        $stmt = $sql->select("SELECT * FROM colaborador ORDER BY nome");
-
+        $sql->query("DELETE FROM colaborador WHERE id = :id", array(":id"=>$id));
+               
     }
 
 }

@@ -29,21 +29,22 @@
                         echo "<script>location.href='recursos/home'</script>";
 
                     } else {
-                        $msg::mensagem("Senha Inválida!!");
+                        $msg::erro("Senha Inválida!!");
                     }
 
                 } else {
-                    $msg::mensagem("Login inválido!");
+                    $msg::erro("Login inválido!");
                 }
                 
             } else {
-                $msg::mensagem("Digite seu Login e senha!");
+                $msg::erro("Digite seu Login e senha!");
             }
 
         }
     }
     
 ?>
+<body class="bg-login">
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
@@ -69,4 +70,4 @@
             </div>
         </div>
     </div>
-
+</body>

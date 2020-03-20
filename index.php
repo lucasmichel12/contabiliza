@@ -10,7 +10,6 @@
 	//incluir a conexao com o banco e as funcoes
     require_once('config/MySqlPDO.php');
     $porta = $_SERVER["SERVER_PORT"];
-	
 
 ?>
 <!doctype html>
@@ -33,6 +32,7 @@
     <link rel="stylesheet" href="public/assets/css/flag-icon.min.css">
     <link rel="stylesheet" href="public/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="public/assets/css/estilo.css">
 
    
 
@@ -94,7 +94,7 @@
             $url = explode("/", $rota);
             $pasta = $url[0];
             $arquivo = $url[1];
-           
+
             
             $rota = "$pasta/$arquivo.php";
 

@@ -6,7 +6,6 @@
 	
 ?>
 
-
    <!-- Left Panel -->
    <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
@@ -44,6 +43,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="./"><img src="public/images/logo.png" alt="Logo"></a>
                 <a class="navbar-brand hidden" href="./"><img src="public/images/logo.png" alt="Logo"></a>
+                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>
         <div class="top-right">
@@ -56,8 +56,7 @@
         </div>
 	</header>
     <main>
-
-        <div class="container">
+        <div class="content">
         <?php
                 if(file_exists($rota)) {
                     include $rota;
