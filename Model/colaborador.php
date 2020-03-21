@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once("../config/MySqlPDO.php");
-require_once("../config/Mensagens.php");
+require_once("config/MySqlPDO.php");
+require_once("config/Mensagens.php");
 
 class Colaborador {
 

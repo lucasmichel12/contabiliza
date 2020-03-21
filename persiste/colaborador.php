@@ -1,9 +1,9 @@
 <?php
 //Require dos Classes e arqpuivos necessarios para o código rodar
-require_once("../config/mensagens.php");
-require_once("../config/MySqlPDO.php");
-require_once("../Model/colaborador.php");
-require_once("../config/Funcoes.php");
+require_once("config/mensagens.php");
+require_once("config/MySqlPDO.php");
+require_once("Model/colaborador.php");
+require_once("config/Funcoes.php");
 
 
 // Instanciando as Classes a serem usados no restante do código.
@@ -14,20 +14,19 @@ require_once("../config/Funcoes.php");
 
 
 //Verificando qual o método de envio dos dodos, validando se estão vindo via POST pelo formulário.
-    if($_SERVER['REQUEST_METHOD'] == 'GET')
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         //Verifica se veio as informações dentro do $_POST.
-        if(isset($_GET))
+        if(isset($_POST))
         {
             //Transforma o array do $_POST em um Obj para passar para a função setData do Objeto Colaborador.
             $dados = new stdClass();
-            foreach ($_GET as $key => $value)
+            foreach ($_POST as $key => $value)
             {
                 $dados->$key = $value;
             }
             
             $colaborador->setData($dados);
-
             //Verifica as senha digitadas e faz o encrypt caso as senhas estejam iguais, depois verifica se o CPF digitado já existe na base de dados.
             if($colaborador->getSenha() !== $dados->check )
             {
@@ -62,8 +61,10 @@ require_once("../config/Funcoes.php");
                 
                 $msg::erro("Problema ao enviar os dados do formulario");
 
-            }
+        }
 
         
        
+    } else {
+        $msg::erro("Problema ao enviar os dados do formulario");
     }

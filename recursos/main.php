@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav">
                 <li class="menu-title">Menu Administrativo</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Cadastros</a>
+                    <a href="recursos/home" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Cadastros</a>
 					<ul class="sub-menu children dropdown-menu"> 
 					
                         <li><i class="fa fa-id-badge"></i><a href="cadastro/colaborador">Colaborador</a></li>
