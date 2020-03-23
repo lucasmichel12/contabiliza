@@ -16,9 +16,9 @@
                     <a href="recursos/home" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Cadastros</a>
 					<ul class="sub-menu children dropdown-menu"> 
 					
-                        <li><i class="fa fa-id-badge"></i><a href="cadastro/colaborador">Colaborador</a></li>
-                        <li><i class="fa fa-bars"></i><a href="cadastro/filial">Filial</a></li>
-                        <li><i class="fa fa-id-card-o"></i><a href="cadastro/despesas">Despesas</a></li>
+                        <li><i class="fa fa-user"></i><a href="cadastro/colaborador">Colaborador</a></li>
+                        <li><i class="fa fa-building-o"></i><a href="cadastro/filial">Filial</a></li>
+                        <li><i class="fa fa-shopping-cart"></i><a href="cadastro/despesas">Despesas</a></li>
 						
                     </ul>
                 </li>
@@ -27,8 +27,8 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Despesas</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="#">Nova</a></li>
-                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="#">Em processo</a></li>
+                        <li><i class="menu-icon fa fa-plus-circle"></i><a href="#">Nova</a></li>
+                        <li><i class="menu-icon fa fa-list-alt"></i><a href="#">Em processo</a></li>
                     </ul>
                 </li>
             </ul>
