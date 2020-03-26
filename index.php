@@ -33,8 +33,6 @@
     <link rel="stylesheet" href="public/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="public/assets/css/style.css">
     <link rel="stylesheet" href="public/assets/css/estilo.css">  
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
    
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -113,3 +111,4 @@
     <script src="public/bootstrap/js/bootstrap.min.js"></script>
     <script src="public/bootstrap/jquery/jquery.matchHeight.min.js"></script>
     <script src="public/assets/js/main.js"></script>
+    <script src="public/assets/js/jquery.mask.min.js"></script>

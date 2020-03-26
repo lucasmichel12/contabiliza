@@ -17,7 +17,7 @@
             <input type="text" class="form-control" placeholder="Nome Completo" name="nome">
             </div>
             <div class="col-4">
-            <input type="text" class="form-control" placeholder="CPF" name="cpf">
+            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" name="cpf">
             </div>
         </div>
         <div class="form-row mt-3">
