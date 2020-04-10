@@ -74,6 +74,7 @@ class Colaborador {
 
     public function setCelular($celular)
     {
+        $celular = preg_replace( '/[^0-9]/is', '', $celular );
         $this->celular = $celular;
 
     }
@@ -171,6 +172,27 @@ class Colaborador {
 
     }
 
+    public function selectOne($id)
+    {
+        $sql = new Sql();
+        $result = $sql->select("SELECT * FROM colaborador WHERE id = $id LIMIT 1");
+        $this->setData($result);
+        return $result;
+    }
+
+    public function selectAll()
+    {
+        $sql = new Sql();
+        $result = $sql->query("SELECT * FROM colaborador ORDER BY nome");
+
+        while($lista = $result->fetch(PDO::FETCH_OBJ))
+        {
+           $return[] = $lista;
+        }
+
+        return json_encode($return);
+    }
+
     public function insert()
     {
         $sql = new Sql();
@@ -192,16 +214,16 @@ class Colaborador {
     {
 
         $sql = new Sql();
-        $sql->query("UPDATE colaborador SET nome = ?, cpf = ?, celular = ?, email = ?, login = ?, senha = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1",
-          array("1"=>$this->getNome(),
-                "2"=>$this->getCpf(),
-                "3"=>$this->getCelular(),
-                "4"=>$this->getEmail(),
-                "5"=>$this->getLogin(),
-                "6"=>$this->getSenha(),
-                "7"=>$this->getAdmin(),
-                "8"=>$this->getAtivo(),
-                "9"=>$this->getId()));
+        $sql->query("UPDATE colaborador SET nome = ?, cpf = ?, celular = ?, email = ?, login = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1",
+        array("1"=>$this->getNome(),
+            "2"=>$this->getCpf(),
+            "3"=>$this->getCelular(),
+            "4"=>$this->getEmail(),
+            "5"=>$this->getLogin(),
+            "6"=>$this->getAdmin(),
+            "7"=>$this->getAtivo(),
+            "8"=>$this->getId()));
+        
     }
 
     public function delete($id)
@@ -212,7 +234,3 @@ class Colaborador {
     }
 
 }
-
-
-
-

@@ -27,19 +27,22 @@ require_once("config/Funcoes.php");
             }
             
             $colaborador->setData($dados);
-            //Verifica as senha digitadas e faz o encrypt caso as senhas estejam iguais, depois verifica se o CPF digitado já existe na base de dados.
+ 
+            //Verifica as senha digitadas e faz o encrypt caso as senhas estejam iguais.
             if($colaborador->getSenha() !== $dados->check )
             {
                 $msg::erro("As senhas digitadas não conferem!");
                
             } else {
 
-                $colaborador->setSenha($senhaEncrypt = password_hash($colaborador->getSenha(), PASSWORD_DEFAULT));
-                $func::seExiste('colaborador', 'cpf', $colaborador->getCpf());
-                $func::seExiste('colaborador', 'login', $colaborador->getLogin());
-            }
+               $colaborador->setSenha($senhaEncrypt = password_hash($colaborador->getSenha(), PASSWORD_DEFAULT));
 
-            //Verifica sem o ID veio vazio para fazer update ou insert na tabela.
+            }
+            //Valida CPF e LOGIN para não haver dados duplicados.
+            $func::seExiste('colaborador', 'cpf', $colaborador->getCpf(),$colaborador->getId());
+            $func::seExiste('colaborador', 'login', $colaborador->getLogin(), $colaborador->getId());
+
+            //Verifica se o ID veio vazio para fazer update ou insert na tabela.
             if($colaborador->getId() != 0 )
             {
           

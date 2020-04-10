@@ -1,7 +1,7 @@
 <?php
 
-require_once("../config/MySqlPDO.php");
-require_once("../config/Mensagens.php");
+require_once("config/MySqlPDO.php");
+require_once("config/Mensagens.php");
 
 
 class Filial
@@ -16,8 +16,10 @@ class Filial
     private $complemento;
     private $telefone;
     private $email;
-    private $status;
+    private $ativo;
     private $idCidade;
+    public $cidade;
+    public $estado;
 
 
     public function __construct()
@@ -59,7 +61,8 @@ class Filial
         }
         
 	    $resto = $soma % 11;
-		$cnpj{13} == ($resto < 2 ? 0 : 11 - $resto);
+        $cnpj{13} == ($resto < 2 ? 0 : 11 - $resto);
+        
         $this->cnpj = $cnpj;
 
     }
@@ -72,6 +75,7 @@ class Filial
  
     public function setCep($cep)
     {
+        $cep = preg_replace( '/[^0-9]/is', '', $cep );
         $this->cep = $cep;
 
     }
@@ -102,6 +106,7 @@ class Filial
  
     public function setTelefone($telefone)
     {
+        $telefone = preg_replace( '/[^0-9]/is', '', $telefone );
         $this->telefone = $telefone;
 
     }
@@ -112,9 +117,9 @@ class Filial
 
     }
  
-    public function setStatus($status)
+    public function setAtivo($ativo)
     {
-        $this->status = $status;
+        $this->ativo = $ativo;
 
     }
  
@@ -175,15 +180,16 @@ class Filial
         return $this->email;
     }
  
-    public function getStatus()
+    public function getAtivo()
     {
-        return $this->status;
+        return $this->ativo;
     }
  
     public function getIdCidade()
     {
         return intval($this->idCidade);
     }
+    
 
     public function setData($dados)
     {
@@ -197,27 +203,61 @@ class Filial
         $this->setComplemento(trim($dados->complemento));
         $this->setTelefone(trim($dados->telefone));
         $this->setEmail(trim($dados->email));
-        $this->setStatus(trim($dados->status));
+        $this->setAtivo(trim($dados->ativo));
         $this->setIdCidade(trim($dados->idCidade));
+    }
+
+
+    public function selectOne($id)
+    {
+        $sql = new Sql();
+        $result = $sql->select("SELECT * FROM filial WHERE id = $id LIMIT 1");
+        $this->setData($result);
+        $cidade = $sql->select("SELECT nome,idEstado FROM cidade WHERE id = :idCidade LIMIT 1",array(":idCidade"=>$this->getIdCidade()));
+        $estado = $sql->select("SELECT uf FROM estado WHERE id = :idEstado LIMIT 1", array(":idEstado"=>$cidade->idEstado));
+        $this->cidade = $cidade->nome;
+        $this->estado = $estado->uf;
+    }
+
+    public function selectAll()
+    {
+        $msg = new Mensagens();
+        $sql = new Sql();
+        $result = $sql->query("SELECT * FROM filial ORDER BY nome");
+        
+        while($lista = $result->fetch(PDO::FETCH_OBJ))
+        {
+           $return[] = $lista;
+        }
+        
+        if(!isset($return))
+        {
+            $msg::erro("Não há registros a serem listados!");
+        }
+
+        return json_encode($return);
     }
 
     public function insert()
     {
-        $sql = new Sql();
-        $sql->query("CALL filial_insert(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )",
-        array("1"=>$this->getId(),
-              "2"=>$this->getCnpj(),
-              "3"=>$this->getNome(),
-              "4"=>$this->getCep(),
-              "5"=>$this->getLogradouro(),
-              "6"=>$this->getBairro(),
-              "7"=>$this->getNumero(),
-              "8"=>$this->getComplemento(),
-              "9"=>$this->getTelefone(),
-              "10"=>$this->getEmail(),
-              "11"=>$this->getStatus(),
-              "12"=>$this->getIdCidade())
-    );
+            $sql = new Sql();
+            $msg = new Mensagens();
+            $sql->query("CALL filial_insert(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )",
+                array("1"=>$this->getId(),
+                  "2"=>$this->getCnpj(),
+                  "3"=>$this->getNome(),
+                  "4"=>$this->getCep(),
+                  "5"=>$this->getLogradouro(),
+                  "6"=>$this->getBairro(),
+                  "7"=>$this->getNumero(),
+                  "8"=>$this->getComplemento(),
+                  "9"=>$this->getTelefone(),
+                  "10"=>$this->getEmail(),
+                  "11"=>$this->getAtivo(),
+                  "12"=>$this->getIdCidade()));
+           
+            
+            $msg::sucesso("Filial cadastrada com sucesso!","cadastro/filial");
 
     }
 
@@ -225,7 +265,7 @@ class Filial
     {
 
         $sql = new Sql();
-        $sql->query("UPDATE filial SET cnpj = ?, nome = ?, cep = ?, logradouro = ?, bairro = ?, numero = ?, complemento = ?, telefone = ?, email = ?, status = ?, idCidade = ? WHERE id = ? LIMIT 1",
+        $sql->query("UPDATE filial SET cnpj = ?, nome = ?, cep = ?, logradouro = ?, bairro = ?, numero = ?, complemento = ?, telefone = ?, email = ?, ativo = ?, idCidade = ? WHERE id = ? LIMIT 1",
         array("1"=>$this->getCnpj(),
             "2"=>$this->getNome(),
             "3"=>$this->getCep(),
@@ -235,7 +275,7 @@ class Filial
             "7"=>$this->getComplemento(),
             "8"=>$this->getTelefone(),
             "9"=>$this->getEmail(),
-            "10"=>$this->getStatus(),
+            "10"=>$this->getAtivo(),
             "11"=>$this->getIdCidade(),
             "12"=>$this->getId()));
     }

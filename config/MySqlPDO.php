@@ -1,5 +1,6 @@
 <?php
 
+require_once("Mensagens.php");
 class Sql extends PDO
 {
 	private $conn;
@@ -26,14 +27,7 @@ class Sql extends PDO
 	{
 		$stmt = $this->conn->prepare($rawQuery);
 		$this->setParams($stmt, $params);
-
-		try {
-			$stmt->execute();
-		} catch (PDOException $error) {
-			
-			return $error->message;
-		}
-		
+		$stmt->execute();
 		return $stmt;
 	}
 

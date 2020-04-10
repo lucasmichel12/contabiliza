@@ -1,6 +1,14 @@
 <?php
+    require_once("config/MySqlPDO.php");
+    require_once("Model/Colaborador.php");
+    $colaborador = new Colaborador();
+    $required = "required";
 
-
+    if(isset($url[2]))
+    {
+        $colaborador->selectOne($url[2]);
+        $required = "";
+    }
 ?>
 
 <div class="content">
@@ -11,32 +19,32 @@
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="persiste/colaborador" method="POST" name="colaborador">
-            <input type="hidden" name="id" value="0">
+            <input type="hidden" name="id" value="<?=$colaborador->getId();?>">
         <div class="form-row">
             <div class="col-8">
-            <input type="text" class="form-control" placeholder="Nome Completo" name="nome">
+            <input type="text" class="form-control" placeholder="Nome Completo" required name="nome" value="<?=$colaborador->getNome();?>">
             </div>
             <div class="col-4">
-            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" name="cpf">
+            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf" value="<?=$colaborador->getCpf();?>">
             </div>
         </div>
         <div class="form-row mt-3">
             <div class="col-8">
-            <input type="email" class="form-control" placeholder="E-mail" name="email">
+            <input type="email" class="form-control" placeholder="E-mail"  required name="email" value="<?=$colaborador->getEmail();?>">
             </div>
             <div class="col-4">
-            <input type="text" class="form-control" placeholder="Celular" name="celular">
+            <input type="text" class="form-control" placeholder="Celular" required data-mask="(99)99999-9999" name="celular" value="<?=$colaborador->getCelular();?>">
             </div>
         </div>
         <div class="form-row mt-3">
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="login" name="login">
+                <input type="text" class="form-control" placeholder="login" required name="login" value="<?=$colaborador->getLogin();?>">
             </div>
             <div class="col-4">
-                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                <input type="password" class="form-control" placeholder="Senha" <?=$required;?> id="senha" name="senha">
             </div>
             <div class="col-4">
-                <input type="password" class="form-control" placeholder="Digite a senha novamente" name="check">
+                <input type="password" class="form-control" placeholder="Digite a senha novamente" <?=$required;?> onblur="validaSenha()" id="check" name="check">
             </div>
         </div>
         <div class="form-row mt-3">
@@ -46,8 +54,8 @@
                     <label class="input-group-text" for="admin">Usúario Administrador?</label>
                 </div>
                 <select class="custom-select" id="admin" name="admin">
-                    <option value="0">Não</option>
-                    <option value="1">Sim</option>
+                    <option value="Não">Não</option>
+                    <option value="Sim">Sim</option>
                 </select>
                 </div>
             </div>
@@ -57,21 +65,34 @@
                         <label class="input-group-text" for="ativo">Usúario Ativo?</label>
                     </div>
                     <select class="custom-select" id="ativo" name="ativo">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="form-row mt-4">
             <div class="col-6">
-                <button type="button" class="btn btn-info">Listar Colaboradores</button>
+                <a href="listagem/colaborador" class="btn btn-info">Listar Colaboradores</a>
             </div>
             <div class="col-6">
-                <button type="submit"  class="btn btn-success float-right ml-3">Enviar</button>
-                <button type="button" onclick="reset()"class="btn btn-danger float-right">Apagar Formulário</button>
+                <button type="submit" onclick="validaSenha()" class="btn btn-success float-right ml-3">Enviar</button>
             </div>
         </div>    
     </form>
 </div>
 
+
+
+<script>
+
+function validaSenha() {
+   let senha = document.getElementById('senha')
+   let check = document.getElementById('check') 
+
+    if(senha.value() != check.value()){
+      alert("As senhas não conferem!")  
+    }
+  }
+
+</script>

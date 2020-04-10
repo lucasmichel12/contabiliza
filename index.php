@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
     <link rel="stylesheet" href="public/assets/css/normalize.css">
-    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/assets/css/themify-icons.css">
     <link rel="stylesheet" href="public/assets/css/pe-icon-7-stroke.min.css">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="public/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="public/assets/css/style.css">
     <link rel="stylesheet" href="public/assets/css/estilo.css">  
-   
+    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
@@ -79,11 +79,11 @@
     <?php
         if (!isset ($_SESSION["usuario"]["id"]) )
         {
-            include "recursos/login.php";
+            include "paginas/login.php";
 
         } else {
 
-            $rota = "recursos/home";
+            $rota = "paginas/home";
 
             if (isset($_GET["param"]))
             {
@@ -97,7 +97,7 @@
             
             $rota = "$pasta/$arquivo.php";
 
-            include "recursos/main.php";
+            include "paginas/main.php";
 
         }
     ?>
@@ -106,9 +106,10 @@
 </body>
 
     <!-- JS -->
-    <script src="public/bootstrap/jquery/jquery.min.js"></script>
-    <script src="public/bootstrap/popper/popper.min.js"></script>
-    <script src="public/bootstrap/js/bootstrap.min.js"></script>
-    <script src="public/bootstrap/jquery/jquery.matchHeight.min.js"></script>
+    <script src="public/assets/jquery/jquery.min.js"></script>
+    <script src="public/assets/jquery/jqueryMask.min.js"></script>
+    <script src="public/assets/jquery/jqueryMaskMoney.min.js"></script>
+    <script src="public/assets/popper/popper.min.js"></script>
+    <script src="public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="public/assets/jquery/jqueryMatchHeight.min.js"></script>
     <script src="public/assets/js/main.js"></script>
-    <script src="public/assets/js/jquery.mask.min.js"></script>
