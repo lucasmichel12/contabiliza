@@ -1,5 +1,4 @@
 <?php
-    require_once("config/MySqlPDO.php");
     require_once("Model/Filial.php");
     $filiais = new Filial();
     $tabela = $filiais->selectAll();

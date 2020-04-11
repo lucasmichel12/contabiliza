@@ -107,7 +107,6 @@
 
     <!-- JS -->
     <script src="public/assets/jquery/jquery.min.js"></script>
-    <script src="public/assets/jquery/jqueryMask.min.js"></script>
     <script src="public/assets/jquery/jqueryMaskMoney.min.js"></script>
     <script src="public/assets/popper/popper.min.js"></script>
     <script src="public/assets/bootstrap/js/bootstrap.min.js"></script>

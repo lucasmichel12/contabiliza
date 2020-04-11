@@ -27,7 +27,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="valor">R$</label>
                     </div>
-                <input type="text" class="form-control" required placeholder="Valor" id="valor" name="valor" value="<?=$despesa->getValor();?>">
+                <input type="text" class="form-control" placeholder="Valor" id="valor" name="valor" value="<?=$despesa->getValor();?>">
                 </div>
             </div>
         </div> 
