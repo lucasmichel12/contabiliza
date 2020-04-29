@@ -106,9 +106,12 @@ $paradaOptions = $parada->selectAll();
                                         <select class="custom-select" id="idViagem" required name="idViagem">
                                             <?php
                                             foreach (json_decode($viagemOptions) as $option) {
-                                                echo "
+                                                if($option->status === 'Aberto')
+                                                {
+                                                    echo "
                                                             <option value='$option->id'>$option->localPartida</option>
                                                         ";
+                                                }
                                             }
                                             ?>
                                         </select>
@@ -134,9 +137,10 @@ $paradaOptions = $parada->selectAll();
                                         <select class="custom-select" id="idDespesa" name="idDespesa">
                                             <?php
                                             foreach (json_decode($despesaOptions) as $option) {
-                                                echo "
-                                                            <option data-valor='$option->valor'value='$option->id'>$option->descricao</option>
-                                                        ";
+                                               if($option->ativo === 'Sim')
+                                               {
+                                                echo "<option data-valor='$option->valor'value='$option->id'>$option->descricao</option>";
+                                               }
                                             }
                                             ?>
                                         </select>
@@ -153,7 +157,7 @@ $paradaOptions = $parada->selectAll();
                                         <select class="custom-select" id="idParada" name="idParada">
                                             <?php
                                             foreach (json_decode($paradaOptions) as $option) {
-                                                echo "
+                                                        echo "
                                                             <option value='$option->id'>$option->destino</option>
                                                         ";
                                             }

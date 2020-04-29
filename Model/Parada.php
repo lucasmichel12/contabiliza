@@ -100,7 +100,8 @@ class Parada
     public function selectAll()
     {
         $sql = new Sql();
-        $result = $sql->query("SELECT * FROM parada ORDER BY destino");
+        $viagem = $sql->select("SELECT * FROM viagem WHERE status = 'Aberto' LIMIT 1");
+        $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$viagem->id));
         
         while($lista = $result->fetch(PDO::FETCH_OBJ))
         {
@@ -134,7 +135,7 @@ class Parada
         $sql = new Sql();
         $sql->query("UPDATE parada SET destino = :destino, motivo = :motivo, dataInicio = :dataInicio, dataTermino = :dataTermino, idViagem = :idViagem WHERE id = :id LIMIT 1", array(
             ":id"=>$this->getId(),
-            ":destio"=>$this->getDestino(),
+            ":destino"=>$this->getDestino(),
             ":motivo"=>$this->getMotivo(),
             ":dataInicio"=>$this->getDataInicio(),
             ":dataTermino"=>$this->getDataTermino(),
