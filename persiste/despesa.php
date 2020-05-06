@@ -3,7 +3,7 @@
 require_once("config/Funcoes.php");
 require_once("config/Mensagens.php");
 require_once("Model/Despesa.php");
-require_once("config/MySqlPDO.php");
+
 
 $msg = new Mensagens();
 $func = new Funcoes();

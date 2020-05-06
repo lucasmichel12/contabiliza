@@ -101,11 +101,13 @@ class Parada
     {
         $sql = new Sql();
         $viagem = $sql->select("SELECT * FROM viagem WHERE status = 'Aberto' LIMIT 1");
-        $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$viagem->id));
+        if(isset($viagem->id)){
+            $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$viagem->id));
         
-        while($lista = $result->fetch(PDO::FETCH_OBJ))
-        {
-           $return[] = $lista;
+            while($lista = $result->fetch(PDO::FETCH_OBJ))
+            {
+            $return[] = $lista;
+            }
         }
         
         if(!isset($return))

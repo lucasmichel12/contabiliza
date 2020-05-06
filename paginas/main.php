@@ -28,7 +28,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Despesas</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-plus-circle"></i><a href="cadastro/viagem">Nova</a></li>
-                        <li><i class="menu-icon fa fa-list-alt"></i><a href="#">Em processo</a></li>
+                        <li><i class="menu-icon fa fa-list-alt"></i><a href="listagem/viagem">Em processo</a></li>
                     </ul>
                 </li>
             </ul>

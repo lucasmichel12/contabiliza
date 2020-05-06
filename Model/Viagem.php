@@ -151,7 +151,7 @@ class Viagem
     public function selectAll()
     {
         $sql = new Sql();
-        $result = $sql->query("SELECT * FROM viagem ORDER BY dataInicio");
+        $result = $sql->query("SELECT * FROM viagem ORDER BY 'Aberto'");
         
         while($lista = $result->fetch(PDO::FETCH_OBJ))
         {

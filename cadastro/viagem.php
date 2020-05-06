@@ -69,7 +69,7 @@ $paradaOptions = $parada->selectAll();
                             </div>
                             <div class="form-row">
                                 <div class="col-6">
-                                    <input class="form-control" type="text" name="custoTotal" id="custoTotal" readonly placeholder="R$ 00,00">
+                                    <input class="form-control" type="hidden" name="custoTotal" id="custoTotal" readonly placeholder="R$ 00,00">
                                 </div>
                             </div>
                             <div class="form-row mt-4">
@@ -127,8 +127,9 @@ $paradaOptions = $parada->selectAll();
                     </div>
 
                     <div class="tab-pane fade" id="form-despesa" role="tabpanel" aria-labelledby="form-despesa-tab">
-                        <form class="mt-4 p-3 mb-5 bg-white" action="recursos/teste" method="POST" name="despesa">
+                        <form class="mt-4 p-3 mb-5 bg-white" action="persiste/despesaParada" method="POST" name="despesa">
                             <div class="form-row">
+                                            <input type="hidden" name="id" value="">
                                 <div class="col-4">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -139,7 +140,7 @@ $paradaOptions = $parada->selectAll();
                                             foreach (json_decode($despesaOptions) as $option) {
                                                if($option->ativo === 'Sim')
                                                {
-                                                echo "<option data-valor='$option->valor'value='$option->id'>$option->descricao</option>";
+                                                echo "<option data-valor='$option->valor' value='$option->id'>$option->descricao</option>";
                                                }
                                             }
                                             ?>
@@ -186,9 +187,13 @@ $paradaOptions = $parada->selectAll();
                                 </div>
                             </div>
                             <div class="form-row mt-4">
-                                <div class="col-6">
-                                    <button type="submit" class="btn btn-success float-right ml-3">Enviar</button>
+                                <div class="col-7">
+                                    <button type="submit" class="btn btn-success float-left ml-3">Registrar Despesa</button>
                                 </div>
+                                <div class="col-5">
+                                    <a href="" class="btn btn-info float-right ml-3">Finalizar Relatório</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

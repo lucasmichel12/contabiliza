@@ -62,17 +62,17 @@ class DespesaParada
 
     public function getidParada()
     {
-        return $this->idParada;
+        return intval($this->idParada);
     }
 
     public function getidDespesa()
     {
-        return $this->idDespesa;
+        return intval($this->idDespesa);
     }
 
     public function getQuantidade()
     {
-        return $this->quantidade;
+        return intval($this->quantidade);
     }
 
     public function getValor()
@@ -82,7 +82,7 @@ class DespesaParada
 
     public function getComprovante()
     {
-        return intval($this->comprovante);
+        return $this->comprovante;
     }
 
     public function getObservacao()
@@ -130,7 +130,7 @@ class DespesaParada
     public function insert()
     {
         $sql = new Sql();
-        $sql->query("CALL despesa_parada_insert (:id, :idDespesa, :idParada, :quantidade, :valor, :comprovante :observacao)", array(
+        $sql->query("CALL despesa_parada_insert (:id, :idDespesa, :idParada, :valor, :comprovante, :quantidade, :observacao)", array(
             ":id"=>$this->getId(),
             ":idDespesa"=>$this->getidDespesa(),
             ":idParada"=>$this->getidParada(),
