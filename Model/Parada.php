@@ -97,17 +97,20 @@ class Parada
         return $result;
     }
 
-    public function selectAll()
+    public function selectAll(int $id = 0)
     {
         $sql = new Sql();
-        $viagem = $sql->select("SELECT * FROM viagem WHERE status = 'Aberto' LIMIT 1");
-        if(isset($viagem->id)){
-            $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$viagem->id));
+        if($id === 0)
+        {
+            $viagem = $sql->select("SELECT * FROM viagem WHERE status = 'Aberto' LIMIT 1");
+            $id = $viagem->id;
+        }
+
+        $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$id));
         
-            while($lista = $result->fetch(PDO::FETCH_OBJ))
-            {
-            $return[] = $lista;
-            }
+        while($lista = $result->fetch(PDO::FETCH_OBJ))
+        {
+        $return[] = $lista;
         }
         
         if(!isset($return))

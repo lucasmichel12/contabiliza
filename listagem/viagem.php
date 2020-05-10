@@ -38,7 +38,7 @@ $tabela = $viagens->selectAll();
                         <td width='20%'> $nome</td> 
                         <td width='20%'> $linha->status</td> 
                         <td width='15%'> R$ $linha->custoTotal</td> 
-                        <td width='5%'> <a href='cadastro/solicitacao/$linha->id' class='btn btn-warning btn-sm'> <i class='fa fa-edit'></i> </a>
+                        <td width='5%'> <a href='solicitacao/editar/$linha->id' class='btn btn-warning btn-sm'> <i class='fa fa-edit'></i> </a>
                      </tr>";
             }
         ?>
