@@ -3,8 +3,6 @@ $paradas = $parada->selectAll($url[2]);
 foreach (json_decode($paradas) as $parada) {
     
 ?>
-
-
     <div id='accordion2'>
         <div class='card'>
             <div class='card-header' id='handing2'>
