@@ -103,7 +103,7 @@ class Parada
         if($id === 0)
         {
             $viagem = $sql->select("SELECT * FROM viagem WHERE status = 'Aberto' LIMIT 1");
-            $id = $viagem->id;
+            if(isset($viagem->id)) $id = $viagem->id;
         }
 
         $result = $sql->query("SELECT * FROM parada WHERE idViagem = :idViagem ORDER BY destino", array(":idViagem"=>$id));

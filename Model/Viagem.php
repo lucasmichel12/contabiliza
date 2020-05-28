@@ -140,10 +140,10 @@ class Viagem
         $this->setIdFilial(trim($dados->idFilial));
     }
 
-    public function selectOne($id)
+    public function selectOne($campo, $value)
     {
         $sql = new Sql();
-        $result = $sql->select("SELECT * FROM viagem WHERE id = $id LIMIT 1");
+        $result = $sql->select("SELECT * FROM viagem WHERE $campo LIKE $value LIMIT 1");
         $this->setData($result);
         return $result;
     }

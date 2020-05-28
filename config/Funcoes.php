@@ -19,7 +19,7 @@ Class Funcoes
             if($idUpdate !== intval($result->id))
             {   
                 $msg = new Mensagens();
-                $msg::erro("Já existe um(a) $coluna cadastrado na base de dados!");
+                $msg::erro("Já existe um(a) $coluna cadastrado(a) na base de dados!");
             }
             
         }

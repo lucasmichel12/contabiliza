@@ -15,10 +15,6 @@ $paradaOptions = $parada->selectAll();
 
 ?>
 <div class="content">
-    <div class="card">
-        <div class="card-header">
-            <h4>Relatorio de Reembolso</h4>
-        </div>
         <div class="card-body">
             <div class="default-tab">
                 <nav>
@@ -191,15 +187,13 @@ $paradaOptions = $parada->selectAll();
                                     <button type="submit" class="btn btn-success float-left ml-3">Registrar Despesa</button>
                                 </div>
                                 <div class="col-5">
-                                    <a href="" class="btn btn-info float-right ml-3">Finalizar Relatório</a>
+                                    <a href="paginas/checkout" class="btn btn-info float-right ml-3">Finalizar Relatório</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-
     </div>
 </div>
 </div>

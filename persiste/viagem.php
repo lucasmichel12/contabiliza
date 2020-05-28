@@ -25,9 +25,10 @@ $func = new Funcoes();
 
             $viagem->setData($dados);
 
+            $func->seExiste('viagem','status','Aberto');
             if($viagem->getId() != 0 )
             {
-          
+                
                 $viagem->update();
                 $msg::sucesso("viagem Atualizada com sucesso!", "cadastro/viagem");
 

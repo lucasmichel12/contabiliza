@@ -31,7 +31,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         } elseif ($despesaParada->getId() === 0) {
 
             $despesaParada->insert();
-            exit;
             $msg::sucesso("Despesa cadastrado com sucesso!","cadastro/viagem");
 
         } else {
@@ -45,8 +44,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             $msg::erro("Problema ao enviar os dados do formulario");
 
     }
+
+}else {
+    $msg::erro("Problema ao enviar os dados do formulario");
 }
 
 
 
-?>

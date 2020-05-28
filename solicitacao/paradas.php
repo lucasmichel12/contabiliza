@@ -9,12 +9,12 @@ foreach (json_decode($paradas) as $parada) {
         <div class='card'>
             <div class='card-header' id='handing2'>
                 <h5 class='mb-0'>
-                    <button class='btn btn-link' data-toggle='collapse' data-target='#collapse2' aria-expanded='true' aria-controls='collapse2'><strong>Relátorio de: </strong><?php echo $parada->destino; ?></button>
+                    <button class='btn btn-link' data-toggle='collapse' data-target='#collapse2' aria-expanded='true' aria-controls='collapse2'><?php echo $parada->destino; ?></button>
                 </h5>
             </div>
             <div id='collapse2' class='collapse' aria-labelledby='heading2' data-parent='#accordion2'>
-                <div class='card-body'>
-                    <form class="mt-4 p-3 mb-5 bg-white" action="persiste/parada" method="POST" name="parada">
+                <div class='card-body bg-light'>
+                    <form class="mt-4 p-3 mb-5 bg-light" action="persiste/parada" method="POST" name="parada">
                         <div class="form-row">
                             <input type="hidden" name="id" value="<?=$parada->id;?>">
                             <input type="hidden" name="idViagem" value="<?=$url[2];?>">
@@ -47,6 +47,7 @@ foreach (json_decode($paradas) as $parada) {
                         </div>
                     </form>
                     <!-- Aqui vai outro Car Collapse para adicionar as despesas -->
+                    <?php require_once("despesas.php");?>
                 </div>
             </div>
         </div>
