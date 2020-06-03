@@ -1,0 +1,18 @@
+# Comando para não dar problemas com varios index dentro do projeto
+# Documentação: http://httpd.apache.org/docs/2.2/content-negotiation.html
+Options -MultiViews
+
+# Habilitando a reescrita de URL
+RewriteEngine on
+
+# Previne que as pessoas olhem dentro do diretorio
+Options -Indexes
+
+
+# Condições do Rewrite da URL, sem isso tudo é reescrito, mesmo que a URL digita exista
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# Regra da Reescrita
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

@@ -1,4 +1,3 @@
+#Habilita a reescrita da URL
 RewriteEngine on
-RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?param=$1
+RewriteRule ^(.*) public/$1 [L]
