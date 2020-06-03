@@ -27,7 +27,7 @@ Importe para o Mysql(5.0.12) o arquivo "bdcontabiliza.sql" que está na pasta "_
 * **Lucas Michel de Souza** - *Backend Dev* - [lucasmichel12](https://github.com/lucasmichel12)
 * **Larissa Carvalho** - *FrondEnd Dev* - [lariicarvalho](https://github.com/lariicarvalho)
 
-## License
+## Licença
 
 Este projeto está de baixo da licença MIT - Acesse [LICENSE.md](LICENSE.md) para mais detallhes.
 
