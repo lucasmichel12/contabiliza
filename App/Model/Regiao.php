@@ -17,7 +17,7 @@ class Regiao extends Model
     //Lista todas os registros da tabela "regiao"
     public function listAll()
     {
-        return $this->query("SELECT * FROM regiao WHERE ativo = 'Sim'ORDER BY percentual DESC");
+        return $this->query("SELECT * FROM regiao WHERE ativo = 'Sim' ORDER BY percentual DESC");
     }
 
     //Lista todos os registros ativos

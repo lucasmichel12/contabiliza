@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario">Colaborador</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="Usuario/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/insert" method="POST">
             <input type="hidden" name="id">
         <div class="form-row">
             <div class="col-8">
