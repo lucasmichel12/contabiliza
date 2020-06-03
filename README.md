@@ -10,28 +10,24 @@ Segue abaixo algumas instruções de como colocar o projeto para rodar
 
 ```
 Apache
-Mysql
+Mysql(5.0.12)
 PHP ^7.0
 ```
 
 ### Instalando
 
 
-Subindo o banco
+Para iniciar o projeto basta apenas ter um ambiente LAMP configurado e subir o banco de dados, como mostra a instrução abaixo
+
 ```
-Importe para o Mysql(5.0.12) o arquivo bdcontabiliza.sql que está na pasta "_Arquivos"
+Importe para o Mysql(5.0.12) o arquivo "bdcontabiliza.sql" que está na pasta "_Arquivos"
 ```
 
 
-* **Lucas Michel de Souza** - *Initial work* - [lucasmichel12](https://github.com/lucasmichel12)
-* **Larissa Carvalho** - *Initial work* - [lariicarvalho](https://github.com/lariicarvalho)
+* **Lucas Michel de Souza** - *Backend Dev* - [lucasmichel12](https://github.com/lucasmichel12)
+* **Larissa Carvalho** - *FrondEnd Dev* - [lariicarvalho](https://github.com/lariicarvalho)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Este projeto está de baixo da licença MIT - Acesse [LICENSE.md](LICENSE.md) para mais detallhes.
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
