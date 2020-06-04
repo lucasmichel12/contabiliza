@@ -32,11 +32,21 @@ class UsuarioController
         require APP . 'View/_template/footer.php';
     }
 
+    public function listarInativos()
+    {
+        $usuarios = $this->Usuario->listarInativos();
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/main.php';
+        require APP . 'View/lista/usuario.php';
+        require APP . 'View/_template/footer.php';
+    }
+
     public function insert()
     {
         if(isset($_POST['id_usuario']))
         {
-            $this->Usuario->update(intval($_POST['id_regiao']), $_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['admin'], $_POST['ativo']);
+            $this->Usuario->update(intval($_POST['id_usuario']), $_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['admin'], $_POST['ativo']);
+            header("location:" . URL . "Usuario/listar");
         } else {
 
             $this->Usuario->insert($_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['admin'], $_POST['ativo']);
@@ -77,8 +87,12 @@ class UsuarioController
         header("location:" . URL . "Usuario/listar");
     }
 
+    public function desabilita()
+    {
+        $this->Usuario->desabilita($this->id);
+        header("location:" . URL . "Usuario/listar");
+    }
     
-
      //Função temporaria até eu achar uma forma melhor kkkk
      public function getId()
      {

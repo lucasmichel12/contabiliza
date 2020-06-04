@@ -18,6 +18,11 @@ class Usuario extends Model
        return $this->query("SELECT * FROM usuario WHERE ativo = 'Sim' ORDER BY nome");
     }
 
+    public function listarInativos()
+    {
+       return $this->query("SELECT * FROM usuario WHERE ativo = 'Não' ORDER BY nome");
+    }
+
     public function getOne(Int $id)
     {
         $parameter = array("1"=>$id);
@@ -27,7 +32,7 @@ class Usuario extends Model
     public function update(Int $id, String $nome, String $cpf, String $login, String $admin, String $ativo)
     {
         $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$admin, "5"=>$ativo, "6"=>$id);
-        $this->query("UPDATE regiao SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1");
+        $this->query("UPDATE usuario SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id_usuario = ? LIMIT 1", $parameters);
     }
 
     public function delete(Int $id)
@@ -41,5 +46,11 @@ class Usuario extends Model
         $senha = password_hash($senha, PASSWORD_DEFAULT);
         $parameter = array("1"=>$senha, "2"=>$id);
         $this->query("UPDATE usuario SET senha = ? WHERE id_usuario = ? LIMIT 1", $parameter);
+    }
+
+    public function desabilita(Int $id)
+    {
+        $parameter = array("1"=>$id);
+        $this->query("UPDATE usuario SET ativo = 'Não' WHERE id_usuario = ? LIMIT 1", $parameter);
     }
 }
