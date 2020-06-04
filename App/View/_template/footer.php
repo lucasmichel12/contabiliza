@@ -1,6 +1,6 @@
 
 </main>
-<footer class="site-footer bg-dark fixed-bottom">
+<footer class="site-footer bg-dark">
         <div class="footer-inner bg-dark">
             <div class="row">
                 <div class="col-sm-6">
