@@ -27,10 +27,10 @@
                 <li class="menu-title">Prestação de contas</li><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Despesas</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Solicitações</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-plus-circle"></i><a href="">Solicitação</a></li>
-                        <li><i class="menu-icon fa fa-list-alt"></i><a href="">Em processo</a></li>
+                        <li><i class="menu-icon fa fa-plus-circle"></i><a href="">Nova Solicitação</a></li>
+                        <li><i class="menu-icon fa fa-list-alt"></i><a href="">Abertas</a></li>
                     </ul>
                 </li>
             </ul>
