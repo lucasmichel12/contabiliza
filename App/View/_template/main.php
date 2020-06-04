@@ -9,7 +9,7 @@
 					<ul class="sub-menu children dropdown-menu"> 
 					
                         <li><i class="fa fa-user"></i><a href="<?= URL;?>Usuario/">Usuário</a></li>
-                        <li><i class="fa fa-building-o"></i><a href="#">Centro de Custo</a></li>
+                        <li><i class="fa fa-building-o"></i><a href="<?=URL;?>CentroCusto/">Centro de Custo</a></li>
                         <li><i class="fa fa-shopping-cart"></i><a href="#">Despesas</a></li>
                         <li><i class="fa fa-map"></i><a href="<?= URL;?>Regiao/">Regiões</a></li>
 						
