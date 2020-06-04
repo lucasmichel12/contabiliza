@@ -6,11 +6,11 @@ use Contabiliza\Core\Model;
 
 class Usuario extends Model
 {
-    public function insert(String $nome, String $login, String $senha, String $admin, String $ativo)
+    public function insert(String $nome, String $cpf, String $login, String $senha, String $admin, String $ativo)
     {
         $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $parameters = array("1"=>$nome, "2"=>$login, "3"=>$senha, "4"=>$admin, "5"=>$ativo);
-        $this->query("INSERT INTO usuario (nome, login, senha, admin, ativo) VALUES (?,?,?,?,?)", $parameters);
+        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$senha, "5"=>$admin, "6"=>$ativo);
+        $this->query("INSERT INTO usuario (nome, cpf, login, senha, admin, ativo) VALUES (?,?,?,?,?,?)", $parameters);
     }
 
     public function listAll()
@@ -18,9 +18,15 @@ class Usuario extends Model
        return $this->query("SELECT * FROM usuario WHERE ativo = 'Sim' ORDER BY nome");
     }
 
-    public function update(Int $id, String $nome, String $login, String $senha, String $admin, String $ativo)
+    public function getOne(Int $id)
     {
-        $parameters = array("1"=>$nome, "2"=>$login, "3"=>$admin, "4"=>$ativo, "5"=>$id);
-        $this->query("UPDATE regiao SET nome = ?, login = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1");
+        $parameter = array("1"=>$id);
+        $this->select("SELECT id_usuario, nome, cpf, login, admin, ativo FROM usuario WHERE id = ? LIMIT 1", $parameter);
+    }
+    
+    public function update(Int $id, String $nome, String $cpf, String $login, String $admin, String $ativo)
+    {
+        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$admin, "5"=>$ativo, "6"=>$id);
+        $this->query("UPDATE regiao SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id = ? LIMIT 1");
     }
 }

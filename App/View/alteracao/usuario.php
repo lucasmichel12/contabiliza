@@ -2,27 +2,22 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Cadastro</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario">Colaborador</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario/listar">Colaborador</a></li>
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/insert" method="POST">
+            <input type="hidden" name="id_usuario" value="<?=$usuario[0]['id_usuario'];?>">
         <div class="form-row">
             <div class="col-8">
-            <input type="text" class="form-control" placeholder="Nome Completo" required name="nome">
+            <input type="text" class="form-control" placeholder="Nome Completo" required name="nome" value="<?=$usuario[0]['nome'];?>">
             </div>
             <div class="col-4">
-            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf">
+            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf" value="<?=$usuario[0]['cpf'];?>">
             </div>
         </div>
         <div class="form-row mt-3">
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="login" required name="login">
-            </div>
-            <div class="col-4">
-                <input type="password" class="form-control" placeholder="Senha" required name="senha">
-            </div>
-            <div class="col-4">
-                <input type="password" class="form-control" placeholder="Digite a senha novamente">
+                <input type="text" class="form-control" placeholder="login" required name="login" value="<?=$usuario[0]['login'];?>">
             </div>
         </div>
         <div class="form-row mt-3">

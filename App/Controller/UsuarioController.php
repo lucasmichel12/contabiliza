@@ -34,8 +34,25 @@ class UsuarioController
 
     public function insert()
     {
-        $this->Usuario->insert($_POST['nome'], $_POST['login'], $_POST['senha'], $_POST['admin'], $_POST['ativo']);
-        header("location:" . URL . "Usuario/");
+        if(isset($_POST['id_usuario']))
+        {
+            $this->Usuario->update(intval($_POST['id_regiao']), $_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['admin'], $_POST['ativo']);
+        } else {
+
+            $this->Usuario->insert($_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['admin'], $_POST['ativo']);
+            header("location:" . URL . "Usuario/");
+        }
+    }
+
+    public function altera()
+    {
+        $usuario = $this->Usuario->getOne($this->id);
+
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/main.php';
+        require APP . 'View/alteracao/usuario.php';
+        require APP . 'View/_template/footer.php';
+        
     }
 
     
