@@ -21,7 +21,7 @@
                     <td class="text-center"><?=$usuario['cpf']?></td>
                     <th class="text-center">
                         <a class="btn btn-success" href="<?=URL;?>Usuario/altera/<?=$usuario['id_usuario'];?>">Editar</a>
-                        <a class="btn btn-info" href="<?=URL;?>Usuario/altera/<?=$usuario['id_usuario'];?>">Alterar Senha</a>
+                        <a class="btn btn-info" href="<?=URL;?>Usuario/alteraSenha/<?=$usuario['id_usuario'];?>">Alterar Senha</a>
                         <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "Usuario/desabilita/{$usuario['id_usuario']}'>Desabilitar</a>";} ?> 
                         <a class="btn btn-danger" href="<?=URL;?>Usuario/deleta/<?=$usuario['id_usuario'];?>">Excluir</a> 
                     </th>

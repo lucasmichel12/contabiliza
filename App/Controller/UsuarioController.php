@@ -55,6 +55,28 @@ class UsuarioController
         
     }
 
+    public function alteraSenha()
+    {
+        $usuario = $this->Usuario->getOne($this->id);
+        
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/main.php';
+        require APP . 'View/alteracao/senhaUsuario.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    public function trocaSenha()
+    {
+        $this->Usuario->alteraSenha($_POST['senha'], $_POST['id_usuario']);
+        header("location:" . URL . "Usuario/listar");
+    }
+    
+    public function deleta()
+    {
+        $this->Usuario->delete($this->id);
+        header("location:" . URL . "Usuario/listar");
+    }
+
     
 
      //Função temporaria até eu achar uma forma melhor kkkk
