@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="#">Centro de Custo</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>CentroCusto/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>CentroCusto/inserir" method="POST">
         <div class="form-row">
             <div class="col-8">
                 <input type="text" class="form-control" required placeholder="Nome Empresarial ou Fantasia" name="descricao">

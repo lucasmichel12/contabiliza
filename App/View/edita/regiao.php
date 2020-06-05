@@ -2,10 +2,10 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Alteração</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="#">Região</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="Regiao/">Região</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Regiao/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Regiao/inserir" method="POST">
             <input type="hidden" name="id_regiao" value="<?=$regiao['0']['id_regiao'];?>">
         <div class="form-row">
             <div class="col-8">

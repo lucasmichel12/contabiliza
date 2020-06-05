@@ -3,8 +3,9 @@
 namespace Contabiliza\Model;
 
 use Contabiliza\Core\Model;
+use Contabiliza\Interfaces\ModelInterface;
 
-class Despesa extends Model
+class Despesa extends Model implements ModelInterface
 {
     public function insert(String $descricao, String $valor_definido, String $ativo, Float $valor)
     {
@@ -23,23 +24,23 @@ class Despesa extends Model
         return $this->select("SELECT * FROM despesa WHERE id_despesa = ? LIMIT 1", $paremeter);
     }
 
-    public function listAll()
+    public function listActives()
     {
         return $this->query("SELECT * FROM despesa WHERE ativo = true ORDER BY descricao");
     }
 
-
-    public function listAllInativos()
+    public function listInactives()
     {
         return $this->query("SELECT * FROM despesa WHERE ativo = false ORDER BY descricao");
     }
+
     public function delete(Int $id)
     {
         $parameter = array("1"=>$id);
         $this->query("DELETE FROM despesa WHERE id_despesa = ? LIMIT 1", $parameter);
     }
 
-    public function desabilita(Int $id)
+    public function inactivate(Int $id)
     {
         $parameter = array("1"=>$id);
         $this->query("UPDATE despesa SET ativo = 'Não' WHERE id_despesa = ?", $parameter);

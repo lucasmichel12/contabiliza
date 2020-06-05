@@ -2,45 +2,46 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\CentroCusto;
 
-class CentroCustoController
+class CentroCustoController implements CadastrosControllerInterfaces
 {
+
     private $id;
     private $CentroCusto;
 
-
+    // Construct Inicia as duas variaveis acima
     public function __construct()
     {
-        $this->getId();
+        $this->setId();
         $this->CentroCusto = new CentroCusto();
     }
 
     public function index()
     {
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
+        require APP . 'View/_template/menu.php';
         require APP . 'View/cadastro/centroCusto.php';
         require APP . 'View/_template/footer.php';
     }
 
     public function listar()
     {
-        $centroscusto = $this->CentroCusto->listAll();
+        $centroscusto = $this->CentroCusto->listActives();
         $btnHabilitar = true;
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/centroCusto.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/centrosCusto.php';
         require APP . 'View/_template/footer.php';
     }
 
     public function listarInativos()
     {
-        $centroscusto = $this->CentroCusto->listAllInativos();
-
+        $centroscusto = $this->CentroCusto->listInactives();
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/centroCusto.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/centrosCusto.php';
         require APP . 'View/_template/footer.php';
     }
 
@@ -49,12 +50,12 @@ class CentroCustoController
         $centrocusto = $this->CentroCusto->getOne($this->id);
         
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/alteracao/centroCusto.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/edita/centroCusto.php';
         require APP . 'View/_template/footer.php';
     }
 
-    public function insert()
+    public function inserir()
     {
         if(isset($_POST['idcentro_custo']))
         {      
@@ -66,20 +67,19 @@ class CentroCustoController
         }        
     }
 
-    public function deleta()
+    public function deletar()
     {
         $this->CentroCusto->delete($this->id);
         header("location:" . URL . "CentroCusto/listar");
     }
 
-    public function desabilita()
+    public function desabilitar()
     {
-        $this->CentroCusto->desabilita($this->id);
+        $this->CentroCusto->inactivate($this->id);
         header("location:" . URL . "CentroCusto/listar");
     }
 
-    //Função temporaria até eu achar uma forma melhor kkkk
-    public function getId()
+    public function setId()
     {
         if(isset($_GET['url']))
          {

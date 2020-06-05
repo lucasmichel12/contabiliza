@@ -3,8 +3,9 @@
 namespace Contabiliza\Model;
 
 use Contabiliza\Core\Model;
+use Contabiliza\Interfaces\ModelInterface;
 
-class Usuario extends Model
+class Usuario extends Model implements ModelInterface
 {
     public function insert(String $nome, String $cpf, String $login, String $senha, String $admin, String $ativo)
     {
@@ -13,14 +14,10 @@ class Usuario extends Model
         $this->query("INSERT INTO usuario (nome, cpf, login, senha, admin, ativo) VALUES (?,?,?,?,?,?)", $parameters);
     }
 
-    public function listAll()
+    public function update(Int $id, String $nome, String $cpf, String $login, String $admin, String $ativo)
     {
-       return $this->query("SELECT * FROM usuario WHERE ativo = true ORDER BY nome");
-    }
-
-    public function listarInativos()
-    {
-       return $this->query("SELECT * FROM usuario WHERE ativo = false ORDER BY nome");
+        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$admin, "5"=>$ativo, "6"=>$id);
+        $this->query("UPDATE usuario SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id_usuario = ? LIMIT 1", $parameters);
     }
 
     public function getOne(Int $id)
@@ -28,11 +25,15 @@ class Usuario extends Model
         $parameter = array("1"=>$id);
          return $this->select("SELECT id_usuario, nome, cpf, login, admin, ativo FROM usuario WHERE id_usuario = ? LIMIT 1", $parameter);
     }
-    
-    public function update(Int $id, String $nome, String $cpf, String $login, String $admin, String $ativo)
+
+    public function listActives()
     {
-        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$admin, "5"=>$ativo, "6"=>$id);
-        $this->query("UPDATE usuario SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id_usuario = ? LIMIT 1", $parameters);
+       return $this->query("SELECT * FROM usuario WHERE ativo = true ORDER BY nome");
+    }
+
+    public function listInactives()
+    {
+       return $this->query("SELECT * FROM usuario WHERE ativo = false ORDER BY nome");
     }
 
     public function delete(Int $id)
@@ -41,16 +42,21 @@ class Usuario extends Model
         $this->query("DELETE FROM usuario WHERE id_usuario = ?", $parameter);
     }
 
-    public function alteraSenha(String $senha, Int $id)
+    public function inactivate(Int $id)
+    {
+        $parameter = array("1"=>$id);
+        $this->query("UPDATE usuario SET ativo = 'Não' WHERE id_usuario = ? LIMIT 1", $parameter);
+    }
+
+    //! Funções Especificas desta classe 
+
+    //* Função que altera apenas a senha(criptografada) do usuário
+    public function changePassword(String $senha, Int $id)
     {
         $senha = password_hash($senha, PASSWORD_DEFAULT);
         $parameter = array("1"=>$senha, "2"=>$id);
         $this->query("UPDATE usuario SET senha = ? WHERE id_usuario = ? LIMIT 1", $parameter);
     }
 
-    public function desabilita(Int $id)
-    {
-        $parameter = array("1"=>$id);
-        $this->query("UPDATE usuario SET ativo = 'Não' WHERE id_usuario = ? LIMIT 1", $parameter);
-    }
+
 }

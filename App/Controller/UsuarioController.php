@@ -2,46 +2,49 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Usuario;
 
-class UsuarioController
+class UsuarioController implements CadastrosControllerInterfaces
 {
     private $id;
     private $Usuario;
 
+    // Construct Inicia as duas variaveis acima
     public function __construct()
     {
-        $this->getId();
+        $this->setId();
         $this->Usuario = new Usuario();
     }
+
     public function index()
     {
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
+        require APP . 'View/_template/menu.php';
         require APP . 'View/cadastro/usuario.php';
         require APP . 'View/_template/footer.php';
     }
 
     public function listar()
     {
-        $usuarios = $this->Usuario->listAll();
+        $usuarios = $this->Usuario->listActives();
         $btnHabilitar = true;
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/usuario.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/usuarios.php';
         require APP . 'View/_template/footer.php';
     }
 
     public function listarInativos()
     {
-        $usuarios = $this->Usuario->listarInativos();
+        $usuarios = $this->Usuario->listInactives();
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/usuario.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/usuarios.php';
         require APP . 'View/_template/footer.php';
     }
 
-    public function insert()
+    public function inserir()
     {
         if(isset($_POST['id_usuario']))
         {
@@ -54,47 +57,30 @@ class UsuarioController
         }
     }
 
-    public function altera()
+    public function editar()
     {
         $usuario = $this->Usuario->getOne($this->id);
 
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/alteracao/usuario.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/edita/usuario.php';
         require APP . 'View/_template/footer.php';
         
     }
 
-    public function alteraSenha()
-    {
-        $usuario = $this->Usuario->getOne($this->id);
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/alteracao/senhaUsuario.php';
-        require APP . 'View/_template/footer.php';
-    }
-
-    public function trocaSenha()
-    {
-        $this->Usuario->alteraSenha($_POST['senha'], $_POST['id_usuario']);
-        header("location:" . URL . "Usuario/listar");
-    }
-    
-    public function deleta()
+    public function deletar()
     {
         $this->Usuario->delete($this->id);
         header("location:" . URL . "Usuario/listar");
     }
 
-    public function desabilita()
+    public function desabilitar()
     {
-        $this->Usuario->desabilita($this->id);
+        $this->Usuario->inactivate($this->id);
         header("location:" . URL . "Usuario/listar");
     }
-    
-     //Função temporaria até eu achar uma forma melhor kkkk
-     public function getId()
+
+     public function setId()
      {
          if(isset($_GET['url']))
          {
@@ -102,5 +88,25 @@ class UsuarioController
              $url = explode('/', $url);
              if(isset($url[2]))$this->id = $url[2];
          }
+     }
+
+     //! Metodos especificos desta classe
+
+     // Traz o registro da tabela pelo ID e monta a tela para alterar a senha
+     public function alterarSenha()
+     {
+         $usuario = $this->Usuario->getOne($this->id);
+         
+         require APP . 'View/_template/header.php';
+         require APP . 'View/_template/main.php';
+         require APP . 'View/edita/alterarSenha.php';
+         require APP . 'View/_template/footer.php';
+     }
+
+     // Chama a função 'changeSenha()' da Model Usuario e registra a senha nova
+     public function salvarSenha()
+     {
+         $this->Usuario->changePassword($_POST['senha'], $_POST['id_usuario']);
+         header("location:" . URL . "Usuario/listar");
      }
 }

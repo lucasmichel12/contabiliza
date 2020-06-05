@@ -2,10 +2,10 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Alteração</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="#">Centro de Custo</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="CentroCusto/">Centro de Custo</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>CentroCusto/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>CentroCusto/inserir" method="POST">
             <input type="hidden" name="idcentro_custo" value="<?=$centrocusto['0']['idcentro_custo'];?>">
         <div class="form-row">
             <div class="col-8">

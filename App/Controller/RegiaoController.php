@@ -3,16 +3,18 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Regiao;
 
-class RegiaoController
+class RegiaoController implements CadastrosControllerInterfaces
 {
     private $id;
     private $Regiao;
 
+    // Construct Inicia as duas variaveis acima
     public function __construct()
     {
-        $this->getId();
+        $this->setId();
         $this->Regiao = new Regiao();
     }
 
@@ -24,7 +26,38 @@ class RegiaoController
         require APP . 'View/_template/footer.php';
     }
 
-    public function insert()
+    public function listar()
+    {
+        $regioes = $this->Regiao->listActives();
+        $btnHabilitar = true;
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/regioes.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    public function listarInativos()
+    {
+        $regioes = $this->Regiao->listInactives();
+        
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/regioes.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    public function editar()
+    {
+        $regiao = $this->Regiao->getOne($this->id);
+
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/edita/regiao.php';
+        require APP . 'View/_template/footer.php';
+        
+    }
+
+    public function inserir()
     {
         if(isset($_POST['id_regiao']))
         {
@@ -38,53 +71,19 @@ class RegiaoController
         header("location:" . URL . "Regiao/");
     }
 
-    public function listar()
-    {
-        $regioes = $this->Regiao->listAll();
-        $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/regiao.php';
-        require APP . 'View/_template/footer.php';
-    }
-
-    public function listarInativos()
-    {
-        $regioes = $this->Regiao->listAllInativos();
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/regiao.php';
-        require APP . 'View/_template/footer.php';
-    }
-
-    public function altera()
-    {
-        $regiao = $this->Regiao->getOne($this->id);
-
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/alteracao/regiao.php';
-        require APP . 'View/_template/footer.php';
-        
-    }
-
-    public function deleta()
+    public function deletar()
     {
         $this->Regiao->delete($this->id);
         header("location:" . URL . "Regiao/listar");
     }
 
-    public function desabilita()
+    public function desabilitar()
     {
-        $this->Regiao->desabilita($this->id);
+        $this->Regiao->inactivate($this->id);
         header("location:" . URL . "Regiao/listar");
     }
 
-
-
-    //Função temporaria até eu achar uma forma melhor kkkk
-    public function getId()
+    public function setId()
     {
         if(isset($_GET['url']))
         {

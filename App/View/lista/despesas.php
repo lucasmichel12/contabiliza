@@ -20,9 +20,9 @@
                     <td class="text-center"><?=$despesa['valor_definido']?></td>
                     <td class="text-center">R$ <?=$despesa['valor']?></td>
                     <th class="text-center">
-                        <a class="btn btn-info" href="<?=URL;?>Despesa/altera/<?=$despesa['id_despesa'];?>">Alterar</a>
-                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "Despesa/desabilita/{$despesa['id_despesa']}'>Desabilitar</a>";} ?> 
-                        <a class="btn btn-danger" href="<?=URL;?>Despesa/deleta/<?=$despesa['id_despesa'];?>">Excluir</a> 
+                        <a class="btn btn-info" href="<?=URL;?>Despesa/editar/<?=$despesa['id_despesa'];?>">Alterar</a>
+                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "Despesa/desabilitar/{$despesa['id_despesa']}'>Desabilitar</a>";} ?> 
+                        <a class="btn btn-danger" href="<?=URL;?>Despesa/deletar/<?=$despesa['id_despesa'];?>">Excluir</a> 
                     </th>
                 </tr>
             <?php } ?>

@@ -2,28 +2,61 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Despesa;
 
-class DespesaController
+class DespesaController implements CadastrosControllerInterfaces
 {
     private $id;
     private $Despesa;
 
+    // Construct Inicia as duas variaveis acima
     public function __construct()
     {
-        $this->getId();
+        $this->setId();
         $this->Despesa = new Despesa();
     }
 
     public function index()
     {
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
+        require APP . 'View/_template/menu.php';
         require APP . 'View/cadastro/despesa.php';
         require APP . 'View/_template/footer.php';
     }
 
-    public function insert()
+    public function listar()
+    {
+        $despesas = $this->Despesa->listActives();
+        $btnHabilitar = true;
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/main.php';
+        require APP . 'View/lista/despesa.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    public function listarInativos()
+    {
+        $despesas = $this->Despesa->listInactives();
+        
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/despesas.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    public function editar()
+    {
+        $despesa = $this->Despesa->getOne($this->id);
+
+        require APP . 'View/_template/header.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/edita/despesas.php';
+        require APP . 'View/_template/footer.php';
+        
+    }
+
+    public function inserir()
     {
         if(isset($_POST['id_despesa']))
         {
@@ -34,59 +67,26 @@ class DespesaController
             header("location:" . URL . "Despesa/");
         }
     }
-    public function listar()
-    {
-        $despesas = $this->Despesa->listAll();
-        $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/despesa.php';
-        require APP . 'View/_template/footer.php';
-    }
 
-    public function listarInativos()
-    {
-        $despesas = $this->Despesa->listAllInativos();
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/despesa.php';
-        require APP . 'View/_template/footer.php';
-    }
-
-    public function altera()
-    {
-        $despesa = $this->Despesa->getOne($this->id);
-
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/alteracao/despesa.php';
-        require APP . 'View/_template/footer.php';
-        
-    }
-
-
-    public function deleta()
+    public function deletar()
     {
         $this->Despesa->delete($this->id);
         header("location:" . URL . "Despesa/listar");
     }
 
-    public function desabilita()
+    public function desabilitar()
     {
-        $this->Despesa->desabilita($this->id);
+        $this->Despesa->inactivate($this->id);
         header("location:" . URL . "Despesa/listar");
     }
-
-
-       //Função temporaria até eu achar uma forma melhor kkkk
-       public function getId()
-       {
-           if(isset($_GET['url']))
-           {
-               $url = $_GET['url'];
-               $url = explode('/', $url);
-               $this->id = $url[2];
-           }
-       }
+      
+    public function setId()
+    {
+        if(isset($_GET['url']))
+        {
+            $url = $_GET['url'];
+            $url = explode('/', $url);
+            $this->id = $url[2];
+        }
+    }
 }

@@ -19,8 +19,8 @@
                     <td class="text-center"><?=$centrocusto['cnpj']?></td>
                     <th class="text-center">
                         <a class="btn btn-info" href="<?=URL;?>CentroCusto/editar/<?=$centrocusto['idcentro_custo'];?>">Alterar</a>
-                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "CentroCusto/desabilita/{$centrocusto['idcentro_custo']}'>Desabilitar</a>";} ?> 
-                        <a class="btn btn-danger" href="<?=URL;?>CentroCusto/deleta/<?=$centrocusto['idcentro_custo'];?>">Excluir</a> 
+                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "CentroCusto/desabilitar/{$centrocusto['idcentro_custo']}'>Desabilitar</a>";} ?> 
+                        <a class="btn btn-danger" href="<?=URL;?>CentroCusto/deletar/<?=$centrocusto['idcentro_custo'];?>">Excluir</a> 
                     </th>
                 </tr>
             <?php } ?>

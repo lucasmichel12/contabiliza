@@ -3,30 +3,23 @@
 namespace Contabiliza\Model;
 
 use Contabiliza\Core\Model;
+use Contabiliza\Interfaces\ModelInterface;
 
-
-class Regiao extends Model
+class Regiao extends Model implements ModelInterface
 {
-    //Inseri um novo registro no tabela "regiao"
+   
     public function insert(String $descricao, Int $percentual, String $ativo)
     {
         $parameters = array("1"=>$descricao, "2"=>$percentual, "3"=>$ativo);
         $this->query("INSERT INTO regiao (descricao, percentual, ativo) VALUES (?, ?, ?)", $parameters);
     }
     
-    //Lista todas os registros da tabela "regiao"
-    public function listAll()
+    public function update(Int $id, String $descricao, Int $percentual, String $ativo)
     {
-        return $this->query("SELECT * FROM regiao WHERE ativo = true ORDER BY percentual DESC");
+        $parameters = array("1"=>$descricao, "2"=>$percentual, "3"=>$ativo, "4"=>$id);
+        $this->query("UPDATE regiao SET descricao = ?, percentual = ?, ativo = ? WHERE id_regiao = ? LIMIT 1", $parameters);
     }
 
-    //Lista todos os registros ativos
-    public function listAllInativos()
-    {
-        return $this->query("SELECT * FROM regiao WHERE ativo = false ORDER BY percentual DESC");
-    }
-
-    /** Recebe uma @var Int e faz uma busca no banco de dados pelo registro correspondente */ 
     public function getOne(Int $id)
     {
         $parameter = array("1"=>$id);
@@ -34,22 +27,23 @@ class Regiao extends Model
 
     }
 
-    /** Recebe 4 variaveis sendo uma delas o ID que tera os dados alterados na tabela regiao */
-    public function update(Int $id, String $descricao, Int $percentual, String $ativo)
+    public function listActives()
     {
-        $parameters = array("1"=>$descricao, "2"=>$percentual, "3"=>$ativo, "4"=>$id);
-        $this->query("UPDATE regiao SET descricao = ?, percentual = ?, ativo = ? WHERE id_regiao = ? LIMIT 1", $parameters);
+        return $this->query("SELECT * FROM regiao WHERE ativo = true ORDER BY percentual DESC");
     }
 
-    /** Recebe uma @var Int e delete o registro correspondente na tabela regiao */
+    public function listInactives()
+    {
+        return $this->query("SELECT * FROM regiao WHERE ativo = false ORDER BY percentual DESC");
+    }
+ 
     public function delete(Int $id)
     {
         $parameter = array("1"=>$id);
         $this->query("DELETE FROM regiao WHERE id_regiao = ? LIMIT 1", $parameter);
     }
 
-    /** Desabilita um registro na tabela regiao atraves do @var Int que corresponde a um ID de algum registro dentro da tabela */
-    public function desabilita(Int $id)
+    public function inactivate(Int $id)
     {
         $parameter = array("1"=>$id);
         $this->query("UPDATE regiao SET ativo = 'Não' WHERE id_regiao = ?", $parameter);

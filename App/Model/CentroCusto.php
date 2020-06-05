@@ -3,8 +3,9 @@
 namespace Contabiliza\Model;
 
 use Contabiliza\Core\Model;
+use Contabiliza\Interfaces\ModelInterface;
 
-class CentroCusto extends Model
+class CentroCusto extends Model implements ModelInterface
 {
     public function insert(String $descricao, String $cnpj, String $ativo)
     {
@@ -24,13 +25,12 @@ class CentroCusto extends Model
         return $this->select("SELECT * FROM centro_custo WHERE idcentro_custo = ? LIMIT 1", $paremeter);
     }
 
-    public function listAll()
+    public function listActives()
     {
         return $this->query("SELECT * FROM centro_custo WHERE ativo = true ORDER BY descricao DESC");
     }
 
-
-    public function listAllInativos()
+    public function listAllInactives()
     {
         return $this->query("SELECT * FROM centro_custo WHERE ativo = false ORDER BY descricao DESC");
     }
@@ -40,8 +40,8 @@ class CentroCusto extends Model
         $parameter = array("1"=>$id);
         $this->query("DELETE FROM centro_custo WHERE idcentro_custo = ? LIMIT 1", $parameter);
     }
-
-    public function desabilita(Int $id)
+ 
+    public function inactivate(Int $id)
     {
         $parameter = array("1"=>$id);
         $this->query("UPDATE centro_custo SET ativo = 'Não' WHERE idcentro_custo = ?", $parameter);

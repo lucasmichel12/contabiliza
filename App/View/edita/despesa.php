@@ -2,10 +2,10 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Cadastro</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="#">Despesa</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="Despesa/">Despesa</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Despesa/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Despesa/inserir" method="POST">
     <input type="hidden" name="id_despesa" value="<?=$despesa[0]['id_despesa']; ?>">
         <div class="form-row">
             <div class="col-8">

@@ -2,10 +2,10 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Cadastro</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario/listar">Colaborador</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario/">Colaborador</a></li>
         </ol>
         </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/insert" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/inserir" method="POST">
             <input type="hidden" name="id_usuario" value="<?=$usuario[0]['id_usuario'];?>">
         <div class="form-row">
             <div class="col-8">
