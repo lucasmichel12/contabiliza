@@ -7,16 +7,16 @@ use Contabiliza\Interfaces\ModelInterface;
 
 class Usuario extends Model implements ModelInterface
 {
-    public function insert(String $nome, String $cpf, String $login, String $senha, String $admin, String $ativo)
+    public function insert(Array $param)
     {
-        $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$senha, "5"=>$admin, "6"=>$ativo);
+        $senha = password_hash($param['senha'], PASSWORD_DEFAULT);
+        $parameters = array("1"=>$param['nome'], "2"=>$param['cpf'], "3"=>$param['login'], "4"=>$senha, "5"=>$param['admin'], "6"=>$param['ativo']);
         $this->query("INSERT INTO usuario (nome, cpf, login, senha, admin, ativo) VALUES (?,?,?,?,?,?)", $parameters);
     }
 
-    public function update(Int $id, String $nome, String $cpf, String $login, String $admin, String $ativo)
+    public function update(Array $param)
     {
-        $parameters = array("1"=>$nome, "2"=>$cpf, "3"=>$login, "4"=>$admin, "5"=>$ativo, "6"=>$id);
+        $parameters = array("1"=>$param['nome'], "2"=>$param['cpf'], "3"=>$param['login'], "4"=>$param['admin'], "5"=>$param['ativo'], "6"=>$param['id']);
         $this->query("UPDATE usuario SET nome = ?, cpf = ?, login = ?, admin = ?, ativo = ? WHERE id_usuario = ? LIMIT 1", $parameters);
     }
 

@@ -60,10 +60,10 @@ class DespesaController implements CadastrosControllerInterfaces
     {
         if(isset($_POST['id_despesa']))
         {
-            $this->Despesa->update($_POST['id_despesa'], $_POST['descricao'], $_POST['valor_definido'], $_POST['ativo'], $_POST['valor']);
+            $this->Despesa->update($_POST);
             header("location:" . URL . "Despesa/");
         } else {
-            $this->Despesa->insert($_POST['descricao'], $_POST['valor_definido'], $_POST['ativo'], $_POST['valor']);
+            $this->Despesa->insert($_POST);
             header("location:" . URL . "Despesa/");
         }
     }
@@ -86,7 +86,7 @@ class DespesaController implements CadastrosControllerInterfaces
         {
             $url = $_GET['url'];
             $url = explode('/', $url);
-            $this->id = $url[2];
+            if(isset($url[2]))$this->id = $url[2];
         }
     }
 }

@@ -21,7 +21,7 @@ class RegiaoController implements CadastrosControllerInterfaces
     public function index()
     {
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
+        require APP . 'View/_template/menu.php';
         require APP . 'View/cadastro/regiao.php';
         require APP . 'View/_template/footer.php';
     }
@@ -61,10 +61,10 @@ class RegiaoController implements CadastrosControllerInterfaces
     {
         if(isset($_POST['id_regiao']))
         {
-            $this->Regiao->update(intval($_POST['id_regiao']), $_POST['descricao'], intval($_POST['percentual']), $_POST['ativo']);
+            $this->Regiao->update($_POST);
 
         } else {
-            $this->Regiao->insert($_POST['descricao'], intval($_POST['percentual']), $_POST['ativo']);
+            $this->Regiao->insert($_POST);
             
         }
 
@@ -89,7 +89,7 @@ class RegiaoController implements CadastrosControllerInterfaces
         {
             $url = $_GET['url'];
             $url = explode('/', $url);
-            $this->id = $url[2];
+            if(isset($url[2]))$this->id = $url[2];
         }
     }
 }

@@ -7,14 +7,14 @@ use Contabiliza\Interfaces\ModelInterface;
 
 class Despesa extends Model implements ModelInterface
 {
-    public function insert(String $descricao, String $valor_definido, String $ativo, Float $valor)
+    public function insert(Array $param)
     {
-        $parameters = array("1"=>$descricao, "2"=>$valor_definido, "3"=>$valor, "4"=>$ativo);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['valor_definido'], "3"=>$param['valor'], "4"=>$param['ativo']);
         $this->query("INSERT INTO despesa (descricao, valor_definido, valor, ativo) VALUES (?, ?, ?, ?)", $parameters);
     }
-    public function update(Int $id, String $descricao, String $valor_definido, String $ativo, Float $valor)
+    public function update(Array $param)
     {
-        $parameters = array("1"=>$descricao, "2"=>$valor_definido, "3"=>$valor, "4"=>$ativo, "5"=>$id);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['valor_definido'], "3"=>$param['valor'], "4"=>$param['ativo'], "5"=>$param['id']);
         $this->query("UPDATE despesa SET descricao = ?, valor_definido = ?, valor = ?, ativo = ? WHERE id_despesa = ? LIMIT 1", $parameters);
     }
 

@@ -8,15 +8,15 @@ use Contabiliza\Interfaces\ModelInterface;
 class Regiao extends Model implements ModelInterface
 {
    
-    public function insert(String $descricao, Int $percentual, String $ativo)
+    public function insert(Array $param)
     {
-        $parameters = array("1"=>$descricao, "2"=>$percentual, "3"=>$ativo);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['percentual'], "3"=>$param['ativo']);
         $this->query("INSERT INTO regiao (descricao, percentual, ativo) VALUES (?, ?, ?)", $parameters);
     }
     
-    public function update(Int $id, String $descricao, Int $percentual, String $ativo)
+    public function update(Array $param)
     {
-        $parameters = array("1"=>$descricao, "2"=>$percentual, "3"=>$ativo, "4"=>$id);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['percentual'], "3"=>$param['ativo'], "4"=>$param);
         $this->query("UPDATE regiao SET descricao = ?, percentual = ?, ativo = ? WHERE id_regiao = ? LIMIT 1", $parameters);
     }
 

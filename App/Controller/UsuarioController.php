@@ -48,11 +48,11 @@ class UsuarioController implements CadastrosControllerInterfaces
     {
         if(isset($_POST['id_usuario']))
         {
-            $this->Usuario->update(intval($_POST['id_usuario']), $_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['admin'], $_POST['ativo']);
+            $this->Usuario->update($_POST);
             header("location:" . URL . "Usuario/listar");
         } else {
 
-            $this->Usuario->insert($_POST['nome'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['admin'], $_POST['ativo']);
+            $this->Usuario->insert($_POST);
             header("location:" . URL . "Usuario/");
         }
     }
@@ -98,7 +98,7 @@ class UsuarioController implements CadastrosControllerInterfaces
          $usuario = $this->Usuario->getOne($this->id);
          
          require APP . 'View/_template/header.php';
-         require APP . 'View/_template/main.php';
+         require APP . 'View/_template/menu.php';
          require APP . 'View/edita/alterarSenha.php';
          require APP . 'View/_template/footer.php';
      }

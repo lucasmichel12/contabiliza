@@ -59,10 +59,10 @@ class CentroCustoController implements CadastrosControllerInterfaces
     {
         if(isset($_POST['idcentro_custo']))
         {      
-            $this->CentroCusto->update($_POST['idcentro_custo'], $_POST['descricao'], $_POST['cnpj'], $_POST['ativo']);
+            $this->CentroCusto->update($_POST);
             header("location:" . URL . "CentroCusto/");
         } else { 
-            $this->CentroCusto->insert($_POST['descricao'], $_POST['cnpj'], $_POST['ativo']);
+            $this->CentroCusto->insert($_POST);
             header("location:" . URL . "CentroCusto/");
         }        
     }

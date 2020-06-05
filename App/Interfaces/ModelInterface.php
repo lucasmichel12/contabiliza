@@ -6,10 +6,10 @@ namespace Contabiliza\Interfaces;
 interface ModelInterface
 {
     //* Função para fazer o insert de um novo registro na tabela
-    public function insert();
+    public function insert(Array $param);
 
     //* Função para fazer o Update do registro na tabela
-    public function update();
+    public function update(Array $param);
 
     //* Função para buscar um registro na tabela através do ID do registro
     public function getOne(Int $id);
