@@ -25,13 +25,13 @@ class Despesa extends Model
 
     public function listAll()
     {
-        return $this->query("SELECT * FROM despesa WHERE ativo = 'Sim' ORDER BY descricao");
+        return $this->query("SELECT * FROM despesa WHERE ativo = true ORDER BY descricao");
     }
 
 
     public function listAllInativos()
     {
-        return $this->query("SELECT * FROM despesa WHERE ativo = 'Não' ORDER BY descricao");
+        return $this->query("SELECT * FROM despesa WHERE ativo = false ORDER BY descricao");
     }
     public function delete(Int $id)
     {

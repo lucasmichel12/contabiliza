@@ -15,12 +15,12 @@ class Usuario extends Model
 
     public function listAll()
     {
-       return $this->query("SELECT * FROM usuario WHERE ativo = 'Sim' ORDER BY nome");
+       return $this->query("SELECT * FROM usuario WHERE ativo = true ORDER BY nome");
     }
 
     public function listarInativos()
     {
-       return $this->query("SELECT * FROM usuario WHERE ativo = 'Não' ORDER BY nome");
+       return $this->query("SELECT * FROM usuario WHERE ativo = false ORDER BY nome");
     }
 
     public function getOne(Int $id)

@@ -26,13 +26,13 @@ class CentroCusto extends Model
 
     public function listAll()
     {
-        return $this->query("SELECT * FROM centro_custo WHERE ativo = 'Sim' ORDER BY descricao DESC");
+        return $this->query("SELECT * FROM centro_custo WHERE ativo = true ORDER BY descricao DESC");
     }
 
 
     public function listAllInativos()
     {
-        return $this->query("SELECT * FROM centro_custo WHERE ativo = 'Não' ORDER BY descricao DESC");
+        return $this->query("SELECT * FROM centro_custo WHERE ativo = false ORDER BY descricao DESC");
     }
 
     public function delete(Int $id)

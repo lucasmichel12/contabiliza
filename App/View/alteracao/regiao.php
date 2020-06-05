@@ -22,8 +22,8 @@
                             <label class="input-group-text" for="ativo">Região ativa?</label>
                         </div>
                         <select class="custom-select" id="ativo" name="ativo">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
                         </select>
                 </div>
             </div>

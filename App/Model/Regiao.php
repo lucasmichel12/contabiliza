@@ -17,13 +17,13 @@ class Regiao extends Model
     //Lista todas os registros da tabela "regiao"
     public function listAll()
     {
-        return $this->query("SELECT * FROM regiao WHERE ativo = 'Sim' ORDER BY percentual DESC");
+        return $this->query("SELECT * FROM regiao WHERE ativo = true ORDER BY percentual DESC");
     }
 
     //Lista todos os registros ativos
     public function listAllInativos()
     {
-        return $this->query("SELECT * FROM regiao WHERE ativo = 'Não' ORDER BY percentual DESC");
+        return $this->query("SELECT * FROM regiao WHERE ativo = false ORDER BY percentual DESC");
     }
 
     /** Recebe uma @var Int e faz uma busca no banco de dados pelo registro correspondente */ 

@@ -21,8 +21,8 @@
                             <label class="input-group-text" for="ativo">Despesa ativa?</label>
                         </div>
                         <select class="custom-select" id="ativo" name="ativo">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
                         </select>
                 </div>
             </div>
@@ -32,8 +32,8 @@
                             <label class="input-group-text" for="valor_definido">Valor Fixo?</label>
                         </div>
                         <select class="custom-select" id="valor_definido" name="valor_definido">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
                         </select>
                 </div>
             </div>
