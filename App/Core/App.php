@@ -29,7 +29,7 @@ class App
         if(!$this->url_controller)
         {
             //Verifica se está logado
-            if(!isset($_SESSION["logado"]["id"]))
+            if($_SESSION["usuario_logado"]["id"] === null)
             {
                 $page = new \Contabiliza\Controller\LoginController(); //Inicia a controller
                 $page->index(); //Chama um dos metodos da controller acima
@@ -46,7 +46,7 @@ class App
             $controller = "\\Contabiliza\\Controller\\" . ucfirst($this->url_controller) . 'Controller';
             
             //Verifica se está logado
-            if(!isset($_SESSION["logado"]["id"]))
+            if(!isset($_SESSION["usuario_logado"]["id"]))
             {
                 $this->url_controller = new LoginController();
 

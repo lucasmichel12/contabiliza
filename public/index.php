@@ -15,5 +15,4 @@ require APP . 'config/config.php';
 use Contabiliza\Core\App;
 
 session_start();
-$_SESSION['logado'] = array("id"=>2);
 $app = new App();

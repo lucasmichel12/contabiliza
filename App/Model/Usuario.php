@@ -45,7 +45,7 @@ class Usuario extends Model implements ModelInterface
     public function inactivate(Int $id)
     {
         $parameter = array("1"=>$id);
-        $this->query("UPDATE usuario SET ativo = 'Não' WHERE id_usuario = ? LIMIT 1", $parameter);
+        $this->query("UPDATE usuario SET ativo = 0 WHERE id_usuario = ? LIMIT 1", $parameter);
     }
 
     //! Funções Especificas desta classe 
@@ -56,6 +56,13 @@ class Usuario extends Model implements ModelInterface
         $senha = password_hash($senha, PASSWORD_DEFAULT);
         $parameter = array("1"=>$senha, "2"=>$id);
         $this->query("UPDATE usuario SET senha = ? WHERE id_usuario = ? LIMIT 1", $parameter);
+    }
+
+    public function getByLogin(String $login)
+    {
+        $parameter = array("1"=>$login);
+        return $this->select("SELECT * FROM usuario WHERE login = ? LIMIT 1", $parameter);
+        
     }
 
 

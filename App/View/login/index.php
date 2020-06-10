@@ -9,7 +9,7 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form name="login" action="Login\logar" method="POST">
+                        <form name="login" action="<?=URL;?>Login\logar" method="POST">
                             <div class="form-group">
                                 <label>Login</label>
                                 <input type="login" class="form-control" name="login" required placeholder="Digite seu login...">
