@@ -19,6 +19,12 @@ class SolicitacaoController
 
     public function index()
     {
+        $solicitacao = $this->Solicitacao->getOpen();
+        
+        require APP . "View/_template/header.php";
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/solicitacao/index.php';
+        require APP . 'View/_template/footer.php';
         
     }
 
