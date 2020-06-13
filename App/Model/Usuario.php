@@ -23,7 +23,7 @@ class Usuario extends Model implements ModelInterface
     public function getOne(Int $id)
     {
         $parameter = array("1"=>$id);
-         return $this->select("SELECT id_usuario, nome, cpf, login, admin, ativo FROM usuario WHERE id_usuario = ? LIMIT 1", $parameter);
+        return $this->select("SELECT id_usuario, nome, cpf, login, admin, ativo FROM usuario WHERE id_usuario = ? LIMIT 1", $parameter);
     }
 
     public function listActives()

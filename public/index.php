@@ -15,4 +15,5 @@ require APP . 'config/config.php';
 use Contabiliza\Core\App;
 
 session_start();
+
 $app = new App();

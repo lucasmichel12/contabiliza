@@ -5,8 +5,8 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="<?= URL; ?>Usuario/listar">Colaborador</a></li>
         </ol>
     </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?= URL; ?>Usuario/alterarSenha" method="POST">
-        <input type="hidden" name="id_usuario" value="<?= $usuario[0]['id_usuario']; ?>">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?= URL; ?>Usuario/salvarSenha" method="POST">
+        <input type="hidden" name="id_usuario" value="<?=$usuario[0]['id_usuario']; ?>">
         <div class="form-row">
             <div class="col-4">
                 <input type="text" class="form-control" placeholder="<?= $usuario[0]['login']; ?>" readonly>
