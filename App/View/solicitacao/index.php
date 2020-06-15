@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-4">
                             <p class="text-dark"><strong>Colaborador</strong></p>
-                            <p class="text-dark"><?= $solicitacao[0]['id_usuario']; ?></p>
+                            <p class="text-dark"><?= $solicitacao[0]['nome']; ?></p>
                         </div>
                         <div class="col-4">
                             <p class="text-dark"><strong>Data</strong></p>
@@ -100,7 +100,7 @@
 
                 <!-- Formulário Novo Roteiro -->
                 <form action="<?= URL; ?>" method="POST">
-                    <input type="hidden" name="id_solicitacao" value="">
+                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
                     <div class="form-row">
                         <div class="col">
                             <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
@@ -141,7 +141,7 @@
 
                 <!-- Formulário Nova Despesa -->
                 <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
-                    <input type="hidden" name="id_solicitacao" value="">
+                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
                     <div class="form-row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">

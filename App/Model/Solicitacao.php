@@ -17,6 +17,7 @@ class Solicitacao extends Model
 
     public function getOpen()
     {
-        return $this->select("SELECT * FROM solicitacao WHERE id_status = 4 LIMIT 1");
+        return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_status = 4 LIMIT 1");
     }
 }
