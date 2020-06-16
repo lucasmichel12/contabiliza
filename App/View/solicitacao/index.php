@@ -55,19 +55,54 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Destino</strong></p>
-                            <p class="text-dark">Maringá - PR</p>
-                            <p class="text-dark">Londrina - PR</p>
+                            <?php if (isset($roteiros) && $roteiros != null)
+                                foreach ($roteiros as $roteiro) { ?>
+                                <tr>
+                                    <p class="text-dark"><?= $roteiro['destino'] ?></p>
+                                </tr>
+                            <?php } ?>
                         </div>
                         <div class="col-6">
+
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <p class="text-dark">Central Unicoob</p>
-                            <p class="text-dark">Sicoob Ouro verde UAD</p>
+                            <?php if (isset($roteiros) && $roteiros != null)
+                                foreach ($roteiros as $roteiro) { ?>
+                                <tr>
+                                    <p class="text-dark"><?= $roteiro['descricao'] ?></p>
+                                </tr>
+                            <?php } ?>
                         </div>
                     </div>
 
                 </div>
                 <div class="tab-pane fade" id="nav-roteiro" role="tabpanel" aria-labelledby="nav-roteiro-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novoRoteiro">+ Adicionar</button>
+                    <!-- Tabela de Roteiros ativos -->
+                    <table class="table table-hover  mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Descrição</th>
+                                <th class="text-center" scope="col">Destino</th>
+                                <th class="text-center" scope="col">Inicio</th>
+                                <th class="text-center" scope="col">Termino</th>
+                                <th class="text-center" scope="col">Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (isset($roteiros) && $roteiros != null)
+                                foreach ($roteiros as $roteiro) { ?>
+                                <tr>
+                                    <td><?= $roteiro['descricao'] ?></td>
+                                    <td class="text-center"><?= $roteiro['destino'] ?></td>
+                                    <td class="text-center"><?= $roteiro['inicio'] ?></td>
+                                    <td class="text-center"><?= $roteiro['termino'] ?></td>
+                                    <th class="text-center">
+                                        <a class="btn btn-danger" href="<?= URL; ?>Despesa/deletar/<?= $despesa['id_despesa']; ?>">Excluir</a>
+                                    </th>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane fade" id="nav-despesas" role="tabpanel" aria-labelledby="nav-despesas-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novaDespesa">+ Adicionar</button>
@@ -79,140 +114,134 @@
                     <button type="button" class="btn btn-warning float-right mb-4" data-toggle="modal" data-target="#">Concluir</button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+                <!-- Modais -->
 
-<!-- Modais -->
-
-
-<!-- Modal Novo Roteiro -->
-<div class="modal fade" id="novoRoteiro" tabindex="-1" role="dialog" aria-labelledby="novoRoteiro" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="novoRoteiro">Descrição Roteiro</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <!-- Formulário Novo Roteiro -->
-                <form action="<?= URL; ?>" method="POST">
-                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" required placeholder="Destino" name="destino">
-                        </div>
-                    </div>
-                    <div class="form-row mt-2">
-                        <div class="col">
-                            <input type="date" class="form-control" name="data">
-                        </div>
-                        <div class="col">
-                            <input type="date" class="form-control" name="data">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
-                        <button type="submit" class="btn btn-success">Continuar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Nova Despesa -->
-<div class="modal fade" id="novaDespesa" tabindex="-1" role="dialog" aria-labelledby="novaDespesa" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="novaDespesa">Adicionar Despesa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <!-- Formulário Nova Despesa -->
-                <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
-                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
-                    <div class="form-row">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="selectDespesas">Despesa</label>
+                <!-- Modal Novo Roteiro -->
+                <div class="modal fade" id="novoRoteiro" tabindex="-1" role="dialog" aria-labelledby="novoRoteiro" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="novoRoteiro">Descrição Roteiro</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <select class="custom-select" id="selectDespesas">
-                                <option value="1">Janta</option>
-                                <option value="2">Almoço</option>
-                                <option value="3">Hotel</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="selectRegioes">Região</label>
+                            <div class="modal-body">
+                                <!-- Formulário Novo Roteiro -->
+                                <form action="<?= URL; ?>" method="POST">
+                                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" required placeholder="Destino" name="destino">
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-2">
+                                        <div class="col">
+                                            <input type="date" class="form-control" name="data">
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="form-control" name="data">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
+                                        <button type="submit" class="btn btn-success">Continuar</button>
+                                    </div>
+                                </form>
                             </div>
-                            <select class="custom-select" id="selectRegioes">
-                                <option value="1">São Paulo</option>
-                                <option value="2">Interior-PR</option>
-                                <option value="3">Interior-SP</option>
-                            </select>
                         </div>
                     </div>
-                    <div class="form-row mt-2">
-                        <div class="col">
-                            <input type="text" class="form-control" required placeholder="R$ 00,00" name="valor">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
-                        <button type="submit" class="btn btn-success">Continuar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
 
-<!-- Modal Rateio -->
-<div class="modal fade" id="rateio" tabindex="-1" role="dialog" aria-labelledby="rateio" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="rateio">Adicionar Despesa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <!-- Formulário Rateio -->
-                <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
-                    <div class="form-row">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="selectCentroCusto">Rateio</label>
+                <!-- Modal Nova Despesa -->
+                <div class="modal fade" id="novaDespesa" tabindex="-1" role="dialog" aria-labelledby="novaDespesa" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="novaDespesa">Adicionar Despesa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <select class="custom-select" id="selectCentroCusto">
-                                <option value="1">UAD</option>
-                                <option value="2">Central Unicoob</option>
-                                <option value="3">PA 01</option>
-                            </select>
+                            <div class="modal-body">
+
+                                <!-- Formulário Nova Despesa -->
+                                <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
+                                    <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="selectDespesas">Despesa</label>
+                                            </div>
+                                            <select class="custom-select" id="selectDespesas">
+                                                <option value="1">Janta</option>
+                                                <option value="2">Almoço</option>
+                                                <option value="3">Hotel</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="selectRegioes">Região</label>
+                                            </div>
+                                            <select class="custom-select" id="selectRegioes">
+                                                <option value="1">São Paulo</option>
+                                                <option value="2">Interior-PR</option>
+                                                <option value="3">Interior-SP</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-2">
+                                        <div class="col">
+                                            <input type="text" class="form-control" required placeholder="R$ 00,00" name="valor">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
+                                        <button type="submit" class="btn btn-success">Continuar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
-                        <button type="submit" class="btn btn-success">Continuar</button>
+                </div>
+
+                <!-- Modal Rateio -->
+                <div class="modal fade" id="rateio" tabindex="-1" role="dialog" aria-labelledby="rateio" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="rateio">Adicionar Despesa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- Formulário Rateio -->
+                                <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="selectCentroCusto">Rateio</label>
+                                            </div>
+                                            <select class="custom-select" id="selectCentroCusto">
+                                                <option value="1">UAD</option>
+                                                <option value="2">Central Unicoob</option>
+                                                <option value="3">PA 01</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
+                                        <button type="submit" class="btn btn-success">Continuar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
