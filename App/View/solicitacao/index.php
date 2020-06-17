@@ -97,7 +97,7 @@
                                     <td class="text-center"><?= $roteiro['inicio'] ?></td>
                                     <td class="text-center"><?= $roteiro['termino'] ?></td>
                                     <th class="text-center">
-                                        <a class="btn btn-danger" href="<?= URL; ?>Despesa/deletar/<?= $despesa['id_despesa']; ?>">Excluir</a>
+                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaRoteiroViagem/<?= $roteiro['id_roteiro']; ?>">Excluir</a>
                                     </th>
                                 </tr>
                             <?php } ?>
@@ -128,7 +128,7 @@
                             </div>
                             <div class="modal-body">
                                 <!-- Formulário Novo Roteiro -->
-                                <form action="<?= URL; ?>" method="POST">
+                                <form action="<?= URL; ?>Solicitacao/adicionaRoteiro" method="POST">
                                     <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
                                     <div class="form-row">
                                         <div class="col">
@@ -140,10 +140,10 @@
                                     </div>
                                     <div class="form-row mt-2">
                                         <div class="col">
-                                            <input type="date" class="form-control" name="data">
+                                            <input type="date" class="form-control" name="inicio">
                                         </div>
                                         <div class="col">
-                                            <input type="date" class="form-control" name="data">
+                                            <input type="date" class="form-control" name="termino">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
