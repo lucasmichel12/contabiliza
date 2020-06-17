@@ -30,8 +30,8 @@ class DespesaController implements CadastrosControllerInterfaces
         $despesas = $this->Despesa->listActives();
         $btnHabilitar = true;
         require APP . 'View/_template/header.php';
-        require APP . 'View/_template/main.php';
-        require APP . 'View/lista/despesa.php';
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/lista/despesas.php';
         require APP . 'View/_template/footer.php';
     }
 

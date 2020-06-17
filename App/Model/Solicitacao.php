@@ -20,4 +20,10 @@ class Solicitacao extends Model
         return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_status = 4 LIMIT 1");
     }
+
+    public function insertDespesa(array $param)
+    {
+        $parameters = array("1"=>$param['id_solicitacao'], "2"=>$param['id_despesa'], "3"=>$param['id_regiao'], "4"=>$param['valor']);
+        $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, valor) VALUES (?, ?, ?, ?)",$parameters);
+    }
 }

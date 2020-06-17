@@ -15,7 +15,10 @@
                     <a class="nav-item nav-link" id="nav-concluir-tab" data-toggle="tab" href="#nav-concluir" role="tab" aria-controls="nav-concluir" aria-selected="true">Concluir</a>
                 </div>
             </nav>
+
+            <!-- Conteudo das telas Resumo, Roteiro, Despesas, Rateio e Concluido -->
             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                <!-- Conteudo Resumo -->
                 <div class="tab-pane fade active show" id="nav-resumo" role="tabpanel" aria-labelledby="nav-resumo-tab">
                     <div class="row mb-4 mt-4 border-dark border-bottom">
                         <h5>Resumo</h5>
@@ -75,6 +78,9 @@
                     </div>
 
                 </div>
+                <!-- Fim conteudo Resumo -->
+
+                <!-- Conteudo Roteiros -->
                 <div class="tab-pane fade" id="nav-roteiro" role="tabpanel" aria-labelledby="nav-roteiro-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novoRoteiro">+ Adicionar</button>
                     <!-- Tabela de Roteiros ativos -->
@@ -104,9 +110,13 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Fim conteudo Roteiros -->
+
+                <!-- Conteudo Despesa -->
                 <div class="tab-pane fade" id="nav-despesas" role="tabpanel" aria-labelledby="nav-despesas-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novaDespesa">+ Adicionar</button>
                 </div>
+                <!-- Fim Despesa -->
                 <div class="tab-pane fade" id="nav-rateio" role="tabpanel" aria-labelledby="nav-rateio-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#rateio">+ Adicionar</button>
                 </div>
@@ -114,6 +124,7 @@
                     <button type="button" class="btn btn-warning float-right mb-4" data-toggle="modal" data-target="#">Concluir</button>
                 </div>
             </div>
+            <!-- Fim dos Conteudos -->
                 <!-- Modais -->
 
                 <!-- Modal Novo Roteiro -->
@@ -169,17 +180,17 @@
                             <div class="modal-body">
 
                                 <!-- Formulário Nova Despesa -->
-                                <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
+                                <form action="<?= URL; ?>Solicitacao/adicionarDespesa" method="POST">
                                     <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
                                     <div class="form-row">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="selectDespesas">Despesa</label>
                                             </div>
-                                            <select class="custom-select" id="selectDespesas">
-                                                <option value="1">Janta</option>
-                                                <option value="2">Almoço</option>
-                                                <option value="3">Hotel</option>
+                                            <select class="custom-select" id="selectDespesas" name="id_despesa">
+                                                <?php foreach($despesas as $despesa)  { ?>
+                                                    <option value="<?=$despesa['id_despesa'];?>"><?=$despesa['descricao'];?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -188,7 +199,7 @@
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="selectRegioes">Região</label>
                                             </div>
-                                            <select class="custom-select" id="selectRegioes">
+                                            <select class="custom-select" id="selectRegioes" name="id_regiao">
                                                 <option value="1">São Paulo</option>
                                                 <option value="2">Interior-PR</option>
                                                 <option value="3">Interior-SP</option>

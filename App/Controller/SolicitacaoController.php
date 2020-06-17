@@ -3,6 +3,7 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Model\Despesa;
 use Contabiliza\Model\Roteiro;
 use Contabiliza\Model\Solicitacao;
 
@@ -11,12 +12,13 @@ class SolicitacaoController
     private $id;
     private $Solicitacao;
     private $Roteiro;
-
+    private $Despesa;
     public function __construct()
     {
         $this->setId();
         $this->Solicitacao = new Solicitacao();
         $this->Roteiro = new Roteiro();
+        $this->Despesa = new Despesa();
     }
 
     public function index()
@@ -26,6 +28,7 @@ class SolicitacaoController
         if(isset($solicitacao[0]))
         {
         
+            $despesas = $this->Despesa->listActives();
             $roteiros = $this->Roteiro->getRoteirosViagem($solicitacao[0]['id_solicitacao']);
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';
@@ -45,10 +48,17 @@ class SolicitacaoController
         header("location:" . URL . "Solicitacao/index");
     }
 
-    //? Inseri Roteiro na Viagem
+    //? Adiciona um Roteiro na Viagem
     public function adicionaRoteiro()
     {
         $this->Roteiro->insert($_POST);
+        header("location:" . URL . "Solicitacao/index");
+    }
+
+    //Adiciona uma Despesa na Viagem
+    public function adicionarDespesa()
+    {
+        $this->Solicitacao->insertDespesa($_POST);
         header("location:" . URL . "Solicitacao/index");
     }
 
