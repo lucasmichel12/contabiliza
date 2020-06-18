@@ -115,6 +115,19 @@
                 <!-- Conteudo Despesa -->
                 <div class="tab-pane fade" id="nav-despesas" role="tabpanel" aria-labelledby="nav-despesas-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novaDespesa">+ Adicionar</button>
+                    <!-- Tabela de Despesas -->
+                    <table class="table table-hover  mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Despesa</th>
+                                <th class="text-center" scope="col">Região</th>
+                                <th class="text-center" scope="col">Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
                 </div>
                 <!-- Fim Despesa -->
                 <div class="tab-pane fade" id="nav-rateio" role="tabpanel" aria-labelledby="nav-rateio-tab">

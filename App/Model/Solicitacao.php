@@ -23,7 +23,7 @@ class Solicitacao extends Model
 
     public function insertDespesa(array $param)
     {
-        $parameters = array("1"=>$param['id_solicitacao'], "2"=>$param['id_despesa'], "3"=>$param['id_regiao'], "4"=>$param['valor']);
-        $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, valor) VALUES (?, ?, ?, ?)",$parameters);
+        $parameters = array("1"=>$param['id_solicitacao'], "2"=>$param['id_despesa'], "3"=>$param['id_regiao'], "4"=>$param['qtd_despesa'], "5"=>$param['valor']);
+        $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)",$parameters);
     }
 }
