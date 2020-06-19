@@ -43,13 +43,21 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <p class="text-dark">Janta</p>
-                            <p class="text-dark">Almoço</p>
+                            <?php if (isset($despesas) && $despesas != null)
+                                foreach ($despesas as $despesa) { ?>
+                                <tr>
+                                    <p class="text-dark"><?= $despesa['descricao'] ?></p>
+                                </tr>
+                            <?php } ?>
                         </div>
                         <div class="col-6">
                             <p class="text-dark"><strong>Valor</strong></p>
-                            <p class="text-dark">R$ 88,00</p>
-                            <p class="text-dark">R$ 66,00</p>
+                            <?php if (isset($despesas) && $despesas != null)
+                                foreach ($despesas as $despesa) { ?>
+                                <tr>
+                                    <p class="text-dark">R$ <?= $despesa['valor'] ?></p>
+                                </tr>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="row mb-4 mt-4 border-dark border-bottom">
@@ -119,13 +127,22 @@
                     <table class="table table-hover  mt-4">
                         <thead>
                             <tr>
-                                <th scope="col">Despesa</th>
+                                <th class="text-center" scope="col">Despesa</th>
                                 <th class="text-center" scope="col">Região</th>
+                                <th class="text-center" scope="col">Quantidade</th>
                                 <th class="text-center" scope="col">Valor Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                                <?php if(isset($despesas) && $despesas != null) 
+                                    foreach($despesas as $despesa) {?>
+                                    <tr>
+                                        <td class="text-center"><?= $despesa['descricao'];?></td>
+                                        <td class="text-center"><?= $despesa['regiao'];?></td>
+                                        <td class="text-center"><?= $despesa['qtd_despesa'];?></td>
+                                        <td class="text-center"><?= $despesa['valor'];?></td>
+                                    </tr>
+                                    <?php } ?>
                         </tbody>
                     </table>
                 </div>

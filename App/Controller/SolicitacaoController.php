@@ -12,13 +12,13 @@ class SolicitacaoController
     private $id;
     private $Solicitacao;
     private $Roteiro;
-    private $Despesa;
+
     public function __construct()
     {
         $this->setId();
         $this->Solicitacao = new Solicitacao();
         $this->Roteiro = new Roteiro();
-        $this->Despesa = new Despesa();
+
     }
 
     public function index()
@@ -28,7 +28,7 @@ class SolicitacaoController
         if(isset($solicitacao[0]))
         {
         
-            $despesas = $this->Despesa->listActives();
+            $despesas = $this->Solicitacao->getDespesasViagem($solicitacao[0]['id_solicitacao']);
             $roteiros = $this->Roteiro->getRoteirosViagem($solicitacao[0]['id_solicitacao']);
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';

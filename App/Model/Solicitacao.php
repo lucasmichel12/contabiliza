@@ -26,4 +26,10 @@ class Solicitacao extends Model
         $parameters = array("1"=>$param['id_solicitacao'], "2"=>$param['id_despesa'], "3"=>$param['id_regiao'], "4"=>$param['qtd_despesa'], "5"=>$param['valor']);
         $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)",$parameters);
     }
+
+    public function getDespesasViagem($param)
+    {
+        $parameter = array("1"=>$param);
+        return $this->select("SELECT s.id_solicitacao, s.id_despesa, s.id_regiao, s.qtd_despesa, s.valor, d.descricao, r.descricao AS regiao FROM solicitacao_despesa AS s INNER JOIN despesa as d ON s.id_despesa = d.id_despesa INNER JOIN regiao AS r ON s.id_regiao = r.id_regiao WHERE id_solicitacao = 1", $parameter);
+    }
 }
