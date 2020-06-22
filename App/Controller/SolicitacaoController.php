@@ -3,6 +3,7 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Model\CentroCusto;
 use Contabiliza\Model\Despesa;
 use Contabiliza\Model\Roteiro;
 use Contabiliza\Model\Solicitacao;
@@ -12,12 +13,14 @@ class SolicitacaoController
     private $id;
     private $Solicitacao;
     private $Roteiro;
+    private $CentroCusto;
 
     public function __construct()
     {
         $this->setId();
         $this->Solicitacao = new Solicitacao();
         $this->Roteiro = new Roteiro();
+        $this->CentroCusto = new CentroCusto();
 
     }
 
@@ -30,6 +33,9 @@ class SolicitacaoController
         
             $despesas = $this->Solicitacao->getDespesasViagem($solicitacao[0]['id_solicitacao']);
             $roteiros = $this->Roteiro->getRoteirosViagem($solicitacao[0]['id_solicitacao']);
+            $centrosCusto = $this->CentroCusto->listActives();
+            $rateios = $this->Solicitacao->getRateioViagem($solicitacao[0]['id_solicitacao']);
+            
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';
             require APP . 'View/solicitacao/index.php';

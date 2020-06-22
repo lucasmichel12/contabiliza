@@ -30,6 +30,19 @@ class Solicitacao extends Model
     public function getDespesasViagem($param)
     {
         $parameter = array("1"=>$param);
-        return $this->select("SELECT s.id_solicitacao, s.id_despesa, s.id_regiao, s.qtd_despesa, s.valor, d.descricao, r.descricao AS regiao FROM solicitacao_despesa AS s INNER JOIN despesa as d ON s.id_despesa = d.id_despesa INNER JOIN regiao AS r ON s.id_regiao = r.id_regiao WHERE id_solicitacao = 1", $parameter);
+        return $this->select("SELECT s.id_solicitacao, s.id_despesa, s.id_regiao, s.qtd_despesa, s.valor, d.descricao, r.descricao AS regiao FROM solicitacao_despesa AS s INNER JOIN despesa as d ON s.id_despesa = d.id_despesa INNER JOIN regiao AS r ON s.id_regiao = r.id_regiao WHERE id_solicitacao = ?", $parameter);
     }
+
+    public function getRateioViagem($param)
+    {
+        $parameter = array("1"=>$param);
+        return $this->select("SELECT s.id_solicitacao, s.idcentro_custo, c.descricao FROM solicitacao AS s INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo WHERE id_solicitacao = ?", $parameter);
+    }
+
+    public function addRateio()
+    {
+        
+    }
+
+
 }
