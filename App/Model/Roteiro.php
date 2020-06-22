@@ -19,9 +19,9 @@ class Roteiro extends Model
         $this->query("DELETE FROM roteiro WHERE id_roteiro = ? LIMIT 1", $parameter);
     }
 
-    public function getRoteirosViagem(Int $id_viagem)
+    public function getRoteirosSolicitacao(Int $id_solicitacao)
     {
-        $parameter = array("1"=>$id_viagem);
+        $parameter = array("1"=>$id_solicitacao);
         return $this->select("SELECT * FROM roteiro WHERE id_solicitacao = ? ORDER BY inicio", $parameter);
     }
 }

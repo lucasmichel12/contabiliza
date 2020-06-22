@@ -31,11 +31,11 @@ class SolicitacaoController
         if(isset($solicitacao[0]))
         {
         
-            $despesas = $this->Solicitacao->getDespesasViagem($solicitacao[0]['id_solicitacao']);
-            $roteiros = $this->Roteiro->getRoteirosViagem($solicitacao[0]['id_solicitacao']);
+            $despesas = $this->Solicitacao->getDespesasSolicitacao($solicitacao[0]['id_solicitacao']);
+            $roteiros = $this->Roteiro->getRoteirosSolicitacao($solicitacao[0]['id_solicitacao']);
             $centrosCusto = $this->CentroCusto->listActives();
-            $rateios = $this->Solicitacao->getRateioViagem($solicitacao[0]['id_solicitacao']);
-            
+            $rateios = $this->Solicitacao->getRateioSolicitacao($solicitacao[0]['id_solicitacao']);
+            $total = $this->SomaDespesas();
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';
             require APP . 'View/solicitacao/index.php';
@@ -73,6 +73,18 @@ class SolicitacaoController
     {
         $this->Roteiro->delete($this->id);
         header("location:" . URL . "Solicitacao/index");
+    }
+
+    public function SomaDespesas()
+    {
+        $valores = $this->Solicitacao->getValorDespesa($this->id);
+        $totValor = 0;
+        foreach($valores as $valor)
+        {
+            
+        }
+
+        return $totValor;
     }
     public function setId()
     {

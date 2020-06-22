@@ -1,7 +1,7 @@
 <div class="content">
     <div class="card-header bg-white">
         <h4>
-            <p class="text-dark"><strong><?= $solicitacao[0]['descricao']; ?> | <?= $solicitacao[0]['data']; ?> | R$ <?= $solicitacao[0]['valor_total']; ?></strong></p>
+            <p class="text-dark"><strong><?= $solicitacao[0]['descricao']; ?> | <?= $solicitacao[0]['data']; ?> | R$ <?= $total; ?></strong></p>
         </h4>
     </div>
     <div class="card-body bg-white">
@@ -12,7 +12,6 @@
                     <a class="nav-item nav-link" id="nav-roteiro-tab" data-toggle="tab" href="#nav-roteiro" role="tab" aria-controls="nav-roteiro" aria-selected="false">Roteiros</a>
                     <a class="nav-item nav-link" id="nav-despesas-tab" data-toggle="tab" href="#nav-despesas" role="tab" aria-controls="nav-despesas" aria-selected="false">Despesas</a>
                     <a class="nav-item nav-link" id="nav-rateio-tab" data-toggle="tab" href="#nav-rateio" role="tab" aria-controls="nav-rateio" aria-selected="true">Rateio</a>
-                    <a class="nav-item nav-link" id="nav-concluir-tab" data-toggle="tab" href="#nav-concluir" role="tab" aria-controls="nav-concluir" aria-selected="true">Concluir</a>
                 </div>
             </nav>
 
@@ -84,6 +83,9 @@
                             <?php } ?>
                         </div>
                     </div>
+                    <div class="row">
+                        <button class="btn btn-warning">Concluir</button>
+                    </div>
 
                 </div>
                 <!-- Fim conteudo Resumo -->
@@ -148,6 +150,8 @@
                     <!-- Fim tabela -->
                 </div>
                 <!-- Fim Despesa -->
+
+                <!-- Modal Rateio -->
                 <div class="tab-pane fade" id="nav-rateio" role="tabpanel" aria-labelledby="nav-rateio-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#rateio">+ Adicionar</button>
                     <!-- Tabela de Despesas -->
@@ -168,9 +172,8 @@
                     </table>
                     <!-- Fim tabela -->
                 </div>
-                <div class="tab-pane fade" id="nav-concluir" role="tabpanel" aria-labelledby="nav-concluir-tab">
-                    <button type="button" class="btn btn-warning float-right mb-4" data-toggle="modal" data-target="#">Concluir</button>
-                </div>
+                <!-- Fim Rateio -->
+                
             </div>
             <!-- Fim dos Conteudos -->
             <!-- Modais -->
