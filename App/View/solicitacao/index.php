@@ -1,7 +1,7 @@
 <div class="content">
     <div class="card-header bg-white">
         <h4>
-            <p class="text-dark"><strong><?= $solicitacao[0]['descricao']; ?> | <?= $solicitacao[0]['data']; ?> | R$ <?= $total; ?></strong></p>
+            <p class="text-dark"><strong><?= $solicitacao[0]['descricao']; ?> | <?= $solicitacao[0]['data']; ?> | R$ <?= $solicitacao[0]['valor_total']; ?></strong></p>
         </h4>
     </div>
     <div class="card-body bg-white">
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn btn-warning">Concluir</button>
+                        <a href="<?=URL;?>Solicitacao/SomaDespesas" class="btn btn-warning" >Concluir</a>
                     </div>
 
                 </div>
@@ -176,6 +176,7 @@
                 
             </div>
             <!-- Fim dos Conteudos -->
+
             <!-- Modais -->
 
             <!-- Modal Novo Roteiro -->
@@ -288,13 +289,14 @@
                         <div class="modal-body">
 
                             <!-- Formulário Rateio -->
-                            <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
+                            <form action="<?= URL; ?>Solicitacao/atualizaRateio" method="POST">
+                            <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
                                 <div class="form-row">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="selectCentroCusto">Rateio</label>
                                         </div>
-                                        <select class="custom-select" id="selectCentroCusto">
+                                        <select class="custom-select" id="selectCentroCusto" name="idcentro_custo">
                                             <?php foreach ($centrosCusto as $centroCusto) { ?>
                                                 <option value="<?= $centroCusto['idcentro_custo']; ?>"><?= $centroCusto['descricao']; ?></option>
                                             <?php } ?>

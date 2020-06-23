@@ -45,9 +45,16 @@ class Solicitacao extends Model
         return $this->select("SELECT s.id_solicitacao, s.idcentro_custo, c.descricao FROM solicitacao AS s INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo WHERE id_solicitacao = ?", $parameter);
     }
 
-    public function addRateio()
+    public function updateRateio(Array $param)
     {
-        
+        $parameter = array("1"=>$param['idcentro_custo'], "2"=>$param['id_solicitacao']);
+        $this->query("UPDATE solicitacao SET idcentro_custo = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
+    }
+
+    public function updateValor($valor, $id)
+    {
+        $parameter = array("1"=>$valor, "2"=>$id);
+        $this->query("UPDATE solcitacao SET valor_total = ? WHERE id_solicitacao = 1 LIMIT 1", $parameter);
     }
 
 

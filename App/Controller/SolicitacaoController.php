@@ -61,6 +61,12 @@ class SolicitacaoController
         header("location:" . URL . "Solicitacao/index");
     }
 
+    public function atualizaRateio()
+    {
+        $this->Solicitacao->updateRateio($_POST);
+        header("location:" . URL . "Solicitacao/index");
+    }
+
     //? Adiciona um Roteiro na Viagem
     public function adicionaRoteiro()
     {
@@ -72,7 +78,9 @@ class SolicitacaoController
     public function adicionarDespesa()
     {
         $this->Solicitacao->insertDespesa($_POST);
+        $valores = $this->Solicitacao->getValorDespesa($this->id);
         header("location:" . URL . "Solicitacao/index");
+
     }
 
     // Exclui um Roteiro da viagem 
@@ -82,17 +90,6 @@ class SolicitacaoController
         header("location:" . URL . "Solicitacao/index");
     }
 
-    public function SomaDespesas()
-    {
-        $valores = $this->Solicitacao->getValorDespesa($this->id);
-        $totValor = 0;
-        foreach($valores as $valor)
-        {
-            
-        }
-
-        return $totValor;
-    }
     public function setId()
     {
         if(isset($_GET['url']))
