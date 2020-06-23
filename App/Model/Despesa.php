@@ -26,7 +26,7 @@ class Despesa extends Model implements ModelInterface
 
     public function listActives()
     {
-        return $this->query("SELECT * FROM despesa WHERE ativo = true ORDER BY descricao");
+        return $this->select("SELECT * FROM despesa WHERE ativo = true ORDER BY descricao");
     }
 
     public function listInactives()

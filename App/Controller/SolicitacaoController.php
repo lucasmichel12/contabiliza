@@ -5,6 +5,7 @@ namespace Contabiliza\Controller;
 
 use Contabiliza\Model\CentroCusto;
 use Contabiliza\Model\Despesa;
+use Contabiliza\Model\Regiao;
 use Contabiliza\Model\Roteiro;
 use Contabiliza\Model\Solicitacao;
 
@@ -14,6 +15,8 @@ class SolicitacaoController
     private $Solicitacao;
     private $Roteiro;
     private $CentroCusto;
+    private $Regiao;
+    private $Despesa;
 
     public function __construct()
     {
@@ -21,7 +24,8 @@ class SolicitacaoController
         $this->Solicitacao = new Solicitacao();
         $this->Roteiro = new Roteiro();
         $this->CentroCusto = new CentroCusto();
-
+        $this->Regiao = new Regiao();
+        $this->Despesa = new Despesa();
     }
 
     public function index()
@@ -30,12 +34,15 @@ class SolicitacaoController
 
         if(isset($solicitacao[0]))
         {
-        
-            $despesas = $this->Solicitacao->getDespesasSolicitacao($solicitacao[0]['id_solicitacao']);
+
             $roteiros = $this->Roteiro->getRoteirosSolicitacao($solicitacao[0]['id_solicitacao']);
-            $centrosCusto = $this->CentroCusto->listActives();
             $rateios = $this->Solicitacao->getRateioSolicitacao($solicitacao[0]['id_solicitacao']);
-            $total = $this->SomaDespesas();
+            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($solicitacao[0]['id_solicitacao']);
+            $centrosCusto = $this->CentroCusto->listActives();
+            $regioes = $this->Regiao->listActives();
+            $despesas = $this->Despesa->listActives();
+
+
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';
             require APP . 'View/solicitacao/index.php';

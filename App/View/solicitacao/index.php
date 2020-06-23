@@ -136,8 +136,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($despesas) && $despesas != null)
-                                foreach ($despesas as $despesa) { ?>
+                            <?php if (isset($despesasViagem) && $despesasViagem != null)
+                                foreach ($despesasViagem as $despesa) { ?>
                                 <tr>
                                     <td class="text-center"><?= $despesa['descricao']; ?></td>
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
@@ -251,11 +251,14 @@
                                             <label class="input-group-text" for="selectRegioes">Região</label>
                                         </div>
                                         <select class="custom-select" id="selectRegioes" name="id_regiao">
-                                            <option value="1">São Paulo</option>
-                                            <option value="2">Interior-PR</option>
-                                            <option value="3">Interior-SP</option>
+                                            <?php foreach($regioes as $regiao) { ?>
+                                                <option value="<?=$regiao['id_regiao'];?>"><?=$regiao['descricao'];?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <input type="number" class="form-control" required name="qtd_despesa">
                                 </div>
                                 <div class="form-row mt-2">
                                     <div class="col">
