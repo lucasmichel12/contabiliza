@@ -41,7 +41,6 @@ class SolicitacaoController
             $centrosCusto = $this->CentroCusto->listActives();
             $regioes = $this->Regiao->listActives();
             $despesas = $this->Despesa->listActives();
-            $this->calculaValorDespesas($id_solicitacao);
 
 
             require APP . "View/_template/header.php";
@@ -79,7 +78,7 @@ class SolicitacaoController
     public function adicionarDespesa()
     {
         $this->Solicitacao->insertDespesa($_POST);
-        $valores = $this->Solicitacao->getValorDespesa($this->id);
+        $this->calculaValorDespesas(intval($_POST['id_solicitacao']));
         header("location:" . URL . "Solicitacao/index");
 
     }

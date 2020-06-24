@@ -42,8 +42,8 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <?php if (isset($despesas) && $despesas != null)
-                                foreach ($despesas as $despesa) { ?>
+                            <?php if (isset($despesasViagem) && $despesasViagem != null)
+                                foreach ($despesasViagem as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark"><?= $despesa['descricao'] ?></p>
                                 </tr>
@@ -51,8 +51,8 @@
                         </div>
                         <div class="col-6">
                             <p class="text-dark"><strong>Valor</strong></p>
-                            <?php if (isset($despesas) && $despesas != null)
-                                foreach ($despesas as $despesa) { ?>
+                            <?php if (isset($despesasViagem) && $despesasViagem != null)
+                                foreach ($despesasViagem as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark">R$ <?= $despesa['valor'] ?></p>
                                 </tr>
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="<?=URL;?>Solicitacao/calculaValorDespesas" class="btn btn-warning" >Concluir</a>
+                        <a href="<?=URL;?>Solicitacao/index" class="btn btn-warning" >Concluir</a>
                     </div>
 
                 </div>
