@@ -54,7 +54,7 @@ class Solicitacao extends Model
     public function updateValor($valor, $id)
     {
         $parameter = array("1"=>$valor, "2"=>$id);
-        $this->query("UPDATE solcitacao SET valor_total = ? WHERE id_solicitacao = 1 LIMIT 1", $parameter);
+        $this->query("UPDATE solicitacao SET valor_total = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
 
 

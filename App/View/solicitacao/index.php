@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="<?=URL;?>Solicitacao/SomaDespesas" class="btn btn-warning" >Concluir</a>
+                        <a href="<?=URL;?>Solicitacao/calculaValorDespesas" class="btn btn-warning" >Concluir</a>
                     </div>
 
                 </div>

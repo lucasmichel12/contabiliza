@@ -34,13 +34,14 @@ class SolicitacaoController
 
         if(isset($solicitacao[0]))
         {
-
-            $roteiros = $this->Roteiro->getRoteirosSolicitacao($solicitacao[0]['id_solicitacao']);
-            $rateios = $this->Solicitacao->getRateioSolicitacao($solicitacao[0]['id_solicitacao']);
-            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($solicitacao[0]['id_solicitacao']);
+            $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
+            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
+            $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
+            $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
             $centrosCusto = $this->CentroCusto->listActives();
             $regioes = $this->Regiao->listActives();
             $despesas = $this->Despesa->listActives();
+            $this->calculaValorDespesas($id_solicitacao);
 
 
             require APP . "View/_template/header.php";
@@ -98,5 +99,18 @@ class SolicitacaoController
             $url = explode('/', $url);
             if(isset($url[2]))$this->id = $url[2];
         }
+    }
+
+
+    //Puxa todos os valores das despesas cadastradas buscando pelo ID da solicitação e soma todos
+    public function calculaValorDespesas(Int $id_solicitacao)
+    {
+       $valores = $this->Solicitacao->getValorDespesa($id_solicitacao);
+       $totValor = 0;
+       for($i = 0; $i < count($valores); $i++)
+       {
+           $totValor += $valores[$i]['valor'];
+       }
+       $this->Solicitacao->updateValor(floatval($totValor), $id_solicitacao);
     }
 }
