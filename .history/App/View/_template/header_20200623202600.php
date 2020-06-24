@@ -7,7 +7,7 @@
     <meta name="description" content="Contabiliza">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="<?= URL;?>public/img/favicon-contabiliza.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
     <link rel="stylesheet" href="<?= URL;?>public/css/normalize.css">
     <link rel="stylesheet" href="<?= URL;?>public/bootstrap/css/bootstrap.min.css">
