@@ -34,7 +34,9 @@ class SolicitacaoController
 
         if(isset($solicitacao[0]))
         {
+            
             $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
+            $this->calculaValorDespesas(intval($id_solicitacao));
             $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
             $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
             $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
@@ -58,20 +60,27 @@ class SolicitacaoController
     public function abrirSolicitacao()
     {
         $this->Solicitacao->insert($_POST);
-        header("location:" . URL . "Solicitacao/index");
+        header("location:" . URL . "Solicitacao/");
     }
 
     public function atualizaRateio()
     {
         $this->Solicitacao->updateRateio($_POST);
-        header("location:" . URL . "Solicitacao/index");
+        header("location:" . URL . "Solicitacao/");
     }
 
     //? Adiciona um Roteiro na Viagem
     public function adicionaRoteiro()
     {
         $this->Roteiro->insert($_POST);
-        header("location:" . URL . "Solicitacao/index");
+        header("location:" . URL . "Solicitacao/");
+    }
+
+    // Exclui um Roteiro da viagem 
+    public function deletaRoteiroViagem()
+    {
+        $this->Roteiro->delete($this->id);
+        header("location:" . URL . "Solicitacao/");
     }
 
     //Adiciona uma Despesa na Viagem
@@ -79,15 +88,15 @@ class SolicitacaoController
     {
         $this->Solicitacao->insertDespesa($_POST);
         $this->calculaValorDespesas(intval($_POST['id_solicitacao']));
-        header("location:" . URL . "Solicitacao/index");
+        header("location:" . URL . "Solicitacao/");
 
     }
 
-    // Exclui um Roteiro da viagem 
-    public function deletaRoteiroViagem()
+    public function deletaDespesaViagem()
     {
-        $this->Roteiro->delete($this->id);
-        header("location:" . URL . "Solicitacao/index");
+        $this->Solicitacao->deleteDespesa(intval($this->id));
+        header("location:" . URL . "Solicitacao/");
+
     }
 
     public function setId()

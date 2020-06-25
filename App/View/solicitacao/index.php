@@ -133,6 +133,7 @@
                                 <th class="text-center" scope="col">Região</th>
                                 <th class="text-center" scope="col">Quantidade</th>
                                 <th class="text-center" scope="col">Valor Total</th>
+                                <th class="text-center" scope="col">Opções</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -143,6 +144,9 @@
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
                                     <td class="text-center"><?= $despesa['valor']; ?></td>
+                                    <th class="text-center">
+                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $despesa['id_solicitacao_despesa']; ?>">Excluir</a>
+                                    </th>
                                 </tr>
                             <?php } ?>
                         </tbody>
