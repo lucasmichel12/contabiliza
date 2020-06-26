@@ -16,7 +16,7 @@
         <tbody>
             <?php foreach ($solicitacoes as $solicitacao) { ?>
                 <tr>
-                    <td><?= $solicitacao['id_usuario'] ?></td>
+                    <td><?= $solicitacao['nome'] ?></td>
                     <td><?= $solicitacao['descricao'] ?></td>
                     <td class="text-center"><?= $solicitacao['data'] ?></td>
                     <th class="text-center">

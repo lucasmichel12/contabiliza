@@ -16,11 +16,11 @@
         <tbody>
             <?php foreach ($solicitacoes as $solicitacao) { ?>
                 <tr>
-                    <td><?= $solicitacao['id_usuario'] ?></td>
+                    <td><?= $solicitacao['nome'] ?></td>
                     <td><?= $solicitacao['descricao'] ?></td>
                     <td class="text-center"><?= $solicitacao['data'] ?></td>
                     <th class="text-center">
-                        <a class="btn btn-info" href="<?= URL; ?>Solicitacao/conferencia/<?= $solicitacao['id_solicitacao']; ?>">Conferir</a>
+                        <a class="btn btn-info" href="<?= URL; ?>Solicitacao/conferencia/<?= $solicitacao['id_solicitacao']; ?>">Visualizar</a>
                     </th>
                 </tr>
             <?php } ?>

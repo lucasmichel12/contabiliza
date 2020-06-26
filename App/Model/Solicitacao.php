@@ -11,8 +11,11 @@ class Solicitacao extends Model
 
     public function insert(array $param)
     {
-        $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => 4);
-        $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?)", $parameters);
+        $jaExiste = $this->select("SELECT id_solicitacao FROM solicitacao WHERE id_status = 4 AND id_usuario = ?", array("1" => $param['id_usuario']));
+        if (!$jaExiste) {
+            $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => 4);
+            $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?)", $parameters);
+        }
     }
 
     public function getOpen()
@@ -23,6 +26,8 @@ class Solicitacao extends Model
 
     public function insertDespesa(array $param)
     {
+
+
         $despesa = $this->select("SELECT valor_definido, valor FROM despesa WHERE id_despesa = ? LIMIT 1", array("1" => $param['id_despesa']));
 
         if ($despesa[0]['valor_definido']) {
@@ -48,7 +53,6 @@ class Solicitacao extends Model
     {
         $parameter = array("1" => $id);
         $this->query("DELETE FROM solicitacao_despesa WHERE id_solicitacao_despesa = ? LIMIT 1", $parameter);
-        
     }
 
     public function getDespesasSolicitacao($param)
@@ -77,12 +81,12 @@ class Solicitacao extends Model
 
     public function updateValor($id)
     {
-         //Puxa todos os valores das despesas cadastradas buscando pelo ID da solicitação e soma todos
-         $valores = $this->getValorDespesa($id);
-         $totValor = 0;
-         for ($i = 0; $i < count($valores); $i++) {
-             $totValor += $valores[$i]['valor'];
-         }
+        //Puxa todos os valores das despesas cadastradas buscando pelo ID da solicitação e soma todos
+        $valores = $this->getValorDespesa($id);
+        $totValor = 0;
+        for ($i = 0; $i < count($valores); $i++) {
+            $totValor += $valores[$i]['valor'];
+        }
         $parameter = array("1" => $totValor, "2" => $id);
         $this->query("UPDATE solicitacao SET valor_total = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
@@ -95,6 +99,6 @@ class Solicitacao extends Model
 
     public function listSolicitacoes($id_status)
     {
-        return $this->select("SELECT id_solicitacao, descricao, id_usuario, data FROM solicitacao WHERE id_status = ? ORDER BY data", array("1"=>$id_status));
+        return $this->select("SELECT s.id_solicitacao, s.descricao, s.id_usuario, u.nome, data FROM solicitacao AS s INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE id_status = ? ORDER BY data", array("1" => $id_status));
     }
 }
