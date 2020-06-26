@@ -23,7 +23,7 @@
                         <h5>Resumo</h5>
                     </div>
                     <div class="row">
-                        <div class="col-4 ">
+                        <div class="col-4">
                             <p class="text-dark"><strong>Descrição</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['descricao']; ?></p>
                         </div>
@@ -31,9 +31,15 @@
                             <p class="text-dark"><strong>Colaborador</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['nome']; ?></p>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <p class="text-dark"><strong>Data</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['data']; ?></p>
+                        </div>
+                        <div class="col-2">
+                        <p class="text-dark"><strong>Rateio</strong></p>
+                        <?php if (isset($rateios) && $rateios != null) foreach ($rateios as $rateio) { ?>
+                                <p class="text-dark"><?= $rateio['descricao']; ?></p>
+                        <?php } ?>
                         </div>
                     </div>
                     <div class="row mb-4 mt-4 border-dark border-bottom">
@@ -84,7 +90,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="<?=URL;?>Solicitacao/index" class="btn btn-warning" >Concluir</a>
+                       <div class="col">
+                            <a href="<?=URL;?>Solicitacao/finalizaSolicitacao/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-warning" >Concluir</a>
+                       </div>
+                       <div class="col">
+                            <a href="<?=URL;?>Solicitacao/index/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>
+                       </div>
                     </div>
 
                 </div>

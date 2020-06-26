@@ -8,6 +8,7 @@ use Contabiliza\Model\Despesa;
 use Contabiliza\Model\Regiao;
 use Contabiliza\Model\Roteiro;
 use Contabiliza\Model\Solicitacao;
+use Contabiliza\Controller\ErrorController;
 
 class SolicitacaoController
 {
@@ -17,6 +18,7 @@ class SolicitacaoController
     private $CentroCusto;
     private $Regiao;
     private $Despesa;
+    private $Erro;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class SolicitacaoController
         $this->CentroCusto = new CentroCusto();
         $this->Regiao = new Regiao();
         $this->Despesa = new Despesa();
+        $this->Erro = new ErrorController(); 
     }
 
     public function index()
@@ -53,6 +56,7 @@ class SolicitacaoController
         } else {
 
             //!Implementar mensagem de erro
+            $this->Erro->index();
         }
         
     }
@@ -120,5 +124,13 @@ class SolicitacaoController
            $totValor += $valores[$i]['valor'];
        }
        $this->Solicitacao->updateValor(floatval($totValor), $id_solicitacao);
+    }
+
+    public function finalizaSolicitacao()
+    {
+
+        $this->Solicitacao->closeSolicitation($this->id, 1);
+        header("location:" . URL . "Home");
+
     }
 }
