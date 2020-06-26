@@ -28,18 +28,17 @@ class SolicitacaoController
         $this->CentroCusto = new CentroCusto();
         $this->Regiao = new Regiao();
         $this->Despesa = new Despesa();
-        $this->Erro = new ErrorController(); 
+        $this->Erro = new ErrorController();
     }
 
     public function index()
     {
         $solicitacao = $this->Solicitacao->getOpen();
 
-        if(isset($solicitacao[0]))
-        {
-            
+        if (isset($solicitacao[0])) {
+
             $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
-            $this->calculaValorDespesas(intval($id_solicitacao));
+            $this->Solicitacao->updateValor($id_solicitacao);
             $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
             $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
             $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
@@ -47,18 +46,15 @@ class SolicitacaoController
             $regioes = $this->Regiao->listActives();
             $despesas = $this->Despesa->listActives();
 
-
             require APP . "View/_template/header.php";
             require APP . 'View/_template/menu.php';
             require APP . 'View/solicitacao/index.php';
             require APP . 'View/_template/footer.php';
-
         } else {
 
             //!Implementar mensagem de erro
             $this->Erro->index();
         }
-        
     }
 
     public function abrirSolicitacao()
@@ -73,7 +69,7 @@ class SolicitacaoController
         header("location:" . URL . "Solicitacao/");
     }
 
-    //? Adiciona um Roteiro na Viagem
+    // Adiciona um Roteiro na Viagem
     public function adicionaRoteiro()
     {
         $this->Roteiro->insert($_POST);
@@ -91,39 +87,22 @@ class SolicitacaoController
     public function adicionarDespesa()
     {
         $this->Solicitacao->insertDespesa($_POST);
-        $this->calculaValorDespesas(intval($_POST['id_solicitacao']));
         header("location:" . URL . "Solicitacao/");
-
     }
 
     public function deletaDespesaViagem()
     {
         $this->Solicitacao->deleteDespesa(intval($this->id));
         header("location:" . URL . "Solicitacao/");
-
     }
 
     public function setId()
     {
-        if(isset($_GET['url']))
-        {
+        if (isset($_GET['url'])) {
             $url = $_GET['url'];
             $url = explode('/', $url);
-            if(isset($url[2]))$this->id = $url[2];
+            if (isset($url[2])) $this->id = $url[2];
         }
-    }
-
-
-    //Puxa todos os valores das despesas cadastradas buscando pelo ID da solicitação e soma todos
-    public function calculaValorDespesas(Int $id_solicitacao)
-    {
-       $valores = $this->Solicitacao->getValorDespesa($id_solicitacao);
-       $totValor = 0;
-       for($i = 0; $i < count($valores); $i++)
-       {
-           $totValor += $valores[$i]['valor'];
-       }
-       $this->Solicitacao->updateValor(floatval($totValor), $id_solicitacao);
     }
 
     public function finalizaSolicitacao()
@@ -131,6 +110,26 @@ class SolicitacaoController
 
         $this->Solicitacao->closeSolicitation($this->id, 1);
         header("location:" . URL . "Home");
+    }
 
+    public function solicitacoesPendentes()
+    {
+        $solicitacoes = $this->Solicitacao->listSolicitacoes(1);
+
+        require APP . "View/_template/header.php";
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/solicitacao/pendentes.php';
+        require APP . 'View/_template/footer.php';
+    }
+
+    
+    public function solicitacoesConcluidas()
+    {
+        $solicitacoes = $this->Solicitacao->listSolicitacoes(2);
+
+        require APP . "View/_template/header.php";
+        require APP . 'View/_template/menu.php';
+        require APP . 'View/solicitacao/concluidas.php';
+        require APP . 'View/_template/footer.php';
     }
 }

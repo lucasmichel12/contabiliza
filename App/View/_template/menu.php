@@ -19,8 +19,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
 
-                         <li><i class="fa fa-user"></i><a href="#">Pendentes</a></li>
-                         <li><i class="fa fa-building-o"></i><a href="#">Concluidas</a></li>
+                         <li><i class="fa fa-user"></i><a href="<?=URL;?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
+                         <li><i class="fa fa-building-o"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
 
                      </ul>
                  </li>

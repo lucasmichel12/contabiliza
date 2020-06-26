@@ -12,7 +12,7 @@ class Solicitacao extends Model
     public function insert(array $param)
     {
         $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => 4);
-        $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?, ?)", $parameters);
+        $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?)", $parameters);
     }
 
     public function getOpen()
@@ -40,12 +40,15 @@ class Solicitacao extends Model
             $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $result);
             $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)", $parameters);
         }
+
+        $this->updateValor($param['id_solicitacao']);
     }
 
     public function deleteDespesa($id)
     {
         $parameter = array("1" => $id);
         $this->query("DELETE FROM solicitacao_despesa WHERE id_solicitacao_despesa = ? LIMIT 1", $parameter);
+        
     }
 
     public function getDespesasSolicitacao($param)
@@ -72,9 +75,15 @@ class Solicitacao extends Model
         $this->query("UPDATE solicitacao SET idcentro_custo = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
 
-    public function updateValor($valor, $id)
+    public function updateValor($id)
     {
-        $parameter = array("1" => $valor, "2" => $id);
+         //Puxa todos os valores das despesas cadastradas buscando pelo ID da solicitação e soma todos
+         $valores = $this->getValorDespesa($id);
+         $totValor = 0;
+         for ($i = 0; $i < count($valores); $i++) {
+             $totValor += $valores[$i]['valor'];
+         }
+        $parameter = array("1" => $totValor, "2" => $id);
         $this->query("UPDATE solicitacao SET valor_total = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
 
@@ -82,5 +91,10 @@ class Solicitacao extends Model
     {
         $parameters = array("1" => $id_status, "2" => $id_solicitacao);
         $this->query("UPDATE solicitacao SET id_status = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
+    }
+
+    public function listSolicitacoes($id_status)
+    {
+        return $this->select("SELECT id_solicitacao, descricao, id_usuario, data FROM solicitacao WHERE id_status = ? ORDER BY data", array("1"=>$id_status));
     }
 }
