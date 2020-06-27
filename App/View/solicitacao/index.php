@@ -23,7 +23,7 @@
                         <h5>Resumo</h5>
                     </div>
                     <div class="row">
-                        <div class="col-4 ">
+                        <div class="col-4">
                             <p class="text-dark"><strong>Descrição</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['descricao']; ?></p>
                         </div>
@@ -31,9 +31,15 @@
                             <p class="text-dark"><strong>Colaborador</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['nome']; ?></p>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <p class="text-dark"><strong>Data</strong></p>
                             <p class="text-dark"><?= $solicitacao[0]['data']; ?></p>
+                        </div>
+                        <div class="col-2">
+                        <p class="text-dark"><strong>Rateio</strong></p>
+                        <?php if (isset($rateios) && $rateios != null) foreach ($rateios as $rateio) { ?>
+                                <p class="text-dark"><?= $rateio['descricao']; ?></p>
+                        <?php } ?>
                         </div>
                     </div>
                     <div class="row mb-4 mt-4 border-dark border-bottom">
@@ -42,8 +48,8 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <?php if (isset($despesas) && $despesas != null)
-                                foreach ($despesas as $despesa) { ?>
+                            <?php if (isset($despesasViagem) && $despesasViagem != null)
+                                foreach ($despesasViagem as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark"><?= $despesa['descricao'] ?></p>
                                 </tr>
@@ -51,8 +57,8 @@
                         </div>
                         <div class="col-6">
                             <p class="text-dark"><strong>Valor</strong></p>
-                            <?php if (isset($despesas) && $despesas != null)
-                                foreach ($despesas as $despesa) { ?>
+                            <?php if (isset($despesasViagem) && $despesasViagem != null)
+                                foreach ($despesasViagem as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark">R$ <?= $despesa['valor'] ?></p>
                                 </tr>
@@ -84,7 +90,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="<?=URL;?>Solicitacao/SomaDespesas" class="btn btn-warning" >Concluir</a>
+                       <div class="col">
+                            <a href="<?=URL;?>Solicitacao/finalizaSolicitacao/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-warning" >Concluir</a>
+                       </div>
+                       <div class="col">
+                            <a href="<?=URL;?>Solicitacao/index/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>
+                       </div>
                     </div>
 
                 </div>
@@ -133,6 +144,7 @@
                                 <th class="text-center" scope="col">Região</th>
                                 <th class="text-center" scope="col">Quantidade</th>
                                 <th class="text-center" scope="col">Valor Total</th>
+                                <th class="text-center" scope="col">Opções</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -143,6 +155,9 @@
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
                                     <td class="text-center"><?= $despesa['valor']; ?></td>
+                                    <th class="text-center">
+                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $despesa['id_solicitacao_despesa']; ?>">Excluir</a>
+                                    </th>
                                 </tr>
                             <?php } ?>
                         </tbody>
