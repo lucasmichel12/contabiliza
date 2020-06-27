@@ -7,7 +7,7 @@
                 <div class="card text-white bg-flat-color-1">
                     <div class="card-body">
                         <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
+                            <h3 class="mb-0 fw-r">
                                 <span class="count">10</span>
                             </h3>
                             <p class="text-light mt-1 m-0">Concluidas</p>
@@ -20,7 +20,7 @@
                 <div class="card text-white bg-flat-color-4">
                     <div class="card-body">
                         <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
+                            <h3 class="mb-0 fw-r">
                                 <span class="count">2</span>
                             </h3>
                             <p class="text-light mt-1 m-0">Abertas</p>
@@ -33,7 +33,7 @@
                 <div class="card text-white bg-flat-color-6">
                     <div class="card-body">
                         <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
+                            <h3 class="mb-0 fw-r">
                                 <span class="count">3</span>
                             </h3>
                             <p class="text-light mt-1 m-0">Pendentes</p>
