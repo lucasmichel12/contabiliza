@@ -2106,7 +2106,6 @@ header .form-inline {
     .stat-text {
         color: $text-color-2 ;
         font-size: 20px;
-        text-align: center;
     }
     .stat-heading { 
         color:$text-color-1 ; 
@@ -2184,7 +2183,7 @@ footer.site-footer {
         font-family: 'Open Sans';
         font-size: 14px;
         line-height: 1.5;
-        padding: 20px 20px!important;
+        padding: 2.45em 1.125em;
         a {
             color: #6a7074;
         }

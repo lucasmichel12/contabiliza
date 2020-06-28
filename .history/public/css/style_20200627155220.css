@@ -681,7 +681,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children .sub-menu li {
             position: relative; }
           .navbar .navbar-nav li.menu-item-has-children .sub-menu i {
-            color: #00c292;
+            color: #c8c9ce;
             float: left;
             padding: 0;
             position: absolute;
@@ -1204,8 +1204,7 @@ header .form-inline {
 .content {
   float: left;
   padding: 1.875em;
-  width: 100%;
-  background-color: #eeeff4 }
+  width: 100%; }
 
 .card {
   margin-bottom: 1.875em;
@@ -2052,8 +2051,7 @@ header .form-inline {
     margin-left: 100px; }
   .stat-widget-five .stat-text {
     color: #455a64;
-    font-size: 20px; 
-    text-align: center !important; }
+    font-size: 20px; }
   .stat-widget-five .stat-heading {
     color: #99abb4;
     font-size: 14px; }
@@ -2105,7 +2103,7 @@ footer.site-footer {
     font-family: 'Open Sans';
     font-size: 14px;
     line-height: 1.5;
-    padding: 20px 20px; }
+    padding: 2.45em 1.125em; }
     footer.site-footer .footer-inner a {
       color: #6a7074; }
 

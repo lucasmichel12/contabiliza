@@ -74,15 +74,15 @@
                      <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
                      <input type="hidden" name="id_usuario" value="<?=$_SESSION['usuario_logado']['id'];?>">
                          <div class="form-row">
-                             <div class="col">
-                                 <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
+                             <div class="col pad-right-25">
+                                 <input type="text" class="form-control" required placeholder="Descrição da solicitação" name="descricao">
                              </div>
                              <div class="col">
                                  <input type="date" class="form-control" name="data">
                              </div>
                          </div>
                          <div class="modal-footer">
-                             <!-- <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a> -->
+                             <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
                              <button type="submit" class="btn btn-success btn-aprovar">Continuar</button>
                          </div>
                      </form>

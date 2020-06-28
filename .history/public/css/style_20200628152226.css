@@ -2053,7 +2053,7 @@ header .form-inline {
   .stat-widget-five .stat-text {
     color: #455a64;
     font-size: 20px; 
-    text-align: center !important; }
+  text-align: center;;}
   .stat-widget-five .stat-heading {
     color: #99abb4;
     font-size: 14px; }
@@ -2105,7 +2105,7 @@ footer.site-footer {
     font-family: 'Open Sans';
     font-size: 14px;
     line-height: 1.5;
-    padding: 20px 20px; }
+    padding: 2.45em 1.125em; }
     footer.site-footer .footer-inner a {
       color: #6a7074; }
 

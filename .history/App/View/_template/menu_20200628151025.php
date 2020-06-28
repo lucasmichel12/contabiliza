@@ -31,7 +31,7 @@
                      <ul class="sub-menu children dropdown-menu">
                          <li><i class="menu-icon fa fa-plus-circle"></i><a href="#" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</a></li>
                          <li><i class="menu-icon fa fa-edit"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
-                         <li><i class="menu-icon fa  fa-check"></i><a href="<?= URL; ?>">Concluidas</a></li>
+                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL; ?>">Concluidas</a></li>
                      </ul>
                  </li>
              </ul>
@@ -63,7 +63,7 @@
          <div class="modal-dialog">
              <div class="modal-content">
                  <div class="modal-header">
-                     <h5 class="modal-title modal-titulo" id="novaSolicitacao">Nova Solicitação</h5>
+                     <h5 class="modal-title" id="novaSolicitacao">Nova Solicitação</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">&times;</span>
                      </button>
@@ -75,15 +75,15 @@
                      <input type="hidden" name="id_usuario" value="<?=$_SESSION['usuario_logado']['id'];?>">
                          <div class="form-row">
                              <div class="col">
-                                 <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
+                                 <input type="text" class="form-control" required placeholder="Descrição da solicitação" name="descricao">
                              </div>
                              <div class="col">
                                  <input type="date" class="form-control" name="data">
                              </div>
                          </div>
                          <div class="modal-footer">
-                             <!-- <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a> -->
-                             <button type="submit" class="btn btn-success btn-aprovar">Continuar</button>
+                             <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
+                             <button type="submit" class="btn btn-success">Continuar</button>
                          </div>
                      </form>
                  </div>

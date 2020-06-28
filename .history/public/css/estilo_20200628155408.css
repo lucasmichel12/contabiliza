@@ -21,20 +21,4 @@
 
 .modal-footer {
         justify-content: center;
-        border-top: 0px solid #fff !important;
-}
-
-.modal-titulo {
-        text-align: center;
-        font-weight: 600;
-        color: #6c757d;
-}
-
-.modal-header .close {
-        margin: -40px -5px -1rem auto !important;
-        color: #f00!important;
-}
-
-.pad-right-25 {
-        padding-right: 25px !important;
 }

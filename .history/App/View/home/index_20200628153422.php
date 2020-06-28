@@ -1,7 +1,7 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-        <!-- Inicio Dados geral  -->
+        <!-- Dados geral  -->
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="card">
@@ -106,8 +106,8 @@
                                         <td>Sicoob</td>
                                         <td>R$ <span class="count">231</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-success btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -116,8 +116,8 @@
                                         <td>Ecode</td>
                                         <td>R$ <span class="count">159</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-success btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                 </tbody>

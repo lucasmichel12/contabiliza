@@ -107,7 +107,7 @@
                                         <td>R$ <span class="count">231</span></td>
                                         <td class="text-center">
                                             <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -117,7 +117,7 @@
                                         <td>R$ <span class="count">159</span></td>
                                         <td class="text-center">
                                             <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                 </tbody>
