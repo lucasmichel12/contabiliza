@@ -1,0 +1,12 @@
+.bg-login {
+        background-color: #757671;
+}
+
+.erro {font-size: 14rem; color: white;}
+.ops {font-size: 1.5rem;}
+
+.btn-aprovar {
+        color: #fff;
+        background-color: #00c292!important;
+        border-color: #04c394!important;
+}

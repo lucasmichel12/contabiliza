@@ -6,13 +6,6 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">10</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Concluidas</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-1">
                                 <i class="pe-7s-check"></i>
@@ -23,7 +16,6 @@
                                     <div class="stat-heading">Solicitações Concluídas</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>
@@ -32,13 +24,6 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">2</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Abertas</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-2">
                                 <i class="pe-7s-note2"></i>
@@ -49,7 +34,6 @@
                                     <div class="stat-heading">Solicitações em Aberto</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>
@@ -58,13 +42,6 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">3</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Pendentes</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-3">
                                 <i class="pe-7s-clock"></i>
@@ -93,7 +70,6 @@
                                     <div class="stat-heading">Funcionários Ativos</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>

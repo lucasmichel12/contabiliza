@@ -1,18 +1,11 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-        <!-- Inicio Dados geral  -->
+        <!-- Widgets  -->
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">10</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Concluidas</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-1">
                                 <i class="pe-7s-check"></i>
@@ -20,10 +13,9 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">10</span></div>
-                                    <div class="stat-heading">Solicitações Concluídas</div>
+                                    <div class="stat-heading">Solicitações<br>Concluídas</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>
@@ -32,24 +24,16 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">2</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Abertas</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-2">
-                                <i class="pe-7s-note2"></i>
+                                <i class="pe-7s-cart"></i>
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">6</span></div>
-                                    <div class="stat-heading">Solicitações em Aberto</div>
+                                    <div class="stat-text"><span class="count">3435</span></div>
+                                    <div class="stat-heading">Sales</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>
@@ -58,21 +42,14 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="card-left pt-1 float-right">
-                            <h3 class="mb-0 fw-r pad-left-25">
-                                <span class="count">3</span>
-                            </h3>
-                            <p class="text-light mt-1 m-0">Pendentes</p>
-=======
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-3">
-                                <i class="pe-7s-clock"></i>
+                                <i class="pe-7s-browser"></i>
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">13</span></div>
-                                    <div class="stat-heading">Solicitações Pendentes</div>
+                                    <div class="stat-text"><span class="count">349</span></div>
+                                    <div class="stat-heading">Templates</div>
                                 </div>
                             </div>
                         </div>
@@ -89,20 +66,60 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">27</span></div>
-                                    <div class="stat-heading">Funcionários Ativos</div>
+                                    <div class="stat-text"><span class="count">2986</span></div>
+                                    <div class="stat-heading">Clients</div>
                                 </div>
                             </div>
->>>>>>> frontend
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- Fim de Dados geral -->
 
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body">
+                        <div class="card-left pt-1 float-right">
+                            <h3 class="mb-0 fw-r">
+                                <span class="count">10</span>
+                            </h3>
+                            <p class="text-light mt-1 m-0">Concluidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-flat-color-4">
+                    <div class="card-body">
+                        <div class="card-left pt-1 float-right">
+                            <h3 class="mb-0 fw-r">
+                                <span class="count">2</span>
+                            </h3>
+                            <p class="text-light mt-1 m-0">Abertas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-flat-color-6">
+                    <div class="card-body">
+                        <div class="card-left pt-1 float-right">
+                            <h3 class="mb-0 fw-r">
+                                <span class="count">3</span>
+                            </h3>
+                            <p class="text-light mt-1 m-0">Pendentes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Widgets -->
     <div class="clearfix"></div>
-
     <!-- Orders -->
     <div class="orders">
         <div class="row">
@@ -130,8 +147,8 @@
                                         <td>Sicoob</td>
                                         <td>R$ <span class="count">231</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-success btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -140,8 +157,8 @@
                                         <td>Ecode</td>
                                         <td>R$ <span class="count">159</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
-                                            <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
+                                            <a class="btn btn-success btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-info btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -681,7 +681,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children .sub-menu li {
             position: relative; }
           .navbar .navbar-nav li.menu-item-has-children .sub-menu i {
-            color: #00c292;
+            color: #c8c9ce;
             float: left;
             padding: 0;
             position: absolute;
@@ -879,7 +879,7 @@ aside.left-panel {
   top: 0;
   z-index: 999; }
 .right-panel .navbar-brand {
-  width: 185px;
+  width: 250px;
   display: inline-block; }
 .right-panel .menutoggle {
   padding-top: 7px; }
@@ -2052,8 +2052,7 @@ header .form-inline {
     margin-left: 100px; }
   .stat-widget-five .stat-text {
     color: #455a64;
-    font-size: 20px; 
-    text-align: center !important; }
+    font-size: 20px; }
   .stat-widget-five .stat-heading {
     color: #99abb4;
     font-size: 14px; }
@@ -2105,7 +2104,7 @@ footer.site-footer {
     font-family: 'Open Sans';
     font-size: 14px;
     line-height: 1.5;
-    padding: 20px 20px; }
+    padding: 2.45em 1.125em; }
     footer.site-footer .footer-inner a {
       color: #6a7074; }
 

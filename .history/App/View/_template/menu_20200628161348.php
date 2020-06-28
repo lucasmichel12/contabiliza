@@ -19,13 +19,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
 
-<<<<<<< HEAD
-                         <li><i class="fa fa-user"></i><a href="<?=URL;?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
-                         <li><i class="fa fa-building-o"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
-=======
                          <li><i class="fa fa-clock-o"></i><a href="#">Pendentes</a></li>
                          <li><i class="fa fa-check"></i><a href="#">Concluidas</a></li>
->>>>>>> frontend
 
                      </ul>
                  </li>
@@ -35,13 +30,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
                          <li><i class="menu-icon fa fa-plus-circle"></i><a href="#" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</a></li>
-<<<<<<< HEAD
-                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL;?>Solicitacao/">Aberta</a></li>
-                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
-=======
                          <li><i class="menu-icon fa fa-edit"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
                          <li><i class="menu-icon fa  fa-check"></i><a href="<?= URL; ?>">Concluidas</a></li>
->>>>>>> frontend
                      </ul>
                  </li>
              </ul>

@@ -5,10 +5,6 @@
 .erro {font-size: 14rem; color: white;}
 .ops {font-size: 1.5rem;}
 
-<<<<<<< HEAD
-.pad-left-25 {
-        padding-left: 25px!important;
-=======
 .btn-aprovar {
         color: #fff;
         background-color: #00c292!important;
@@ -25,7 +21,6 @@
 
 .modal-footer {
         justify-content: center;
-        border-top: 0px solid #fff !important;
 }
 
 .modal-titulo {
@@ -36,10 +31,4 @@
 
 .modal-header .close {
         margin: -40px -5px -1rem auto !important;
-        color: #f00!important;
-}
-
-.pad-right-25 {
-        padding-right: 25px !important;
->>>>>>> frontend
 }

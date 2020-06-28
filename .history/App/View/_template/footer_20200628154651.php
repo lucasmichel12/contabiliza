@@ -3,7 +3,7 @@
 <footer class="site-footer bg-white">
         <div class="footer-inner">
             <div class="row">
-                <div class="col-12 text-center mar-top-18 font-600">
+                <div class="col-12 text-center mar-top-18">
                     &copy; 2020 - Todos os direitos reservados | Desenvolvido por Larissa Carvalho e Lucas Michel
                 </div>
                 <!-- <div class="col-sm-6 text-right">

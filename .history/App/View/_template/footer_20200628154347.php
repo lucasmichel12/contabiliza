@@ -1,10 +1,10 @@
 
 </main>
-<footer class="site-footer bg-white">
+<footer class="site-footer">
         <div class="footer-inner">
             <div class="row">
-                <div class="col-12 text-center mar-top-18 font-600">
-                    &copy; 2020 - Todos os direitos reservados | Desenvolvido por Larissa Carvalho e Lucas Michel
+                <div class="col-12">
+                    &copy; 2020 - Todos os direitos reservados | Desenvolvido por 
                 </div>
                 <!-- <div class="col-sm-6 text-right">
                     Design<a href="#"> Larissa</a>

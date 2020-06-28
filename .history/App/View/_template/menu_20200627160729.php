@@ -9,9 +9,9 @@
                      <ul class="sub-menu children dropdown-menu">
 
                          <li><i class="fa fa-user"></i><a href="<?= URL; ?>Usuario/">Usuário</a></li>
-                         <li><i class="fa fa-usd"></i><a href="<?= URL; ?>CentroCusto/">Centro de Custo</a></li>
+                         <li><i class="fa fa-building-o"></i><a href="<?= URL; ?>CentroCusto/">Centro de Custo</a></li>
                          <li><i class="fa fa-shopping-cart"></i><a href="<?= URL; ?>Despesa/">Despesas</a></li>
-                         <li><i class="fa fa-map-marker"></i><a href="<?= URL; ?>Regiao/">Regiões</a></li>
+                         <li><i class="fa fa-map"></i><a href="<?= URL; ?>Regiao/">Regiões</a></li>
 
                      </ul>
                  </li>
@@ -19,13 +19,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
 
-<<<<<<< HEAD
-                         <li><i class="fa fa-user"></i><a href="<?=URL;?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
-                         <li><i class="fa fa-building-o"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
-=======
-                         <li><i class="fa fa-clock-o"></i><a href="#">Pendentes</a></li>
+                         <li><i class="fa fa-user"></i><a href="#">Pendentes</a></li>
                          <li><i class="fa fa-check"></i><a href="#">Concluidas</a></li>
->>>>>>> frontend
 
                      </ul>
                  </li>
@@ -35,13 +30,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
                          <li><i class="menu-icon fa fa-plus-circle"></i><a href="#" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</a></li>
-<<<<<<< HEAD
-                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL;?>Solicitacao/">Aberta</a></li>
-                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
-=======
-                         <li><i class="menu-icon fa fa-edit"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
-                         <li><i class="menu-icon fa  fa-check"></i><a href="<?= URL; ?>">Concluidas</a></li>
->>>>>>> frontend
+                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
+                         <li><i class="menu-icon fa fa-list-alt"></i><a href="<?= URL; ?>">Concluidas</a></li>
                      </ul>
                  </li>
              </ul>
@@ -73,7 +63,7 @@
          <div class="modal-dialog">
              <div class="modal-content">
                  <div class="modal-header">
-                     <h5 class="modal-title modal-titulo" id="novaSolicitacao">Nova Solicitação</h5>
+                     <h5 class="modal-title" id="novaSolicitacao">Nova Solicitação</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">&times;</span>
                      </button>
@@ -85,15 +75,15 @@
                      <input type="hidden" name="id_usuario" value="<?=$_SESSION['usuario_logado']['id'];?>">
                          <div class="form-row">
                              <div class="col">
-                                 <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
+                                 <input type="text" class="form-control" required placeholder="Descrição da solicitação" name="descricao">
                              </div>
                              <div class="col">
                                  <input type="date" class="form-control" name="data">
                              </div>
                          </div>
                          <div class="modal-footer">
-                             <!-- <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a> -->
-                             <button type="submit" class="btn btn-success btn-aprovar">Continuar</button>
+                             <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a>
+                             <button type="submit" class="btn btn-success">Continuar</button>
                          </div>
                      </form>
                  </div>

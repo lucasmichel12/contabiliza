@@ -1,14 +1,14 @@
 
 </main>
-<footer class="site-footer bg-white">
-        <div class="footer-inner">
+<footer class="site-footer bg-dark">
+        <div class="footer-inner bg-dark">
             <div class="row">
-                <div class="col-12 text-center mar-top-18 font-600">
-                    &copy; 2020 - Todos os direitos reservados | Desenvolvido por Larissa Carvalho e Lucas Michel
+                <div class="col-sm-6">
+                    Copyright &copy; Atos
                 </div>
-                <!-- <div class="col-sm-6 text-right">
+                <div class="col-sm-6 text-right">
                     Design<a href="#"> Larissa</a>
-                </div> -->
+                </div>
             </div>
         </div>
 </footer>
