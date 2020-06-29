@@ -1,6 +1,6 @@
 
 </main>
-<footer class="site-footer bg-white shadow-top">
+<footer class="site-footer bg-white">
         <div class="footer-inner">
             <div class="row">
                 <div class="col-12 text-center font-600">

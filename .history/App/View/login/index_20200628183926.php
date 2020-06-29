@@ -1,6 +1,32 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+            <div class="container">
+                <div class="login-content shadow p-3 mb-5 bg-white rounded">
+                    <div class="login-logo">
+                        <a href="index.html">
+                            <img class="align-content" src="<?= URL;?>public/img/logo.png" alt="Contabiliza">
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form name="login" action="<?=URL;?>Login\logar" method="POST">
+                            <div class="form-group">
+                                <label>Login</label>
+                                <input type="login" class="form-control" name="login" required placeholder="Digite seu login...">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" name="senha" required placeholder="Digite sua senha">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- Inicio Dados geral  -->
         <div class="row">
             <div class="col-lg-3 col-md-6">
@@ -19,61 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-five">
-                            <div class="stat-icon dib flat-color-2">
-                                <i class="pe-7s-note2"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">6</span></div>
-                                    <div class="stat-heading">Solicitações em Aberto</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-five">
-                            <div class="stat-icon dib flat-color-3">
-                                <i class="pe-7s-clock"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">13</span></div>
-                                    <div class="stat-heading">Solicitações Pendentes</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-five">
-                            <div class="stat-icon dib flat-color-4">
-                                <i class="pe-7s-users"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">27</span></div>
-                                    <div class="stat-heading">Funcionários Ativos</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> 
         </div>
     <!-- Fim de Dados geral -->
 
@@ -106,7 +78,7 @@
                                         <td>Sicoob</td>
                                         <td>R$ <span class="count">231</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sucesso btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
                                             <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
@@ -116,7 +88,7 @@
                                         <td>Ecode</td>
                                         <td>R$ <span class="count">159</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sucesso btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-success btn-aprovar btn-sm" href="<?= URL; ?>#">Aprovar</a>
                                             <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
@@ -131,7 +103,7 @@
     <!-- /.orders -->
     <div class="row">
         <div class="col-lg-6">
-            <div class="card mar-bottom-0">
+            <div class="card">
                 <div class="card-body">
                     <h4 class="mb-3">Despesas mais recorrentes</h4>
                     <div class="flot-container">
@@ -189,7 +161,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="card mar-bottom-0">
+            <div class="card">
                 <div class="card-body">
                     <h4 class="mb-3">Quantidade de Solicitações de reembolso</h4>
                     <div class="flot-container">
@@ -221,3 +193,33 @@
 </div>
 <!-- .animated -->
 </div>
+
+
+
+<body class="bg-login">
+    <main>
+        <div class="sufee-login d-flex align-content-center flex-wrap">
+            <div class="container">
+                <div class="login-content shadow p-3 mb-5 bg-white rounded">
+                    <div class="login-logo">
+                        <a href="index.html">
+                            <img class="align-content" src="<?= URL;?>public/img/logo.png" alt="Contabiliza">
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form name="login" action="<?=URL;?>Login\logar" method="POST">
+                            <div class="form-group">
+                                <label>Login</label>
+                                <input type="login" class="form-control" name="login" required placeholder="Digite seu login...">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" name="senha" required placeholder="Digite sua senha">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

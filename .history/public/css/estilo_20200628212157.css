@@ -5,28 +5,10 @@
 .erro {font-size: 14rem; color: white;}
 .ops {font-size: 1.5rem;}
 
-.btn-sucesso {
+.btn-aprovar {
         color: #fff;
-        background-color: #00c292;
-        border-color: #04c394;
-}
-
-.btn-sucesso:hover {
-        color: #fff;
-        background-color: #0ba982;
-        border-color: #05b187;
-}
-
-.btn-info-2 {
-        color: #fff;
-        background-color: #fb9678;
-        border-color: #f99476;
-}
-
-.btn-info-2:hover {
-        color: #fff;
-        background-color: #f77f5b;
-        border-color: #f99476;
+        background-color: #00c292!important;
+        border-color: #04c394!important;
 }
 
 .mar-top-18 {
@@ -62,23 +44,14 @@
 }
 
 .full-height {
-        height: 100%!important;
+        height: 100%;
 }
 
 .site-footer{
-        /* border-top: 1px solid #333; */
+        border-top: 1px solid #333;
         bottom: 0;
         left: 0;
         /* height: 40px; */
         position: fixed;
         width: 100%;
 }
-
-.shadow-top {
-        box-shadow: 1rem 1.2rem 1rem 1rem rgba(0,0,0,.15)!important;
-}
-
-.breadcrumb {
-        background-color: #ffffff!important;
-}
-

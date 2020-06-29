@@ -20,8 +20,8 @@
                             <input type="password" class="form-control" name="senha" required placeholder="Digite sua senha">
                         </div>
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>

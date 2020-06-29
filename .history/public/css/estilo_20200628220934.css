@@ -16,19 +16,6 @@
         background-color: #0ba982;
         border-color: #05b187;
 }
-
-.btn-info-2 {
-        color: #fff;
-        background-color: #fb9678;
-        border-color: #f99476;
-}
-
-.btn-info-2:hover {
-        color: #fff;
-        background-color: #f77f5b;
-        border-color: #f99476;
-}
-
 .mar-top-18 {
         margin-top:18px;
 }
@@ -82,3 +69,14 @@
         background-color: #ffffff!important;
 }
 
+.btn-info-2 {
+        color: #fff;
+        background-color: #fb9678;
+        border-color: #f99476;
+}
+
+.btn-info-2:hover {
+        color: #fff;
+        background-color: #f77f5b;
+        border-color: #f99476;
+}

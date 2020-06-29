@@ -106,7 +106,7 @@
                                         <td>Sicoob</td>
                                         <td>R$ <span class="count">231</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sucesso btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-successo btn-sm" href="<?= URL; ?>#">Aprovar</a>
                                             <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
@@ -116,7 +116,7 @@
                                         <td>Ecode</td>
                                         <td>R$ <span class="count">159</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sucesso btn-sm" href="<?= URL; ?>#">Aprovar</a>
+                                            <a class="btn btn-successo btn-sm" href="<?= URL; ?>#">Aprovar</a>
                                             <a class="btn btn-danger btn-sm" href="<?= URL; ?>#">Auditar</a>
                                         </td>
                                     </tr>
