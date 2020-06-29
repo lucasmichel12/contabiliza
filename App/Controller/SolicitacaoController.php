@@ -59,8 +59,14 @@ class SolicitacaoController
 
     public function abrirSolicitacao()
     {
-        $this->Solicitacao->insert($_POST);
-        header("location:" . URL . "Solicitacao/");
+        if($this->Solicitacao->insert($_POST))
+        {
+            header("location:" . URL . "Solicitacao/");
+        } else {
+            $this->Erro->index();
+        }
+
+        
     }
 
     public function atualizaRateio()

@@ -15,6 +15,9 @@ class Solicitacao extends Model
         if (!$jaExiste) {
             $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => 4);
             $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?)", $parameters);
+            return true;
+        } else {
+            return false;
         }
     }
 

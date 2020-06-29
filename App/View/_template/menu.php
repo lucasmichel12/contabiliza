@@ -77,9 +77,6 @@
                              <div class="col">
                                  <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
                              </div>
-                             <div class="col">
-                                 <input type="date" class="form-control" name="data">
-                             </div>
                          </div>
                          <div class="modal-footer">
                              <!-- <a class="btn btn-danger text-white" data-dismiss="modal">Fechar</a> -->
