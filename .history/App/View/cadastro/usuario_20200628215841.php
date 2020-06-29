@@ -51,10 +51,10 @@
         </div>
         <div class="form-row mt-4">
             <div class="col-6">
-                <a href="<?=URL;?>Usuario/listar" class="btn btn-info-2">Listar Colaboradores</a>
+                <a href="<?=URL;?>Usuario/listar" class="btn btn-info">Listar Colaboradores</a>
             </div>
             <div class="col-6">
-                <button type="submit" class="btn btn-sucesso float-right ml-3">Enviar</button>
+                <button type="submit" class="btn btn-success float-right ml-3">Enviar</button>
             </div>
         </div>    
     </form>

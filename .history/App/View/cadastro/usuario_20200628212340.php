@@ -2,7 +2,7 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Cadastro</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario">Usuário</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="<?=URL;?>Usuario">Colaborador</a></li>
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/inserir" method="POST">
@@ -51,10 +51,10 @@
         </div>
         <div class="form-row mt-4">
             <div class="col-6">
-                <a href="<?=URL;?>Usuario/listar" class="btn btn-info-2">Listar Colaboradores</a>
+                <a href="<?=URL;?>Usuario/listar" class="btn btn-info">Listar Colaboradores</a>
             </div>
             <div class="col-6">
-                <button type="submit" class="btn btn-sucesso float-right ml-3">Enviar</button>
+                <button type="submit" class="btn btn-success float-right ml-3">Enviar</button>
             </div>
         </div>    
     </form>

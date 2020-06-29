@@ -355,7 +355,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #eeeff4;
+  background-color: #fff;
 }
 
 p {
@@ -879,7 +879,7 @@ aside.left-panel {
   top: 0;
   z-index: 999; }
 .right-panel .navbar-brand {
-  width: 185px;
+  width: 250px;
   display: inline-block; }
 .right-panel .menutoggle {
   padding-top: 7px; }
@@ -912,7 +912,7 @@ header.fixed-top {
   font-size: 1em;
   height: 40px;
   line-height: 40px;
-  width: 0px;
+  width: 40px;
   display: block;
   text-align: right; }
 
