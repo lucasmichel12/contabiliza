@@ -102,6 +102,9 @@ class Solicitacao extends Model
 
     public function listSolicitacoes($id_status)
     {
-        return $this->select("SELECT s.id_solicitacao, s.descricao, s.id_usuario, u.nome, data FROM solicitacao AS s INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE id_status = ? ORDER BY data", array("1" => $id_status));
+        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
+        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
+        WHERE id_status = 1 ORDER BY data", array("1" => $id_status));
     }
 }
