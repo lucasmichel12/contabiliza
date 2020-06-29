@@ -19,8 +19,8 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Solicitações</a>
                      <ul class="sub-menu children dropdown-menu">
 
-                         <li><i class="fa fa-clock-o"></i><a href="#">Pendentes</a></li>
-                         <li><i class="fa fa-check"></i><a href="#">Concluidas</a></li>
+                         <li><i class="fa fa-clock-o"></i><a href="<?=URL;?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
+                         <li><i class="fa fa-check"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
 
                      </ul>
                  </li>
@@ -31,7 +31,7 @@
                      <ul class="sub-menu children dropdown-menu">
                          <li><i class="menu-icon fa fa-plus-circle"></i><a href="#" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</a></li>
                          <li><i class="menu-icon fa fa-edit"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
-                         <li><i class="menu-icon fa  fa-check"></i><a href="<?= URL; ?>">Concluidas</a></li>
+                         <li><i class="menu-icon fa  fa-check"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
                      </ul>
                  </li>
              </ul>
