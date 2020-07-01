@@ -166,7 +166,7 @@
                 </div>
                 <!-- Fim Despesa -->
 
-                <!-- Modal Rateio -->
+                <!-- Conteudo Rateio -->
                 <div class="tab-pane fade" id="nav-rateio" role="tabpanel" aria-labelledby="nav-rateio-tab">
                     <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#rateio">+ Adicionar</button>
                     <!-- Tabela de Despesas -->

@@ -120,7 +120,7 @@ class SolicitacaoController
 
     public function solicitacoesPendentes()
     {
-        $solicitacoes = $this->Solicitacao->listSolicitacoes(1);
+        $solicitacoes = $this->Solicitacao->listSolicitacoesPendentes();
 
         require APP . "View/_template/header.php";
         require APP . 'View/_template/menu.php';
@@ -131,7 +131,7 @@ class SolicitacaoController
     
     public function solicitacoesConcluidas()
     {
-        $solicitacoes = $this->Solicitacao->listSolicitacoes(2);
+        $solicitacoes = $this->Solicitacao->listSolicitacoesConcluidas();
 
         require APP . "View/_template/header.php";
         require APP . 'View/_template/menu.php';

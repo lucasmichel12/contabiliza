@@ -34,18 +34,20 @@ class Solicitacao extends Model
         $despesa = $this->select("SELECT valor_definido, valor FROM despesa WHERE id_despesa = ? LIMIT 1", array("1" => $param['id_despesa']));
 
         if ($despesa[0]['valor_definido']) {
+            $percentual_regiao = $this->select("SELECT percentual FROM regiao WHERE id_regiao = ?", array("1" => $param['id_regiao']));
             $qtd = intval($param['qtd_despesa']);
             $valor = floatval($despesa[0]['valor']);
             $result = $qtd * $valor;
-
+            $percentual = $percentual_regiao[0]['percentual'] / 100;
+            $result = $result + ($percentual * $result);
             $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $result);
             $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)", $parameters);
         } else {
 
             $qtd = intval($param['qtd_despesa']);
             $valor = floatval($param['valor']);
-            $result = $qtd * $valor;
-            $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $result);
+            $valor_final = $qtd * $valor;
+            $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $valor_final);
             $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)", $parameters);
         }
 
@@ -100,11 +102,27 @@ class Solicitacao extends Model
         $this->query("UPDATE solicitacao SET id_status = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
 
-    public function listSolicitacoes($id_status)
+    public function listSolicitacoesConcluidas()
     {
         return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 1 ORDER BY data", array("1" => $id_status));
+        WHERE id_status = 2 ORDER BY data");
+    }
+
+    public function listSolicitacoesPendentes()
+    {
+        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
+        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
+        WHERE id_status = 1 ORDER BY data");
+    }
+
+    public function listSolicitacoesAbertas()
+    {
+        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
+        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
+        WHERE id_status = 4 ORDER BY data");
     }
 }
