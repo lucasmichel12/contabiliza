@@ -16,8 +16,9 @@ class Regiao extends Model implements ModelInterface
     
     public function update(Array $param)
     {
-        $parameters = array("1"=>$param['descricao'], "2"=>$param['percentual'], "3"=>$param['ativo'], "4"=>$param);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['percentual'], "3"=>$param['ativo'], "4"=>$param['id_regiao']);
         $this->query("UPDATE regiao SET descricao = ?, percentual = ?, ativo = ? WHERE id_regiao = ? LIMIT 1", $parameters);
+
     }
 
     public function getOne(Int $id)
@@ -46,6 +47,6 @@ class Regiao extends Model implements ModelInterface
     public function inactivate(Int $id)
     {
         $parameter = array("1"=>$id);
-        $this->query("UPDATE regiao SET ativo = 'Não' WHERE id_regiao = ?", $parameter);
+        $this->query("UPDATE regiao SET ativo = false WHERE id_regiao = ?", $parameter);
     }
 }

@@ -34,18 +34,20 @@ class Solicitacao extends Model
         $despesa = $this->select("SELECT valor_definido, valor FROM despesa WHERE id_despesa = ? LIMIT 1", array("1" => $param['id_despesa']));
 
         if ($despesa[0]['valor_definido']) {
+            $percentual_regiao = $this->select("SELECT percentual FROM regiao WHERE id_regiao = ?", array("1" => $param['id_regiao']));
             $qtd = intval($param['qtd_despesa']);
             $valor = floatval($despesa[0]['valor']);
             $result = $qtd * $valor;
-
+            $percentual = $percentual_regiao[0]['percentual'] / 100;
+            $result = $result + ($percentual * $result);
             $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $result);
             $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)", $parameters);
         } else {
 
             $qtd = intval($param['qtd_despesa']);
             $valor = floatval($param['valor']);
-            $result = $qtd * $valor;
-            $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $result);
+            $valor_final = $qtd * $valor;
+            $parameters = array("1" => $param['id_solicitacao'], "2" => $param['id_despesa'], "3" => $param['id_regiao'], "4" => $param['qtd_despesa'], "5" => $valor_final);
             $this->query("INSERT INTO solicitacao_despesa (id_solicitacao, id_despesa, id_regiao, qtd_despesa, valor) VALUES (?, ?, ?, ?, ?)", $parameters);
         }
 

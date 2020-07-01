@@ -51,7 +51,7 @@ class DespesaController implements CadastrosControllerInterfaces
 
         require APP . 'View/_template/header.php';
         require APP . 'View/_template/menu.php';
-        require APP . 'View/edita/despesas.php';
+        require APP . 'View/edita/despesa.php';
         require APP . 'View/_template/footer.php';
         
     }
