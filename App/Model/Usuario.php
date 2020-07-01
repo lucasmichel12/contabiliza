@@ -28,12 +28,12 @@ class Usuario extends Model implements ModelInterface
 
     public function listActives()
     {
-       return $this->query("SELECT * FROM usuario WHERE ativo = true ORDER BY nome");
+       return $this->select("SELECT * FROM usuario WHERE ativo = true ORDER BY nome");
     }
 
     public function listInactives()
     {
-       return $this->query("SELECT * FROM usuario WHERE ativo = false ORDER BY nome");
+       return $this->select("SELECT * FROM usuario WHERE ativo = false ORDER BY nome");
     }
 
     public function delete(Int $id)

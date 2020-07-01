@@ -12,7 +12,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">10</span></div>
+                                    <div class="stat-text"><span class="count"><?=$solicitacoesConcluidas;?></span></div>
                                     <div class="stat-heading">Solicitações Concluídas</div>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">6</span></div>
+                                    <div class="stat-text"><span class="count"><?=$solicitacoesAbertas;?></span></div>
                                     <div class="stat-heading">Solicitações em Aberto</div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">13</span></div>
+                                    <div class="stat-text"><span class="count"><?=$solicitacoesPendentes;?></span></div>
                                     <div class="stat-heading">Solicitações Pendentes</div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">27</span></div>
+                                    <div class="stat-text"><span class="count"><?=$usuarios;?></span></div>
                                     <div class="stat-heading">Funcionários Ativos</div>
                                 </div>
                             </div>
