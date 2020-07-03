@@ -21,6 +21,11 @@ class Solicitacao extends Model
         }
     }
 
+    public function getById($id)
+    {
+        return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_solicitacao = ? LIMIT 1", array("1"=>$id));
+    }
     public function getOpen()
     {
         return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
@@ -96,10 +101,10 @@ class Solicitacao extends Model
         $this->query("UPDATE solicitacao SET valor_total = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
 
-    public function closeSolicitation($id_solicitacao, $id_status)
+    public function closeSolicitation($id_solicitacao)
     {
-        $parameters = array("1" => $id_status, "2" => $id_solicitacao);
-        $this->query("UPDATE solicitacao SET id_status = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
+        $parameters = array("1" => $id_solicitacao);
+        $this->query("UPDATE solicitacao SET id_status = 1 WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
 
     public function listSolicitacoesConcluidas()

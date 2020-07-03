@@ -59,14 +59,11 @@ class SolicitacaoController
 
     public function abrirSolicitacao()
     {
-        if($this->Solicitacao->insert($_POST))
-        {
+        if ($this->Solicitacao->insert($_POST)) {
             header("location:" . URL . "Solicitacao/");
         } else {
             $this->Erro->index();
         }
-
-        
     }
 
     public function atualizaRateio()
@@ -114,7 +111,7 @@ class SolicitacaoController
     public function finalizaSolicitacao()
     {
 
-        $this->Solicitacao->closeSolicitation($this->id, 1);
+        $this->Solicitacao->closeSolicitation($this->id);
         header("location:" . URL . "Home");
     }
 
@@ -128,7 +125,7 @@ class SolicitacaoController
         require APP . 'View/_template/footer.php';
     }
 
-    
+
     public function solicitacoesConcluidas()
     {
         $solicitacoes = $this->Solicitacao->listSolicitacoesConcluidas();
@@ -137,5 +134,21 @@ class SolicitacaoController
         require APP . 'View/_template/menu.php';
         require APP . 'View/solicitacao/concluidas.php';
         require APP . 'View/_template/footer.php';
+    }
+
+    public function auditoria()
+    {
+        if (isset($this->id)) {
+
+            $id_solicitacao = intval($this->id);
+            $solicitacao = $this->Solicitacao->getById($this->id);
+            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
+            $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
+            $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
+            require APP . "View/_template/header.php";
+            require APP . 'View/_template/menu.php';
+            require APP . 'View/solicitacao/auditoria.php';
+            require APP . 'View/_template/footer.php';
+        }
     }
 }

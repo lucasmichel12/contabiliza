@@ -20,7 +20,7 @@
                     <td><?= $solicitacao['descricao'] ?></td>
                     <td class="text-center"><?= $solicitacao['data'] ?></td>
                     <th class="text-center">
-                        <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditar/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
+                        <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
                     </th>
                 </tr>
             <?php } ?>
