@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 pad-responsivo">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mb-3">Quantidade de Solicitações de reembolso</h4>

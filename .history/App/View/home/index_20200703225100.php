@@ -121,7 +121,7 @@
         </div>
         <!-- /.orders -->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mb-3">Despesas mais recorrentes</h4>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 pad-responsivo">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mb-3">Quantidade de Solicitações de reembolso</h4>
@@ -187,9 +187,12 @@
                             <div id="chart1" style="width: 100%; height: 275px; padding: 0px; position: relative;"><canvas class="flot-base" width="574" height="275" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 574px; height: 275px;"></canvas>
                                 <div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
                                     <div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 52px; top: 256px; left: 261px; text-align: center;">12/09</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 52px; top: 256px; left: 518px; text-align: center;">12/15</div>
                                         <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 71px; top: 256px; left: 90px; text-align: center;">12/05</div>
                                         <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 71px; top: 256px; left: 175px; text-align: center;">12/07</div>
-                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 52px; top: 256px; left: 261px; text-align: center;">12/09</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 71px; top: 256px; left: 346px; text-align: center;">12/11</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 71px; top: 256px; left: 432px; text-align: center;">12/13</div>
                                     </div>
                                     <div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
                                         <div class="flot-tick-label tickLabel" style="position: absolute; top: 242px; left: 0px; text-align: right;">6320</div>
