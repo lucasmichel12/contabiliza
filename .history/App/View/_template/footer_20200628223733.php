@@ -22,8 +22,3 @@
 <script src="<?=URL;?>public/jquery/jqueryMatchHeight.min.js"></script>
 <script src="<?=URL;?>public/js/main.js"></script>
 </body>
-
-
-
-
-
