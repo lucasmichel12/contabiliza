@@ -1,7 +1,7 @@
 <div class="content">
 
-<!-- Solicitações Pendentes -->
-<div class="orders">
+    <!-- Solicitações Pendentes -->
+    <div class="orders">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
@@ -19,29 +19,17 @@
                                         <th class="text-center" scope="col">Opções</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-                                    <tr>
-                                        <td>Larissa Carvalho de Morais</td>
-                                        <td>Maringá - Congresso Nacional de Comunicação</td>
-                                        <td>15/08/2020</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-info padding-7 font-13" href="#">Visualizar</a>
-                                        </td>
-                                    </tr>
-                                </tbody> 
-                                
-                                <!-- <tbody>
-                                <?php foreach ($solicitacoes as $solicitacao) { ?>
-                                    <tr>
-                                        <td><?= $solicitacao['nome'] ?></td>
-                                        <td><?= $solicitacao['descricao'] ?></td>
-                                        <td class="text-center"><?= $solicitacao['data'] ?></td>
-                                        <th class="text-center">
-                                            <a class="btn btn-info" href="<?= URL; ?>Solicitacao/vizualizar/<?= $solicitacao['id_solicitacao']; ?>">Visualizar</a>
-                                        </th>
-                                    </tr>
-                                <?php } ?>
+                                    <?php foreach ($solicitacoes as $solicitacao) { ?>
+                                        <tr>
+                                            <td><?= $solicitacao['nome'] ?></td>
+                                            <td><?= $solicitacao['descricao'] ?></td>
+                                            <td class="text-center"><?= $solicitacao['data'] ?></td>
+                                            <td class="text-center">
+                                                <a class="btn btn-info" href="<?= URL; ?>Solicitacao/vizualizar/<?= $solicitacao['id_solicitacao']; ?>">Visualizar</a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody> -->
                             </table>
                         </div> <!-- /.table-stats -->
