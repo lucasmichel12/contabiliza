@@ -12,8 +12,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 pad-bottom-10">
                 <!-- <input type="text" class="form-control" placeholder="CNPJ" name="cnpj"> -->
-                <input type="text" class="form-control" placeholder="CNPJ" data-mask="00.000.000/0000-00" required name="cnpj">
-                <!-- <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf"> -->
+                <input type="text" class="form-control" placeholder="00.000.000/0000-00" name="cnpj">
             </div>
         </div> 
         <div class="form-row">

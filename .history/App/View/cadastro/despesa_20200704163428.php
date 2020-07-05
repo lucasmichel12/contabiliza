@@ -11,7 +11,9 @@
                 <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 pad-bottom-10">
-                <input type="text" class="form-control cpf" placeholder="Valor" name="valor"> 
+                <!-- <input type="text" class="form-control dinheiro" placeholder="Valor" name="valor"> -->
+                <!-- <input type="text" class="form-control" placeholder="Valor" data-symbol="R$ " data-thousands="." data-decimal="," required name="valor"> -->
+                <input type="text" id="demo1" />
             </div>
         </div> 
         <div class="form-row">
