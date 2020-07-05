@@ -79,7 +79,7 @@
 
         <div class="clearfix"></div>
 
-        <!-- Solicitações Pendentes -->
+        <!-- Orders -->
         <div class="orders">
             <div class="row">
                 <div class="col-xl-12">
@@ -130,8 +130,7 @@
                 </div> <!-- /.col-lg-8 -->
             </div>
         </div>
-        <!-- /Solicitações Pendentes -->
-
+        <!-- /.orders -->
         <div class="row pad-responsivo pad-home">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card">

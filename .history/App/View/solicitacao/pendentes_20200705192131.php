@@ -16,7 +16,7 @@
                                         <th scope="col">Usuário</th>
                                         <th scope="col">Descrição</th>
                                         <th scope="col">Data</th>
-                                        <th class="text-center" scope="col">Opções</th>
+                                        <th scope="col">Opções</th>
                                     </tr>
                                 </thead>
 
@@ -25,7 +25,7 @@
                                         <td>Larissa Carvalho de Morais</td>
                                         <td>Maringá - Congresso Nacional de Comunicação</td>
                                         <td>15/08/2020</td>
-                                        <td class="text-center">
+                                        <td>
                                             <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
                                         </td>
                                     </tr>
@@ -33,7 +33,7 @@
                                         <td>Lucas Michel</td>
                                         <td>São Paulo - Conferência Internacional Sicoob</td>
                                         <td>15/08/2020</td>
-                                        <td class="text-center">
+                                        <td>
                                             <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
                                         </td>
                                     </tr>
@@ -61,7 +61,7 @@
     <!-- /Solicitações Pendentes -->
 
 
-    <!-- <div class="row">
+    <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 font-13">
             <table class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">
                 <thead>
@@ -90,7 +90,7 @@
                         </th>
                     </tr>
                 </tbody>
-                <tbody>
+                <!-- <tbody>
                     <?php foreach ($solicitacoes as $solicitacao) { ?>
                         <tr>
                             <td><?= $solicitacao['nome'] ?></td>
@@ -101,8 +101,8 @@
                             </th>
                         </tr>
                     <?php } ?>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>
-</div> -->
+</div>

@@ -25,7 +25,7 @@
                                         <td>Larissa Carvalho de Morais</td>
                                         <td>Maringá - Congresso Nacional de Comunicação</td>
                                         <td>15/08/2020</td>
-                                        <td class="text-center">
+                                        <td>
                                             <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
                                         </td>
                                     </tr>

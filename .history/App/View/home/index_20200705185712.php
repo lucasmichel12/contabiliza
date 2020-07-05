@@ -79,7 +79,7 @@
 
         <div class="clearfix"></div>
 
-        <!-- Solicitações Pendentes -->
+        <!-- Orders -->
         <div class="orders">
             <div class="row">
                 <div class="col-xl-12">
@@ -130,9 +130,8 @@
                 </div> <!-- /.col-lg-8 -->
             </div>
         </div>
-        <!-- /Solicitações Pendentes -->
-
-        <div class="row pad-responsivo pad-home">
+        <!-- /.orders -->
+        <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-body">
@@ -191,7 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 pad-responsivo">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mb-3">Quantidade de Solicitações de reembolso</h4>

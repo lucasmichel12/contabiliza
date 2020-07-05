@@ -2164,12 +2164,11 @@ footer.site-footer {
       max-height: 250px !important;
       overflow: hidden !important; }
 
-      .pad-home {
-        padding-bottom: 40px;} 
-
 @media (max-width: 1680px) {
   .timeline li {
-    padding: 2px 0; }  }
+    padding: 2px 0; }
+    .pad-home {
+      padding-bottom: 50px;} }
 @media (max-width: 1368px) {
   .pad-home {
     padding-bottom: 50px;} 
@@ -2212,7 +2211,9 @@ footer.site-footer {
     font-size: 1.125em; }
   .weather span {
     font-size: 12px; } }
-@media (max-width: 1024px) {  
+@media (max-width: 1024px) {
+  .pad-home {
+    padding-bottom: 50px;} 
   .open aside.left-panel {
     width: 280px;
     max-width: 280px; }
@@ -2426,14 +2427,16 @@ footer.site-footer {
     padding: 0 1.125em; }
     footer.site-footer .footer-inner {
       padding: 1.75em 1em; } }
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
+  .pad-home {
+    padding-bottom: 50px;} 
   [class*="col"].no-padding {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none; } }
 @media (max-width: 768px) { 
   .pad-responsivo {
-    padding-bottom: 80px!important;
+    padding-bottom: 80px;
   }
   .font-13 {
     font-size: 13px!important;
