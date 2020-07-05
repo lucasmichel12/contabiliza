@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
 
-
+    <!-- Plugins de validação de formulários -->
+    <script src="<?=URL;?>public/jquery/jquery.mask.min.js"></script>
+    <script src="<?=URL;?>public/js/forms/jquery.validate.js"></script>
+    <script src="<?=URL;?>public/js/forms/messages_pt_BR.js"></script>
+    <script src="<?=URL;?>public/js/forms/methods_pt.js"></script>
+    <script src="<?=URL;?>public/jquery/jqueryMaskMoney.min.js"></script>  
 </head>
 <body>
     

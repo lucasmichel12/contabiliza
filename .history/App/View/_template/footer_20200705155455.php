@@ -14,21 +14,23 @@
 </footer>
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.4-beta.33/inputmask.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js"></script>
 <!-- <script src="<?=URL;?>public/jquery/jquery.min.js"></script> -->
-<!-- <script src="<?=URL;?>public/jquery/jquery.flot.js"></script>
-<script src="<?=URL;?>public/jquery/jquery.flot.pie.js"></script> -->
+<script src="<?=URL;?>public/jquery/jquery.flot.js"></script>
+<script src="<?=URL;?>public/jquery/jquery.flot.pie.js"></script>
 <!-- <script src="<?=URL;?>public/jquery/inputmask.js"></script> -->
-<!-- <script src="<?=URL;?>public/jquery/jqueryMaskMoney.min.js"></script>    -->
 <script src="<?=URL;?>public/popper/popper.min.js"></script>
 <script src="<?=URL;?>public/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?=URL;?>public/jqueryMatchHeight.min.js"></script>
+<script src="<?=URL;?>public/jquery/jqueryMatchHeight.min.js"></script>
 <script src="<?=URL;?>public/js/main.js"></script>
-<script src="<?=URL;?>public/js/custom.js"></script>  
+<script src="<?=URL;?>public/js/custom.js"></script> 
+
+    <!-- Plugins de validação de formulários -->
+    <script src="<?=URL;?>public/jquery/jquery.mask.min.js"></script>
+    <script src="<?=URL;?>public/js/forms/jquery.validate.js"></script>
+    <script src="<?=URL;?>public/js/forms/messages_pt_BR.js"></script>
+    <script src="<?=URL;?>public/js/forms/methods_pt.js"></script>
+    <script src="<?=URL;?>public/jquery/jqueryMaskMoney.min.js"></script>  
+    
 </body>
 
 
