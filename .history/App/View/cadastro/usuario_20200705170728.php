@@ -11,7 +11,7 @@
             <input type="text" class="form-control" placeholder="Nome Completo" required name="nome">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
-            <input type="text" class="form-control cpf" placeholder="CPF" required name="cpf">
+            <input type="text" class="form-control" placeholder="CPF" required name="cpf">
             </div>
         </div>
         <div class="form-row">

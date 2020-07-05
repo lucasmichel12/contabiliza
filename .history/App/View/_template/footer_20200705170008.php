@@ -31,7 +31,23 @@
 <script src="<?=URL;?>public/js/custom.js"></script>  
 
 <script> 
+;(function($){
+    $("#money").inputmask('decimal', {
+                'alias': 'numeric',
+                'groupSeparator': ',',
+                'autoGroup': true,
+                'digits': 2,
+                'radixPoint': ".",
+                'digitsOptional': false,
+                'allowMinus': false,
+                'prefix': 'R$ ',
+                'placeholder': ''
+    });
+})(jQuery);
 
+jQuery(document).ready(function($){
+    
+});
 </script>
 </body>
 

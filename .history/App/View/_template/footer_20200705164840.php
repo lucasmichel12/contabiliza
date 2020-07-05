@@ -14,7 +14,6 @@
 </footer>
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
-<script src="<?=URL;?>public/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.4-beta.33/inputmask.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
@@ -26,12 +25,15 @@
 <!-- <script src="<?=URL;?>public/jquery/inputmask.js"></script> -->
 <!-- <script src="<?=URL;?>public/jquery/jqueryMaskMoney.min.js"></script>    -->
 <script src="<?=URL;?>public/popper/popper.min.js"></script>
+<script src="<?=URL;?>public/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=URL;?>public/jquery/jqueryMatchHeight.min.js"></script>
 <script src="<?=URL;?>public/js/main.js"></script>
 <script src="<?=URL;?>public/js/custom.js"></script>  
 
 <script> 
-
+$(function() {
+    $("#demo3").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+})
 </script>
 </body>
 

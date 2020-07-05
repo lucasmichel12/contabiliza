@@ -31,7 +31,20 @@
 <script src="<?=URL;?>public/js/custom.js"></script>  
 
 <script> 
-
+;(function($){
+    $('#money').mask('R$',"#.##0,00", { reverse: true });
+    // $("#money").mask('decimal', {
+    //             'alias': 'numeric',
+    //             'groupSeparator': ',',
+    //             'autoGroup': true,
+    //             'digits': 2,
+    //             'radixPoint': ".",
+    //             'digitsOptional': false,
+    //             'allowMinus': false,
+    //             'prefix': 'R$ ',
+    //             'placeholder': ''
+    // });
+})(jQuery); 
 </script>
 </body>
 

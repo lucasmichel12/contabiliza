@@ -31,7 +31,9 @@
 <script src="<?=URL;?>public/js/custom.js"></script>  
 
 <script> 
-
+$(function() {
+    $("#demo3").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+})
 </script>
 </body>
 

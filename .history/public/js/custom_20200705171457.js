@@ -10,7 +10,7 @@
     $(".cnpj").mask("99.999.999/9999-99");
     $('.cep').mask('99999-999');
     $('.data').mask('99/99/9999');
-    $('.percentual').mask("000%", { reverse: true }); 
+    $('.percentual').mask("##0%", { reverse: true }); 
     $('.dinheiro').mask("#.##0,00", { reverse: true }); 
 })(jQuery); 
 

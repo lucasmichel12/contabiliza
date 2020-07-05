@@ -31,7 +31,9 @@
 <script src="<?=URL;?>public/js/custom.js"></script>  
 
 <script> 
-
+;(function($){
+    $('#money').mask("#.##0,00", { reverse: true });
+})(jQuery); 
 </script>
 </body>
 
