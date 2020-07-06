@@ -19,8 +19,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Gerenciar Solicitações</a>
                     <ul class="sub-menu children dropdown-menu">
 
-                        <li><i class="fa fa-clock-o"></i><a href="<?=URL;?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
-                        <li><i class="fa fa-check"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
+                        <li><i class="fa fa-clock-o"></i><a href="<?= URL; ?>Solicitacao/solicitacoesPendentes">Pendentes</a></li>
+                        <li><i class="fa fa-check"></i><a href="<?= URL; ?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
 
                     </ul>
                 </li>
@@ -31,7 +31,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-plus-circle"></i><a href="#" data-toggle="modal" data-target="#novaSolicitacao">Nova Solicitação</a></li>
                         <li><i class="menu-icon fa fa-edit"></i><a href="<?= URL; ?>Solicitacao/">Aberta</a></li>
-                        <li><i class="menu-icon fa  fa-check"></i><a href="<?=URL;?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
+                        <li><i class="menu-icon fa  fa-check"></i><a href="<?= URL; ?>Solicitacao/solicitacoesConcluidas">Concluidas</a></li>
                     </ul>
                 </li>
             </ul>
@@ -50,47 +50,47 @@
         </div>
 
         <div class="top-right">
-                <div class="header-menu">
-                    <div class="header-left"> 
-                        <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">3</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">Notificações</p>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-check"></i>
-                                    <p>Solicitação Concluída</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-info"></i>
-                                    <p>2 Solicitações em Análise</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-warning"></i>
-                                    <p>1 Solicitação Auditada</p>
-                                </a>
-                            </div>
+            <div class="header-menu">
+                <div class="header-left">
+                    <div class="dropdown for-notification">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="count bg-danger">3</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="notification">
+                            <p class="red">Notificações</p>
+                            <a class="dropdown-item media" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Solicitação Concluída</p>
+                            </a>
+                            <a class="dropdown-item media" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>2 Solicitações em Análise</p>
+                            </a>
+                            <a class="dropdown-item media" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>1 Solicitação Auditada</p>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="<?= URL; ?>public/img/admin.jpg" alt="User Avatar">
-                        </a>
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="<?= URL; ?>public/img/admin.jpg" alt="User Avatar">
+                    </a>
 
-                        <div class="user-menu dropdown-menu">
-                            <!-- <a class="nav-link" href="#"><i class="fa fa- user"></i>Meu perfil</a>
+                    <div class="user-menu dropdown-menu">
+                        <!-- <a class="nav-link" href="#"><i class="fa fa- user"></i>Meu perfil</a>
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Configurações</a> -->
 
-                            <a class="nav-link" href="<?= URL; ?>/Logout"><i class="fa fa-power -off"></i>Sair</a>
-                        </div>
+                        <a class="nav-link" href="<?= URL; ?>/Logout"><i class="fa fa-power -off"></i>Sair</a>
                     </div>
-
                 </div>
+
             </div>
+        </div>
 
         <!-- <div class="top-right">
             <div class="header-menu">
@@ -114,13 +114,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                     <!-- Formulário Nova Solicitação -->
                     <form action="<?= URL; ?>Solicitacao/abrirSolicitacao" method="POST">
-                    <input type="hidden" name="id_usuario" value="<?=$_SESSION['usuario_logado']['id'];?>">
+                        <input type="hidden" name="id_usuario" value="<?= $_SESSION['usuario_logado']['id']; ?>">
                         <div class="form-row">
                             <div class="col">
                                 <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
+                            </div>
+                        </div>
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <label for="selecCentroCusto">Rateio</label>
+                                <select class="custom-select" id="selectCentroCusto" name="idcentro_custo">
+                                    <?php foreach ($centrosCusto as $centroCusto) { ?>
+                                        <option value="<?= $centroCusto['idcentro_custo']; ?>"><?= $centroCusto['descricao']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -13,8 +13,8 @@ class Solicitacao extends Model
     {
         $jaExiste = $this->select("SELECT id_solicitacao FROM solicitacao WHERE id_status = 1 AND id_usuario = ?", array("1" => $param['id_usuario']));
         if (!$jaExiste) {
-            $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => 1);
-            $this->query("INSERT INTO solicitacao (descricao, id_usuario, id_status) VALUES (?, ?, ?)", $parameters);
+            $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3"=> $param['idcentro_custo'], "4" => 1);
+            $this->query("INSERT INTO solicitacao (descricao, id_usuario, idcentro_custo, id_status) VALUES (?, ?, ? ,?)", $parameters);
             return true;
         } else {
             return false;
