@@ -1,0 +1,144 @@
+/* Margens e Paddings */
+.mar-top-18 {
+        margin-top:18px;
+}
+.pad-right-25 {
+        padding-right: 25px !important;
+}
+.mar-bottom-0 {
+        margin-bottom: 0px;
+}
+.pad-bottom-10{
+        padding-bottom: 10px;
+}
+/* Fim Margens e Paddings */
+
+
+.bg-login {
+        background-color: #757671;
+}
+
+.erro {font-size: 14rem; color: white;}
+.ops {font-size: 1.5rem;}
+
+.btn-sucesso {
+        color: #fff;
+        background-color: #00c292;
+        border-color: #04c394;
+}
+
+.btn-sucesso:hover {
+        color: #fff;
+        background-color: #0ba982;
+        border-color: #05b187;
+}
+
+.btn-info-2 {
+        color: #fff;
+        background-color: #008bb0;
+        border-color: #1394b6;
+}
+/* .btn-info-2 {
+        color: #fff;
+        background-color: #fb9678;
+        border-color: #f99476;
+} */
+
+.btn-info-2:hover {
+        color: #fff;
+        background-color: #f77f5b;
+        border-color: #f99476;
+}
+
+.topo-auditoria {
+        text-transform: uppercase;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        color: #1eb576;
+        text-align: center;
+}
+
+.card-header:first-child {
+        border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)!important;
+    }
+
+.font-600 {
+        font-weight: 600;
+}
+
+.modal-footer {
+        justify-content: center;
+        border-top: 0px solid #fff !important;
+}
+
+.modal-titulo {
+        text-align: center;
+        font-weight: 600;
+        color: #6c757d;
+}
+
+.modal-header .close {
+        margin: -40px -5px -1rem auto !important;
+        color: #f00!important;
+}
+
+
+.full-height {
+        height: 100%!important;
+}
+
+.site-footer{
+        /* border-top: 1px solid #333; */
+        bottom: 0;
+        left: 0;
+        /* height: 40px; */
+        position: fixed;
+        width: 100%;
+}
+
+.shadow-top {
+        box-shadow: 1rem 1.2rem 1rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.breadcrumb {
+        background-color: #ffffff!important;
+}
+
+.card-auditoria {
+        margin-bottom: 0px!important;
+        border-radius: 0px!important;
+        padding: 0px!important;
+        border: 0px solid transparent;
+        -webkit-box-shadow: 0 0 0px rgba(0, 0, 0, 0,)!important;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0,)!important;
+        position: relative; 
+        display: flex; 
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0px solid rgba(0,0,0,0,)!important;
+        border-radius: 0px!important;
+}
+
+.card-auditoria-top {
+        border-radius: 0px 0px 5px 5px!important;
+        padding: 0!important;
+        border: 0px solid transparent!important;
+        -webkit-box-shadow: 0 0 0px rgba(0, 0, 0, 0,)!important;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0,)!important;
+        border-bottom: 1px solid rgba(0,0,0,0.5)!important;
+        border-right: 1px solid rgba(0,0,0,0.5)!important;
+        border-left: 1px solid rgba(0,0,0,0.5)!important;
+}
+.card-auditoria-bottom {
+        margin-bottom: 0px;
+        border-radius: 5px 5px 0px 0px;
+        padding: 0!important;
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0,)!important;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0,)!important;
+        border-top: 1px solid rgba(0,0,0,0.5)!important;
+        border-right: 1px solid rgba(0,0,0,0.5)!important;
+        border-left: 1px solid rgba(0,0,0,0.5)!important;
+}
