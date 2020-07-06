@@ -25,24 +25,24 @@
                                         <th class="text-center" scope="col">Rateio</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
-                                        <tr>
-                                            <td><?= $solicitacao[0]['nome']; ?></td>
-                                            <td><?= $solicitacao[0]['descricao']; ?></td>
-                                            <td><?= $solicitacao[0]['data']; ?></td> 
-                                            <td class="text-center">
-                                                <?php if (isset($rateios) && $rateios != null) foreach ($rateios as $rateio) { ?>
-                                                    <?= $rateio['descricao']; ?>
-                                                <?php } ?>
-                                            </td>
-                                        </tr>  
+                                <tbody>
+                                    <tr>
+                                        <td><?= $solicitacao[0]['nome']; ?></td>
+                                        <td><?= $solicitacao[0]['descricao']; ?></td>
+                                        <td><?= $solicitacao[0]['data']; ?></td>
+                                        <td class="text-center">
+                                            <?php if (isset($rateios) && $rateios != null) foreach ($rateios as $rateio) { ?>
+                                                <?= $rateio['descricao']; ?>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>
                     <!-- /Resumo -->
 
-                    <!-- Despesas --> 
+                    <!-- Despesas -->
                     <div class="card-body fundo-aud">
                         <h4 class="box-title titulo-auditoria">Despesas</h4>
                     </div>
@@ -52,35 +52,26 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">Descrição</th>
-                                        <th class="text-center" scope="col">Valor</th> 
+                                        <th class="text-center" scope="col">Valor</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
                                 <tr>
-                                    <td class="text-center">Almoço</td>
-                                    <td class="text-center">R$50,00</td>
-                                </tr> 
-                                <tr>
-                                    <td class="text-center">Hotel</td>
-                                    <td class="text-center">R$250,00</td>
-                                </tr> 
-                                <!-- <tr> 
-                                    <td>
+                                    <td class="text-center">
                                         <?php if (isset($despesasViagem) && $despesasViagem != null) foreach ($despesasViagem as $despesa) { ?>
                                             <?= $despesa['descricao'] ?>
-                                        <?php } ?> 
+                                        <?php } ?>
                                     </td>
-                                    
-                                    <td>
+
+                                    <td class="text-center">
                                         <?php if (isset($despesasViagem) && $despesasViagem != null) foreach ($despesasViagem as $despesa) { ?>
                                             <?= $despesa['valor'] ?>
                                         <?php } ?>
                                     </td>
-                                </tr>  -->
+                                </tr>
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
-                    </div> 
+                    </div>
                     <!-- /Despesas -->
 
                     <!-- Roteiros -->
@@ -93,33 +84,23 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">Destino</th>
-                                        <th class="text-center" scope="col">Descrição</th> 
+                                        <th class="text-center" scope="col">Descrição</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                     <tr>
-                                        <td class="text-center">PA04 - Cruzeiro do Oeste</td>
-                                        <td class="text-center">Manutenção Totem PA04</td>
-                                    </tr> 
-                                    <tr>
-                                        <td class="text-center">PA10 - Tapejara</td>
-                                        <td class="text-center">Manutenção PA10 e formatação computador</td>
-                                    </tr> 
-
-                                    <!-- <tr>
-                                        <td>
-                                        <?php if (isset($roteiros) && $roteiros != null) foreach ($roteiros as $roteiro) { ?>
-                                            <?= $roteiro['destino'] ?>
-                                        <?php } ?>
-                                        </td> 
-
-                                        <td>
-                                        <?php if (isset($roteiros) && $roteiros != null) foreach ($roteiros as $roteiro) { ?>
-                                            <?= $roteiro['descricao'] ?>
-                                        <?php } ?>
+                                        <td class="text-center">
+                                            <?php if (isset($roteiros) && $roteiros != null) foreach ($roteiros as $roteiro) { ?>
+                                                <?= $roteiro['destino'] ?>
+                                            <?php } ?>
                                         </td>
-                                        
-                                    </tr>  -->
+
+                                        <td class="text-center">
+                                            <?php if (isset($roteiros) && $roteiros != null) foreach ($roteiros as $roteiro) { ?>
+                                                <?= $roteiro['descricao'] ?>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -136,18 +117,18 @@
                             <div class="col-lg-12 pad-bottom-20">
                                 <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
                                 <textarea class="form-control" aria-label="With textarea" name="auditoria"></textarea>
-                            </div> 
+                            </div>
 
                             <div class="col-6">
-                                <a href="<?=URL;?>Usuario/listar" class="btn btn-rejeitar">Rejeitar </a>
+                                <a href="<?= URL; ?>Usuario/listar" class="btn btn-rejeitar">Rejeitar </a>
                             </div>
                             <div class="col-6">
                                 <button type="submit" class="btn btn-sucesso float-right ml-3">Aprovar</button>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                     <!-- /Parecer Auditoria -->
-                    
+
                 </div>
                 <!-- /Painel de Auditoria -->
             </div>

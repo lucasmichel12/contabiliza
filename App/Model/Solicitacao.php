@@ -104,7 +104,7 @@ class Solicitacao extends Model
     public function closeSolicitation($id_solicitacao)
     {
         $parameters = array("1" => $id_solicitacao);
-        $this->query("UPDATE solicitacao SET id_status = 1 WHERE id_solicitacao = ? LIMIT 1", $parameters);
+        $this->query("UPDATE solicitacao SET id_status = 2 WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
 
     public function listSolicitacoesConcluidas()
