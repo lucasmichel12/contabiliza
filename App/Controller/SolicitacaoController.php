@@ -108,10 +108,10 @@ class SolicitacaoController
         }
     }
 
-    public function finalizaSolicitacao()
+    public function auditado()
     {
 
-        $this->Solicitacao->closeSolicitation($this->id);
+        $this->Solicitacao->closeSolicitation($_POST);
         header("location:" . URL . "Home");
     }
 

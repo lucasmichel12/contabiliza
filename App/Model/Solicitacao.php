@@ -101,10 +101,15 @@ class Solicitacao extends Model
         $this->query("UPDATE solicitacao SET valor_total = ? WHERE id_solicitacao = ? LIMIT 1", $parameter);
     }
 
-    public function closeSolicitation($id_solicitacao)
+    public function closeSolicitation(array $param)
     {
-        $parameters = array("1" => $id_solicitacao);
-        $this->query("UPDATE solicitacao SET id_status = 2 WHERE id_solicitacao = ? LIMIT 1", $parameters);
+        if(isset($param['id_status']) && isset($param['auditoria']) && isset($param['id_solicitacao']))
+        {
+            $parameters = array("1"=>$param['id_status'], "2"=>$param['auditoria'], "3"=>$param['id_solicitacao']);
+        } else {
+            $parameters = array("1"=>2, "2"=>"", "3"=>$param['id_solicitacao']);
+        }
+        $this->query("UPDATE solicitacao SET id_status = ?, auditoria = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
 
     public function listSolicitacoesConcluidas()

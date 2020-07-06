@@ -91,7 +91,10 @@
                     </div>
                     <div class="row">
                        <div class="col">
-                            <a href="<?=URL;?>Solicitacao/finalizaSolicitacao/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-warning" >Concluir</a>
+                            <form action="<?=URL;?>Solicitacao/auditado" method="post">
+                                    <input type="hidden" name="id_solicitacao" value="<?=$solicitacao[0]['id_solicitacao'];?>">
+                                <button class="btn btn-warning" >Concluir</button>
+                            </form>
                        </div>
                        <div class="col">
                             <a href="<?=URL;?>Solicitacao/index/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>

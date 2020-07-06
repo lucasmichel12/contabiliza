@@ -27,12 +27,12 @@ class CentroCusto extends Model implements ModelInterface
 
     public function listActives()
     {
-        return $this->query("SELECT * FROM centro_custo WHERE ativo = true ORDER BY descricao DESC");
+        return $this->select("SELECT * FROM centro_custo WHERE ativo = true ORDER BY descricao DESC");
     }
 
     public function listInactives()
     {
-        return $this->query("SELECT * FROM centro_custo WHERE ativo = false ORDER BY descricao DESC");
+        return $this->select("SELECT * FROM centro_custo WHERE ativo = false ORDER BY descricao DESC");
     }
 
     public function delete(Int $id)

@@ -112,21 +112,26 @@
                         <h4 class="box-title titulo-auditoria ">Parecer do Auditor </h4>
                     </div>
 
-                    <div class="pad-20-aud card-body--">
-                        <div class="form-row">
-                            <div class="col-lg-12 pad-bottom-20">
-                                <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
-                                <textarea class="form-control" aria-label="With textarea" name="auditoria"></textarea>
-                            </div>
-
-                            <div class="col-6">
-                                <a href="<?= URL; ?>Usuario/listar" class="btn btn-rejeitar">Rejeitar </a>
-                            </div>
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-sucesso float-right ml-3">Aprovar</button>
+                    <form action="<?=URL;?>Solicitacao/auditado" method="POST">
+                        <div class="pad-20-aud card-body--">
+                            <div class="form-row">
+                                <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                <div class="col-lg-12 pad-bottom-20">
+                                    <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
+                                    <textarea class="form-control" aria-label="With textarea" name="auditoria"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <select class="form-control" name="id_status">
+                                        <option value="1">Rejeitar</option>
+                                        <option value="3">Aprovar</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                <button class="btn btn-success" type="submit">Concluir!</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!-- /Parecer Auditoria -->
 
                 </div>
