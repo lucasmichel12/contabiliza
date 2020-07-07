@@ -2,10 +2,11 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Despesa;
 
-class DespesaController implements CadastrosControllerInterfaces
+class DespesaController extends Controller implements CadastrosControllerInterfaces
 {
     private $id;
     private $Despesa;
@@ -19,47 +20,31 @@ class DespesaController implements CadastrosControllerInterfaces
 
     public function index()
     {
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/cadastro/despesa.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("cadastro", "despesa");
     }
 
     public function listar()
     {
         $despesas = $this->Despesa->listActives();
         $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/despesas.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("lista", "despesas");
     }
 
     public function listarInativos()
     {
         $despesas = $this->Despesa->listInactives();
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/despesas.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("lista", "despesas");
     }
 
     public function editar()
     {
         $despesa = $this->Despesa->getOne($this->id);
-
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/edita/despesa.php';
-        require APP . 'View/_template/footer.php';
-        
+        parent::loadViewAdmin("edita", "despesa");
     }
 
     public function inserir()
     {
-        if(isset($_POST['id_despesa']))
-        {
+        if (isset($_POST['id_despesa'])) {
             $this->Despesa->update($_POST);
             header("location:" . URL . "Despesa/");
         } else {
@@ -79,14 +64,13 @@ class DespesaController implements CadastrosControllerInterfaces
         $this->Despesa->inactivate($this->id);
         header("location:" . URL . "Despesa/listar");
     }
-      
+
     public function setId()
     {
-        if(isset($_GET['url']))
-        {
+        if (isset($_GET['url'])) {
             $url = $_GET['url'];
             $url = explode('/', $url);
-            if(isset($url[2]))$this->id = $url[2];
+            if (isset($url[2])) $this->id = $url[2];
         }
     }
 }

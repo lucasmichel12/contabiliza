@@ -3,10 +3,11 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Regiao;
 
-class RegiaoController implements CadastrosControllerInterfaces
+class RegiaoController extends Controller implements CadastrosControllerInterfaces
 {
     private $id;
     private $Regiao;
@@ -20,52 +21,40 @@ class RegiaoController implements CadastrosControllerInterfaces
 
     public function index()
     {
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/cadastro/regiao.php';
-        require APP . 'View/_template/footer.php';
+
+        parent::loadViewAdmin("cadastro", "regiao");
     }
 
     public function listar()
     {
         $regioes = $this->Regiao->listActives();
         $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/regioes.php';
-        require APP . 'View/_template/footer.php';
+
+        parent::loadViewAdmin("lista", "regioes");
     }
 
     public function listarInativos()
     {
         $regioes = $this->Regiao->listInactives();
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/regioes.php';
-        require APP . 'View/_template/footer.php';
+
+
+        parent::loadViewAdmin("lista", "regioes");
     }
 
     public function editar()
     {
         $regiao = $this->Regiao->getOne($this->id);
 
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/edita/regiao.php';
-        require APP . 'View/_template/footer.php';
-        
+
+        parent::loadViewAdmin("edita", "regiao");
     }
 
     public function inserir()
     {
-        if(isset($_POST['id_regiao']))
-        {
+        if (isset($_POST['id_regiao'])) {
             $this->Regiao->update($_POST);
-
         } else {
             $this->Regiao->insert($_POST);
-            
         }
 
         header("location:" . URL . "Regiao/");
@@ -85,11 +74,10 @@ class RegiaoController implements CadastrosControllerInterfaces
 
     public function setId()
     {
-        if(isset($_GET['url']))
-        {
+        if (isset($_GET['url'])) {
             $url = $_GET['url'];
             $url = explode('/', $url);
-            if(isset($url[2]))$this->id = $url[2];
+            if (isset($url[2])) $this->id = $url[2];
         }
     }
 }

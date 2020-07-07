@@ -2,10 +2,11 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\CentroCusto;
 
-class CentroCustoController implements CadastrosControllerInterfaces
+class CentroCustoController extends Controller implements CadastrosControllerInterfaces
 {
 
     private $id;
@@ -20,39 +21,27 @@ class CentroCustoController implements CadastrosControllerInterfaces
 
     public function index()
     {
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/cadastro/centroCusto.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("cadastro", "centroCusto");
     }
 
     public function listar()
     {
         $centroscusto = $this->CentroCusto->listActives();
         $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/centrosCusto.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("lista", "centrosCusto");
     }
 
     public function listarInativos()
     {
         $centroscusto = $this->CentroCusto->listInactives();
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/centrosCusto.php';
-        require APP . 'View/_template/footer.php';
+  
+        parent::loadViewUser("lista", "centrosCusto");
     }
 
     public function editar()
     {
         $centrocusto = $this->CentroCusto->getOne($this->id);
-        
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/edita/centroCusto.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("edita", "centroCusto");
     }
 
     public function inserir()

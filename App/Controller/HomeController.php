@@ -3,11 +3,12 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 use Contabiliza\Model\CentroCusto;
 use Contabiliza\Model\Solicitacao;
 use Contabiliza\Model\Usuario;
 
-class HomeController
+class HomeController extends Controller
 {
 
 
@@ -23,13 +24,11 @@ class HomeController
         $usuarios = count($Usuarios->listActives());
         $centrosCusto = $CentroCusto->listActives();
         
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/home/index.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("home", "index");
     }
 
     public function teste()
     {
+        
     }
 }

@@ -9,8 +9,9 @@ use Contabiliza\Model\Regiao;
 use Contabiliza\Model\Roteiro;
 use Contabiliza\Model\Solicitacao;
 use Contabiliza\Controller\ErrorController;
+use Contabiliza\Core\Controller;
 
-class SolicitacaoController
+class SolicitacaoController extends Controller
 {
     private $id;
     private $Solicitacao;
@@ -46,10 +47,8 @@ class SolicitacaoController
             $regioes = $this->Regiao->listActives();
             $despesas = $this->Despesa->listActives();
 
-            require APP . "View/_template/header.php";
-            require APP . 'View/_template/menu.php';
-            require APP . 'View/solicitacao/index.php';
-            require APP . 'View/_template/footer.php';
+            parent::loadViewAdmin("solicitacao", "index");
+            
         } else {
 
             //!Implementar mensagem de erro
@@ -118,22 +117,14 @@ class SolicitacaoController
     public function solicitacoesPendentes()
     {
         $solicitacoes = $this->Solicitacao->listSolicitacoesPendentes();
-
-        require APP . "View/_template/header.php";
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/solicitacao/pendentes.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("solicitacao", "pendentes");
     }
 
 
     public function solicitacoesConcluidas()
     {
         $solicitacoes = $this->Solicitacao->listSolicitacoesConcluidas();
-
-        require APP . "View/_template/header.php";
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/solicitacao/concluidas.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("solicitacao", "concluidas");
     }
 
     public function auditoria()
@@ -145,10 +136,7 @@ class SolicitacaoController
             $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
             $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
             $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
-            require APP . "View/_template/header.php";
-            require APP . 'View/_template/menu.php';
-            require APP . 'View/solicitacao/auditoria.php';
-            require APP . 'View/_template/footer.php';
+            parent::loadViewAdmin("solicitacao", "auditoria");
         }
     }
 }

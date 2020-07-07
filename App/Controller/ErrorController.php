@@ -2,14 +2,12 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 
-
-class ErrorController
+class ErrorController extends Controller
 {
     public function index()
     {
-        require APP . 'View/_template/header.php';
-        require APP . 'View/erro/index.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("erro", "index");
     }
 }

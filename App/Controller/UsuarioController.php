@@ -2,10 +2,11 @@
 
 namespace Contabiliza\Controller;
 
+use Contabiliza\Core\Controller;
 use Contabiliza\Interfaces\CadastrosControllerInterfaces;
 use Contabiliza\Model\Usuario;
 
-class UsuarioController implements CadastrosControllerInterfaces
+class UsuarioController extends Controller implements CadastrosControllerInterfaces
 {
     private $id;
     private $Usuario;
@@ -19,29 +20,23 @@ class UsuarioController implements CadastrosControllerInterfaces
 
     public function index()
     {
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/cadastro/usuario.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("cadastro", "usuario");
+
     }
 
     public function listar()
     {
         $usuarios = $this->Usuario->listActives();
         $btnHabilitar = true;
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/usuarios.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("lista", "usuarios");
+       
     }
 
     public function listarInativos()
     {
         $usuarios = $this->Usuario->listInactives();
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/lista/usuarios.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("lista", "usuarios");
+
     }
 
     public function inserir()
@@ -60,11 +55,7 @@ class UsuarioController implements CadastrosControllerInterfaces
     public function editar()
     {
         $usuario = $this->Usuario->getOne($this->id);
-
-        require APP . 'View/_template/header.php';
-        require APP . 'View/_template/menu.php';
-        require APP . 'View/edita/usuario.php';
-        require APP . 'View/_template/footer.php';
+        parent::loadViewAdmin("edita", "usuario");
         
     }
 
@@ -96,11 +87,7 @@ class UsuarioController implements CadastrosControllerInterfaces
      public function alterarSenha()
      {
          $usuario = $this->Usuario->getOne($this->id);
-         
-         require APP . 'View/_template/header.php';
-         require APP . 'View/_template/menu.php';
-         require APP . 'View/edita/alterarSenha.php';
-         require APP . 'View/_template/footer.php';
+         parent::loadViewAdmin("edita", "alterarSenha");
      }
 
      // Chama a função 'changeSenha()' da Model Usuario e registra a senha nova
