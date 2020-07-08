@@ -21,39 +21,45 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
 
     public function index()
     {
-        parent::loadViewAdmin("cadastro", "centroCusto");
+        
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            parent::loadViewAdmin("cadastro", "centroCusto");
+        } else {
+        
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listar()
     {
-        $centroscusto = $this->CentroCusto->listActives();
-        $btnHabilitar = true;
-        parent::loadViewAdmin("lista", "centrosCusto");
+        $data['centroscusto'] = $this->CentroCusto->listActives();
+        $data['btn'] = true;
+        parent::loadViewAdmin("lista", "centrosCusto", $data);
     }
 
     public function listarInativos()
     {
-        $centroscusto = $this->CentroCusto->listInactives();
-  
-        parent::loadViewUser("lista", "centrosCusto");
+        $data['centroscusto'] = $this->CentroCusto->listInactives();
+        $data['btn'] = false;
+        parent::loadViewAdmin("lista", "centrosCusto", $data);
     }
 
     public function editar()
     {
-        $centrocusto = $this->CentroCusto->getOne($this->id);
-        parent::loadViewAdmin("edita", "centroCusto");
+        $data = $this->CentroCusto->getOne($this->id);
+        parent::loadViewAdmin("edita", "centroCusto", $data);
     }
 
     public function inserir()
     {
-        if(isset($_POST['idcentro_custo']))
-        {      
+        if (isset($_POST['idcentro_custo'])) {
             $this->CentroCusto->update($_POST);
             header("location:" . URL . "CentroCusto/");
-        } else { 
+        } else {
             $this->CentroCusto->insert($_POST);
             header("location:" . URL . "CentroCusto/");
-        }        
+        }
     }
 
     public function deletar()
@@ -70,11 +76,10 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
 
     public function setId()
     {
-        if(isset($_GET['url']))
-         {
-             $url = $_GET['url'];
-             $url = explode('/', $url);
-             if(isset($url[2]))$this->id = $url[2];
-         }
+        if (isset($_GET['url'])) {
+            $url = $_GET['url'];
+            $url = explode('/', $url);
+            if (isset($url[2])) $this->id = $url[2];
+        }
     }
 }

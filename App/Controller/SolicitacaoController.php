@@ -20,6 +20,7 @@ class SolicitacaoController extends Controller
     private $Regiao;
     private $Despesa;
     private $Erro;
+    private $Privilegio;
 
     public function __construct()
     {
@@ -30,6 +31,7 @@ class SolicitacaoController extends Controller
         $this->Regiao = new Regiao();
         $this->Despesa = new Despesa();
         $this->Erro = new ErrorController();
+        $this->Privilegio = $_SESSION['usuario_logado']['admin'];
     }
 
     public function index()
@@ -40,15 +42,14 @@ class SolicitacaoController extends Controller
 
             $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
             $this->Solicitacao->updateValor($id_solicitacao);
-            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
-            $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
-            $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
-            $centrosCusto = $this->CentroCusto->listActives();
-            $regioes = $this->Regiao->listActives();
-            $despesas = $this->Despesa->listActives();
+            $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
+            $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
+            $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
+            $data['centrosCusto'] = $this->CentroCusto->listActives();
+            $data['regioes'] = $this->Regiao->listActives();
+            $data['despesas'] = $this->Despesa->listActives();
 
-            parent::loadViewAdmin("solicitacao", "index");
-            
+            parent::loadViewAdmin("solicitacao", "index", $data);
         } else {
 
             //!Implementar mensagem de erro
@@ -116,15 +117,20 @@ class SolicitacaoController extends Controller
 
     public function solicitacoesPendentes()
     {
-        $solicitacoes = $this->Solicitacao->listSolicitacoesPendentes();
-        parent::loadViewAdmin("solicitacao", "pendentes");
+        $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
+        parent::loadViewAdmin("solicitacao", "pendentes", $data);
     }
 
 
     public function solicitacoesConcluidas()
     {
-        $solicitacoes = $this->Solicitacao->listSolicitacoesConcluidas();
-        parent::loadViewAdmin("solicitacao", "concluidas");
+        if ($this->Privilegio) {
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
+            parent::loadViewAdmin("solicitacao", "pendentes", $data);
+        } else {
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
+            parent::loadViewUser("solicitacao", "pendentes", $data);
+        }
     }
 
     public function auditoria()
@@ -132,11 +138,11 @@ class SolicitacaoController extends Controller
         if (isset($this->id)) {
 
             $id_solicitacao = intval($this->id);
-            $solicitacao = $this->Solicitacao->getById($this->id);
-            $despesasViagem = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
-            $roteiros = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
-            $rateios = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
-            parent::loadViewAdmin("solicitacao", "auditoria");
+            $data['solicitacao'] = $this->Solicitacao->getById($this->id);
+            $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
+            $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
+            $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
+            parent::loadViewAdmin("solicitacao", "auditoria", $data);
         }
     }
 }

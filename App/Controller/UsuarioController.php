@@ -26,16 +26,16 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
 
     public function listar()
     {
-        $usuarios = $this->Usuario->listActives();
-        $btnHabilitar = true;
-        parent::loadViewAdmin("lista", "usuarios");
+        $data['usuarios'] = $this->Usuario->listActives();
+        $data['btn'] = true;
+        parent::loadViewAdmin("lista", "usuarios", $data);
        
     }
 
     public function listarInativos()
     {
-        $usuarios = $this->Usuario->listInactives();
-        parent::loadViewAdmin("lista", "usuarios");
+        $data['usuarios'] = $this->Usuario->listInactives();
+        parent::loadViewAdmin("lista", "usuarios", $data);
 
     }
 
@@ -54,8 +54,8 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
 
     public function editar()
     {
-        $usuario = $this->Usuario->getOne($this->id);
-        parent::loadViewAdmin("edita", "usuario");
+        $data['usuario'] = $this->Usuario->getOne($this->id);
+        parent::loadViewAdmin("edita", "usuario", $data);
         
     }
 
@@ -86,8 +86,8 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
      // Traz o registro da tabela pelo ID e monta a tela para alterar a senha
      public function alterarSenha()
      {
-         $usuario = $this->Usuario->getOne($this->id);
-         parent::loadViewAdmin("edita", "alterarSenha");
+         $data['usuario'] = $this->Usuario->getOne($this->id);
+         parent::loadViewAdmin("edita", "alterarSenha", $data);
      }
 
      // Chama a função 'changeSenha()' da Model Usuario e registra a senha nova

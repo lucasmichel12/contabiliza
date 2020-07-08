@@ -14,21 +14,23 @@ class HomeController extends Controller
 
     public function index()
     {
-        $Solicitacao = new Solicitacao();
-        $Usuarios = new Usuario();
-        $CentroCusto = new CentroCusto();
-        $solicitacoes = $Solicitacao->listSolicitacoesPendentes();
-        $solicitacoesPendentes = count($solicitacoes);
-        $solicitacoesConcluidas = count($Solicitacao->listSolicitacoesConcluidas());
-        $solicitacoesAbertas = count($Solicitacao->listSolicitacoesAbertas());
-        $usuarios = count($Usuarios->listActives());
-        $centrosCusto = $CentroCusto->listActives();
-        
-        parent::loadViewAdmin("home", "index");
-    }
+        if ($_SESSION['usuario_logado']['admin']) {
+            $Solicitacao = new Solicitacao();
+            $Usuarios = new Usuario();
+            $CentroCusto = new CentroCusto();
+            $solicitacoes = $Solicitacao->listSolicitacoesPendentes();
+            $data['pendentes'] = count($solicitacoes);
+            $data['concluidas'] = count($Solicitacao->listSolicitacoesConcluidas());
+            $data['abertas'] = count($Solicitacao->listSolicitacoesAbertas());
+            $data['usuarios'] = count($Usuarios->listActives());
+            $data['centrosCusto'] = $CentroCusto->listActives();
 
-    public function teste()
-    {
-        
+            parent::loadViewAdmin("home", "admin", $data);
+        } else {
+
+            parent::loadViewUser("home", "user");
+        }
     }
 }
+
+

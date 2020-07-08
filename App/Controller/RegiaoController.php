@@ -27,26 +27,21 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
 
     public function listar()
     {
-        $regioes = $this->Regiao->listActives();
-        $btnHabilitar = true;
-
-        parent::loadViewAdmin("lista", "regioes");
+        $data['regioes'] = $this->Regiao->listActives();
+        $data['btn'] = true;
+        parent::loadViewAdmin("lista", "regioes", $data);
     }
 
     public function listarInativos()
     {
-        $regioes = $this->Regiao->listInactives();
-
-
-        parent::loadViewAdmin("lista", "regioes");
+        $data['regioes'] = $this->Regiao->listInactives();
+        parent::loadViewAdmin("lista", "regioes", $data);
     }
 
     public function editar()
     {
-        $regiao = $this->Regiao->getOne($this->id);
-
-
-        parent::loadViewAdmin("edita", "regiao");
+        $data['regiao'] = $this->Regiao->getOne($this->id);
+        parent::loadViewAdmin("edita", "regiao", $data);
     }
 
     public function inserir()

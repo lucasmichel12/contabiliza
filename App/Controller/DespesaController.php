@@ -25,21 +25,21 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
 
     public function listar()
     {
-        $despesas = $this->Despesa->listActives();
-        $btnHabilitar = true;
-        parent::loadViewAdmin("lista", "despesas");
+        $data['despesas'] = $this->Despesa->listActives();
+        $data['btn'] = true;
+        parent::loadViewAdmin("lista", "despesas", $data);
     }
 
     public function listarInativos()
     {
-        $despesas = $this->Despesa->listInactives();
-        parent::loadViewAdmin("lista", "despesas");
+        $data['despesas'] = $this->Despesa->listInactives();
+        parent::loadViewAdmin("lista", "despesas", $data);
     }
 
     public function editar()
     {
-        $despesa = $this->Despesa->getOne($this->id);
-        parent::loadViewAdmin("edita", "despesa");
+        $data['despesa'] = $this->Despesa->getOne($this->id);
+        parent::loadViewAdmin("edita", "despesa", $data);
     }
 
     public function inserir()

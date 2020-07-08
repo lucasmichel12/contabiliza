@@ -13,14 +13,14 @@
             </tr>
         </thead>
         <tbody>
-        <?php  foreach($centroscusto as $centrocusto) { ?>
+        <?php  foreach($data['centroscusto'] as $item) { ?>
                 <tr>
-                    <td><?=$centrocusto['descricao']?></td>
-                    <td class="text-center"><?=$centrocusto['cnpj']?></td>
+                    <td><?=$item['descricao']?></td>
+                    <td class="text-center"><?=$item['cnpj']?></td>
                     <th class="text-center">
-                        <a class="btn btn-info" href="<?=URL;?>CentroCusto/editar/<?=$centrocusto['idcentro_custo'];?>">Alterar</a>
-                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "CentroCusto/desabilitar/{$centrocusto['idcentro_custo']}'>Desabilitar</a>";} ?> 
-                        <a class="btn btn-danger" href="<?=URL;?>CentroCusto/deletar/<?=$centrocusto['idcentro_custo'];?>">Excluir</a> 
+                        <a class="btn btn-info" href="<?=URL;?>CentroCusto/editar/<?=$item['idcentro_custo'];?>">Alterar</a>
+                        <?php if($data['btn']){echo "<a class='btn btn-warning' href=". URL . "CentroCusto/desabilitar/{$item['idcentro_custo']}'>Desabilitar</a>";} ?> 
+                        <a class="btn btn-danger" href="<?=URL;?>CentroCusto/deletar/<?=$item['idcentro_custo'];?>">Excluir</a> 
                     </th>
                 </tr>
             <?php } ?>
