@@ -58,7 +58,7 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
     public function editar()
     {
         if ($_SESSION['usuario_logado']['admin']) {
-            $data = $this->CentroCusto->getOne($this->id);
+            $data['centroCusto'] = $this->CentroCusto->getOne($this->id);
             parent::loadViewAdmin("edita", "centroCusto", $data);
         } else {
 

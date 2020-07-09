@@ -6,13 +6,13 @@
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>CentroCusto/inserir" method="POST">
-            <input type="hidden" name="idcentro_custo" value="<?=$data['centroCusto']['idcentro_custo'];?>">
+            <input type="hidden" name="idcentro_custo" value="<?=$data['centroCusto'][0]['idcentro_custo'];?>">
         <div class="form-row">
             <div class="col-8">
-                <input type="text" class="form-control" required placeholder="Nome Empresarial ou Fantasia" name="descricao" value="<?=$data['centroCusto']['descricao'];?>">
+                <input type="text" class="form-control" required placeholder="Nome Empresarial ou Fantasia" name="descricao" value="<?=$data['centroCusto'][0]['descricao'];?>">
             </div>
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="00.000.000/0000-00" name="cnpj" value="<?=$data['centroCusto']['cnpj'];?>">
+                <input type="text" class="form-control" placeholder="00.000.000/0000-00" name="cnpj" value="<?=$data['centroCusto'][0]['cnpj'];?>">
             </div>
         </div> 
         <div class="form-row">

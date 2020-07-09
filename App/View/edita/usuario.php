@@ -6,18 +6,18 @@
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Usuario/inserir" method="POST">
-            <input type="hidden" name="id_usuario" value="<?=$usuario[0]['id_usuario'];?>">
+            <input type="hidden" name="id_usuario" value="<?=$data['usuario'][0]['id_usuario'];?>">
         <div class="form-row">
             <div class="col-8">
-            <input type="text" class="form-control" placeholder="Nome Completo" required name="nome" value="<?=$usuario[0]['nome'];?>">
+            <input type="text" class="form-control" placeholder="Nome Completo" required name="nome" value="<?=$data['usuario'][0]['nome'];?>">
             </div>
             <div class="col-4">
-            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf" value="<?=$usuario[0]['cpf'];?>">
+            <input type="text" class="form-control" placeholder="CPF" data-mask="999.999.999-99" required name="cpf" value="<?=$data['usuario'][0]['cpf'];?>">
             </div>
         </div>
         <div class="form-row mt-3">
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="login" required name="login" value="<?=$usuario[0]['login'];?>">
+                <input type="text" class="form-control" placeholder="login" required name="login" value="<?=$data['usuario'][0]['login'];?>">
             </div>
         </div>
         <div class="form-row mt-3">

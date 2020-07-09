@@ -17,13 +17,11 @@ class HomeController extends Controller
         if ($_SESSION['usuario_logado']['admin']) {
             $Solicitacao = new Solicitacao();
             $Usuarios = new Usuario();
-            $CentroCusto = new CentroCusto();
             $data['solicitacoes'] = $Solicitacao->listSolicitacoesPendentes();
             $data['pendentes'] = count($data['solicitacoes']);
             $data['concluidas'] = count($Solicitacao->listSolicitacoesConcluidas());
             $data['abertas'] = count($Solicitacao->listSolicitacoesAbertas());
             $data['usuarios'] = count($Usuarios->listActives());
-            $data['centrosCusto'] = $CentroCusto->listActives();
 
             parent::loadViewAdmin("home", "admin", $data);
         } else {

@@ -42,10 +42,10 @@ class SolicitacaoController extends Controller
 
             $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
             $this->Solicitacao->updateValor($id_solicitacao);
+            $data['solicitacao'] = $solicitacao;
             $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
             $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
             $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
-            $data['centrosCusto'] = $this->CentroCusto->listActives();
             $data['regioes'] = $this->Regiao->listActives();
             $data['despesas'] = $this->Despesa->listActives();
 

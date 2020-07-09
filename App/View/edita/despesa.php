@@ -6,13 +6,13 @@
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Despesa/inserir" method="POST">
-    <input type="hidden" name="id_despesa" value="<?=$despesa[0]['id_despesa']; ?>">
+    <input type="hidden" name="id_despesa" value="<?=$data['despesa'][0]['id_despesa']; ?>">
         <div class="form-row">
             <div class="col-8">
-                <input type="text" class="form-control" required placeholder="Almoço, Janta, KM entre cidades" name="descricao" value="<?=$despesa[0]['descricao'];?>">
+                <input type="text" class="form-control" required placeholder="Almoço, Janta, KM entre cidades" name="descricao" value="<?=$data['despesa'][0]['descricao'];?>">
             </div>
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="valor" name="valor" value="<?=$despesa[0]['valor'];?>">
+                <input type="text" class="form-control" placeholder="valor" name="valor" value="<?=$data['despesa'][0]['valor'];?>">
             </div>
         </div> 
         <div class="form-row">

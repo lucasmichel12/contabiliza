@@ -30,7 +30,7 @@ class Regiao extends Model implements ModelInterface
 
     public function listActives()
     {
-        return $this->query("SELECT * FROM regiao WHERE ativo = true ORDER BY percentual DESC");
+        return $this->select("SELECT * FROM regiao WHERE ativo = true ORDER BY percentual DESC");
     }
 
     public function listInactives()

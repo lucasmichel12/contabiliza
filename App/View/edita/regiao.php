@@ -6,13 +6,13 @@
         </ol>
         </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?=URL;?>Regiao/inserir" method="POST">
-            <input type="hidden" name="id_regiao" value="<?=$regiao['0']['id_regiao'];?>">
+            <input type="hidden" name="id_regiao" value="<?=$data['regiao']['0']['id_regiao'];?>">
         <div class="form-row">
             <div class="col-8">
-                <input type="text" class="form-control" required placeholder="Região Ex: São Paulo, Exterior..." name="descricao" value="<?=$regiao['0']['descricao'];?>">
+                <input type="text" class="form-control" required placeholder="Região Ex: São Paulo, Exterior..." name="descricao" value="<?=$data['regiao']['0']['descricao'];?>">
             </div>
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="Percentual de acrescimo" name="percentual" value="<?=$regiao['0']['percentual'];?>">
+                <input type="text" class="form-control" placeholder="Percentual de acrescimo" name="percentual" value="<?=$data['regiao']['0']['percentual'];?>">
             </div>
         </div> 
         <div class="form-row">

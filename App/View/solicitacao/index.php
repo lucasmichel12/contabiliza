@@ -1,7 +1,7 @@
 <div class="content">
     <div class="card-header bg-white">
         <h4>
-            <p class="text-dark"><strong><?= $solicitacao[0]['descricao']; ?> | <?= $solicitacao[0]['data']; ?> | R$ <?= $solicitacao[0]['valor_total']; ?></strong></p>
+            <p class="text-dark"><strong><?= $data['solicitacao'][0]['descricao']; ?> | <?= $data['solicitacao'][0]['data']; ?> | R$ <?= $data['solicitacao'][0]['valor_total']; ?></strong></p>
         </h4>
     </div>
     <div class="card-body bg-white">
@@ -25,19 +25,19 @@
                     <div class="row">
                         <div class="col-4">
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <p class="text-dark"><?= $solicitacao[0]['descricao']; ?></p>
+                            <p class="text-dark"><?= $data['solicitacao'][0]['descricao']; ?></p>
                         </div>
                         <div class="col-4">
                             <p class="text-dark"><strong>Colaborador</strong></p>
-                            <p class="text-dark"><?= $solicitacao[0]['nome']; ?></p>
+                            <p class="text-dark"><?= $data['solicitacao'][0]['nome']; ?></p>
                         </div>
                         <div class="col-2">
                             <p class="text-dark"><strong>Data</strong></p>
-                            <p class="text-dark"><?= $solicitacao[0]['data']; ?></p>
+                            <p class="text-dark"><?= $data['solicitacao'][0]['data']; ?></p>
                         </div>
                         <div class="col-2">
                         <p class="text-dark"><strong>Rateio</strong></p>
-                        <?php if (isset($rateios) && $rateios != null) foreach ($rateios as $rateio) { ?>
+                        <?php if (isset($data['rateios']) && $data['rateios'] != null) foreach ($data['rateios'] as $rateio) { ?>
                                 <p class="text-dark"><?= $rateio['descricao']; ?></p>
                         <?php } ?>
                         </div>
@@ -48,8 +48,8 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <?php if (isset($despesasViagem) && $despesasViagem != null)
-                                foreach ($despesasViagem as $despesa) { ?>
+                            <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null)
+                                foreach ($data['despesasViagem'] as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark"><?= $despesa['descricao'] ?></p>
                                 </tr>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="col-6">
                             <p class="text-dark"><strong>Valor</strong></p>
-                            <?php if (isset($despesasViagem) && $despesasViagem != null)
-                                foreach ($despesasViagem as $despesa) { ?>
+                            <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null)
+                                foreach ($data['despesasViagem'] as $despesa) { ?>
                                 <tr>
                                     <p class="text-dark">R$ <?= $despesa['valor'] ?></p>
                                 </tr>
@@ -71,8 +71,8 @@
                     <div class="row">
                         <div class="col-6">
                             <p class="text-dark"><strong>Destino</strong></p>
-                            <?php if (isset($roteiros) && $roteiros != null)
-                                foreach ($roteiros as $roteiro) { ?>
+                            <?php if (isset($data['roteiros']) && $data['roteiros'] != null)
+                                foreach ($data['roteiros'] as $roteiro) { ?>
                                 <tr>
                                     <p class="text-dark"><?= $roteiro['destino'] ?></p>
                                 </tr>
@@ -81,8 +81,8 @@
                         <div class="col-6">
 
                             <p class="text-dark"><strong>Descrição</strong></p>
-                            <?php if (isset($roteiros) && $roteiros != null)
-                                foreach ($roteiros as $roteiro) { ?>
+                            <?php if (isset($data['roteiros']) && $data['roteiros'] != null)
+                                foreach ($data['roteiros'] as $roteiro) { ?>
                                 <tr>
                                     <p class="text-dark"><?= $roteiro['descricao'] ?></p>
                                 </tr>
@@ -92,12 +92,12 @@
                     <div class="row">
                        <div class="col">
                             <form action="<?=URL;?>Solicitacao/auditado" method="post">
-                                    <input type="hidden" name="id_solicitacao" value="<?=$solicitacao[0]['id_solicitacao'];?>">
+                                    <input type="hidden" name="id_solicitacao" value="<?=$data['solicitacao'][0]['id_solicitacao'];?>">
                                 <button class="btn btn-warning" >Concluir</button>
                             </form>
                        </div>
                        <div class="col">
-                            <a href="<?=URL;?>Solicitacao/index/<?=$solicitacao[0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>
+                            <a href="<?=URL;?>Solicitacao/index/<?=$data['solicitacao'][0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>
                        </div>
                     </div>
 
@@ -119,8 +119,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($roteiros) && $roteiros != null)
-                                foreach ($roteiros as $roteiro) { ?>
+                            <?php if (isset($data['roteiros']) && $data['roteiros'] != null)
+                                foreach ($data['roteiros'] as $roteiro) { ?>
                                 <tr>
                                     <td><?= $roteiro['descricao'] ?></td>
                                     <td class="text-center"><?= $roteiro['destino'] ?></td>
@@ -151,15 +151,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($despesasViagem) && $despesasViagem != null)
-                                foreach ($despesasViagem as $despesa) { ?>
+                            <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null)
+                                foreach ($data['despesasViagem'] as $despesa) { ?>
                                 <tr>
                                     <td class="text-center"><?= $despesa['descricao']; ?></td>
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
                                     <td class="text-center"><?= $despesa['valor']; ?></td>
                                     <th class="text-center">
-                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $despesa['id_solicitacao_despesa']; ?>">Excluir</a>
+                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $data['despesa']['id_solicitacao_despesa']; ?>">Excluir</a>
                                     </th>
                                 </tr>
                             <?php } ?>
@@ -180,8 +180,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($rateios) && $rateios != null)
-                                foreach ($rateios as $rateio) { ?>
+                            <?php if (isset($data['rateios']) && $data['rateios'] != null)
+                                foreach ($data['rateios'] as $rateio) { ?>
                                 <tr>
                                     <td class="text-center"><?= $rateio['descricao']; ?></td>
                                 </tr>
@@ -258,7 +258,7 @@
                                             <label class="input-group-text" for="selectDespesas">Despesa</label>
                                         </div>
                                         <select class="custom-select" id="selectDespesas" name="id_despesa">
-                                            <?php foreach ($despesas as $despesa) { ?>
+                                            <?php foreach ($data['despesas'] as $despesa) { ?>
                                                 <option value="<?= $despesa['id_despesa']; ?>"><?= $despesa['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
@@ -270,7 +270,7 @@
                                             <label class="input-group-text" for="selectRegioes">Região</label>
                                         </div>
                                         <select class="custom-select" id="selectRegioes" name="id_regiao">
-                                            <?php foreach($regioes as $regiao) { ?>
+                                            <?php foreach($data['regioes'] as $regiao) { ?>
                                                 <option value="<?=$regiao['id_regiao'];?>"><?=$regiao['descricao'];?></option>
                                             <?php } ?>
                                         </select>
@@ -315,7 +315,7 @@
                                             <label class="input-group-text" for="selectCentroCusto">Rateio</label>
                                         </div>
                                         <select class="custom-select" id="selectCentroCusto" name="idcentro_custo">
-                                            <?php foreach ($centrosCusto as $centroCusto) { ?>
+                                            <?php foreach ($data['centrosCusto'] as $centroCusto) { ?>
                                                 <option value="<?= $centroCusto['idcentro_custo']; ?>"><?= $centroCusto['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
