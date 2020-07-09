@@ -18,8 +18,8 @@ class HomeController extends Controller
             $Solicitacao = new Solicitacao();
             $Usuarios = new Usuario();
             $CentroCusto = new CentroCusto();
-            $solicitacoes = $Solicitacao->listSolicitacoesPendentes();
-            $data['pendentes'] = count($solicitacoes);
+            $data['solicitacoes'] = $Solicitacao->listSolicitacoesPendentes();
+            $data['pendentes'] = count($data['solicitacoes']);
             $data['concluidas'] = count($Solicitacao->listSolicitacoesConcluidas());
             $data['abertas'] = count($Solicitacao->listSolicitacoesAbertas());
             $data['usuarios'] = count($Usuarios->listActives());
@@ -28,9 +28,8 @@ class HomeController extends Controller
             parent::loadViewAdmin("home", "admin", $data);
         } else {
 
-            parent::loadViewUser("home", "user");
+            $data[] = "";
+            parent::loadViewUser("home", "user", $data);
         }
     }
 }
-
-

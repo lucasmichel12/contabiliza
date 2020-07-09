@@ -12,7 +12,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count"><?=$solicitacoesConcluidas;?></span></div>
+                                    <div class="stat-text"><span class="count"><?=$data['concluidas'];?></span></div>
                                     <div class="stat-heading">Solicitações Concluídas</div>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count"><?=$solicitacoesAbertas;?></span></div>
+                                    <div class="stat-text"><span class="count"><?=$data['abertas'];?></span></div>
                                     <div class="stat-heading">Solicitações em Aberto</div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count"><?=$solicitacoesPendentes;?></span></div>
+                                    <div class="stat-text"><span class="count"><?=$data['pendentes'];?></span></div>
                                     <div class="stat-heading">Solicitações Pendentes</div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count"><?=$usuarios;?></span></div>
+                                    <div class="stat-text"><span class="count"><?=$data['usuarios'];?></span></div>
                                     <div class="stat-heading">Funcionários Ativos</div>
                                 </div>
                             </div>
@@ -111,14 +111,14 @@
                                             </tr>
                                     </tbody> -->
                                     <tbody>
-                                        <?php foreach ($solicitacoes as $solicitacao) { ?>
+                                        <?php foreach ($data['solicitacoes'] as $item) { ?>
                                             <tr>
-                                                <td><?= $solicitacao['data'] ?></td>
-                                                <td><?= $solicitacao['nome'] ?></td>
-                                                <td><?= $solicitacao['centroCusto'] ?></td>
-                                                <td>R$ <?= $solicitacao['valor_total'] ?></td>
+                                                <td><?= $item['data'] ?></td>
+                                                <td><?= $item['nome'] ?></td>
+                                                <td><?= $item['centroCusto'] ?></td>
+                                                <td>R$ <?= $item['valor_total'] ?></td>
                                                 <td>
-                                                    <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $solicitacao['id_solicitacao']; ?>">Auditar</a>
+                                                    <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/auditoria/<?= $item['id_solicitacao']; ?>">Auditar</a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

@@ -20,26 +20,48 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
 
     public function index()
     {
-        parent::loadViewAdmin("cadastro", "despesa");
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            parent::loadViewAdmin("cadastro", "despesa");;
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listar()
     {
-        $data['despesas'] = $this->Despesa->listActives();
-        $data['btn'] = true;
-        parent::loadViewAdmin("lista", "despesas", $data);
+
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data['despesas'] = $this->Despesa->listActives();
+            $data['btn'] = true;
+            parent::loadViewAdmin("lista", "despesas", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listarInativos()
     {
-        $data['despesas'] = $this->Despesa->listInactives();
-        parent::loadViewAdmin("lista", "despesas", $data);
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data['despesas'] = $this->Despesa->listInactives();
+            parent::loadViewAdmin("lista", "despesas", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function editar()
     {
-        $data['despesa'] = $this->Despesa->getOne($this->id);
-        parent::loadViewAdmin("edita", "despesa", $data);
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data['despesa'] = $this->Despesa->getOne($this->id);
+            parent::loadViewAdmin("edita", "despesa", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function inserir()

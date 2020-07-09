@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        <?php  foreach($usuarios as $usuario) { ?>
+        <?php  foreach($data['usuarios'] as $usuario) { ?>
                 <tr>
                     <td><?=$usuario['nome']?></td>
                     <td class="text-center"><?=$usuario['login']?></td>
@@ -22,7 +22,7 @@
                     <th class="text-center">
                         <a class="btn btn-success" href="<?=URL;?>Usuario/editar/<?=$usuario['id_usuario'];?>">Editar</a>
                         <a class="btn btn-info" href="<?=URL;?>Usuario/alterarSenha/<?=$usuario['id_usuario'];?>">Alterar Senha</a>
-                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "Usuario/desabilitar/{$usuario['id_usuario']}'>Desabilitar</a>";} ?> 
+                        <?php if(isset($data['btn'])){echo "<a class='btn btn-warning' href=". URL . "Usuario/desabilitar/{$usuario['id_usuario']}'>Desabilitar</a>";} ?> 
                         <a class="btn btn-danger" href="<?=URL;?>Usuario/deletar/<?=$usuario['id_usuario'];?>">Excluir</a> 
                     </th>
                 </tr>

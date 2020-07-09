@@ -21,34 +21,49 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
 
     public function index()
     {
-        
+
         if ($_SESSION['usuario_logado']['admin']) {
 
             parent::loadViewAdmin("cadastro", "centroCusto");
         } else {
-        
+
             parent::loadViewUser("erro", "negado");
         }
     }
 
     public function listar()
     {
-        $data['centroscusto'] = $this->CentroCusto->listActives();
-        $data['btn'] = true;
-        parent::loadViewAdmin("lista", "centrosCusto", $data);
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data['centroscusto'] = $this->CentroCusto->listActives();
+            $data['btn'] = true;
+            parent::loadViewAdmin("lista", "centrosCusto", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listarInativos()
     {
-        $data['centroscusto'] = $this->CentroCusto->listInactives();
-        $data['btn'] = false;
-        parent::loadViewAdmin("lista", "centrosCusto", $data);
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data['centroscusto'] = $this->CentroCusto->listInactives();
+            $data['btn'] = false;
+            parent::loadViewAdmin("lista", "centrosCusto", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function editar()
     {
-        $data = $this->CentroCusto->getOne($this->id);
-        parent::loadViewAdmin("edita", "centroCusto", $data);
+        if ($_SESSION['usuario_logado']['admin']) {
+            $data = $this->CentroCusto->getOne($this->id);
+            parent::loadViewAdmin("edita", "centroCusto", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function inserir()

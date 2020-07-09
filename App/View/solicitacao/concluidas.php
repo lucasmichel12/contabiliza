@@ -20,7 +20,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($solicitacoes as $solicitacao) { ?>
+                                    <?php foreach ($data['solicitacoes'] as $solicitacao) { ?>
                                         <tr>
                                             <td><?= $solicitacao['nome'] ?></td>
                                             <td><?= $solicitacao['descricao'] ?></td>

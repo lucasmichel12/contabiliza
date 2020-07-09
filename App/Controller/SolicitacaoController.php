@@ -125,11 +125,11 @@ class SolicitacaoController extends Controller
     public function solicitacoesConcluidas()
     {
         if ($this->Privilegio) {
-            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
-            parent::loadViewAdmin("solicitacao", "pendentes", $data);
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesConcluidas();
+            parent::loadViewAdmin("solicitacao", "concluidas", $data);
         } else {
-            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
-            parent::loadViewUser("solicitacao", "pendentes", $data);
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesConcluidas();
+            parent::loadViewUser("solicitacao", "concluidas", $data);
         }
     }
 

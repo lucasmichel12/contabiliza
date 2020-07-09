@@ -13,13 +13,13 @@
             </tr>
         </thead>
         <tbody>
-        <?php  foreach($regioes as $regiao) { ?>
+        <?php  foreach($data['regioes'] as $regiao) { ?>
                 <tr>
                     <td width='30%'><?=$regiao['descricao']?></td>
                     <td class="text-center" width='30%'><?=$regiao['percentual']?>%</td>
                     <th class="text-center">
                         <a class="btn btn-info" href="<?=URL;?>Regiao/editar/<?=$regiao['id_regiao'];?>">Alterar</a>
-                        <?php if(isset($btnHabilitar)){echo "<a class='btn btn-warning' href=". URL . "Regiao/desabilitar/{$regiao['id_regiao']}'>Desabilitar</a>";} ?> 
+                        <?php if(isset($data['btn'])){echo "<a class='btn btn-warning' href=". URL . "Regiao/desabilitar/{$regiao['id_regiao']}'>Desabilitar</a>";} ?> 
                         <a class="btn btn-danger" href="<?=URL;?>Regiao/deletar/<?=$regiao['id_regiao'];?>">Excluir</a> 
                     </th>
                 </tr>

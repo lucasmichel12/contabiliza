@@ -8,6 +8,8 @@ class Controller {
 
     public function loadViewAdmin(String $pasta, String $arquivo, array $data = array())
     {
+
+
         require APP . "View/_template/header.php";
         require APP . "View/_template/admin/menu.php";
         require APP . "View/$pasta/$arquivo.php";
@@ -15,7 +17,7 @@ class Controller {
 
     }
 
-    public function loadViewUser(String $pasta, String $arquivo, array $data = array())
+    public function loadViewUser(String $pasta, String $arquivo, array $data)
     {
 
         require APP . "View/_template/header.php";

@@ -22,26 +22,54 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
     public function index()
     {
 
-        parent::loadViewAdmin("cadastro", "regiao");
+
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            parent::loadViewAdmin("cadastro", "regiao");
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listar()
     {
-        $data['regioes'] = $this->Regiao->listActives();
-        $data['btn'] = true;
-        parent::loadViewAdmin("lista", "regioes", $data);
+
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            $data['regioes'] = $this->Regiao->listActives();
+            $data['btn'] = true;
+            parent::loadViewAdmin("lista", "regioes", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function listarInativos()
     {
-        $data['regioes'] = $this->Regiao->listInactives();
-        parent::loadViewAdmin("lista", "regioes", $data);
+
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            $data['regioes'] = $this->Regiao->listInactives();
+            parent::loadViewAdmin("lista", "regioes", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function editar()
     {
-        $data['regiao'] = $this->Regiao->getOne($this->id);
-        parent::loadViewAdmin("edita", "regiao", $data);
+        
+        if ($_SESSION['usuario_logado']['admin']) {
+
+            $data['regiao'] = $this->Regiao->getOne($this->id);
+            parent::loadViewAdmin("edita", "regiao", $data);
+        } else {
+
+            parent::loadViewUser("erro", "negado");
+        }
     }
 
     public function inserir()

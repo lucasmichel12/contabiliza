@@ -127,8 +127,8 @@
                             <div class="col">
                                 <label for="selecCentroCusto">Rateio</label>
                                 <select class="custom-select" id="selectCentroCusto" name="idcentro_custo">
-                                    <?php foreach ($centrosCusto as $centroCusto) { ?>
-                                        <option value="<?= $centroCusto['idcentro_custo']; ?>"><?= $centroCusto['descricao']; ?></option>
+                                    <?php foreach ($data['centrosCusto'] as $item) { ?>
+                                        <option value="<?= $item['idcentro_custo']; ?>"><?= $item['descricao']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
