@@ -20,7 +20,7 @@ class HomeController extends Controller
             $data['solicitacoes'] = $Solicitacao->listSolicitacoesPendentes();
             $data['pendentes'] = count($data['solicitacoes']);
             $data['concluidas'] = count($Solicitacao->listSolicitacoesConcluidas());
-            $data['abertas'] = count($Solicitacao->listSolicitacoesAbertas());
+            $data['abertas'] = count($Solicitacao->listAllSolicitacoesAbertas());
             $data['usuarios'] = count($Usuarios->listActives());
 
             parent::loadViewAdmin("home", "admin", $data);

@@ -1,7 +1,7 @@
 <div class="content">
     <div class="card-header bg-white">
         <h4>
-            <p class="topo-auditoria"><strong><?= $data['solicitacao']['descricao']; ?> | <?= $data['solicitacao']['data']; ?> | R$ <?= $data['solicitacao']['valor_total']; ?></strong></p>
+            <p class="topo-auditoria"><strong><?= $data['solicitacao'][0]['descricao']; ?> | <?= $data['solicitacao'][0]['data']; ?> | R$ <?= $data['solicitacao'][0]['valor_total']; ?></strong></p>
         </h4>
     </div>
 
@@ -27,9 +27,9 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?= $data['solicitacao']['nome']; ?></td>
-                                        <td><?= $data['solicitacao']['descricao']; ?></td>
-                                        <td><?= $data['solicitacao']['data']; ?></td>
+                                        <td><?= $data['solicitacao'][0]['nome']; ?></td>
+                                        <td><?= $data['solicitacao'][0]['descricao']; ?></td>
+                                        <td><?= $data['solicitacao'][0]['data']; ?></td>
                                         <td class="text-center">
                                             <?php if (isset($data['rateios']) && $data['rateios'] != null) foreach ($data['rateios'] as $rateio) { ?>
                                                 <?= $rateio['descricao']; ?>
@@ -55,19 +55,12 @@
                                         <th class="text-center" scope="col">Valor</th>
                                     </tr>
                                 </thead>
-                                <tr>
-                                    <td class="text-center">
-                                        <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null) foreach ($data['despesasViagem'] as $despesa) { ?>
-                                            <?= $despesa['descricao'] ?>
-                                        <?php } ?>
-                                    </td>
-
-                                    <td class="text-center">
-                                        <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null) foreach ($data['despesasViagem'] as $despesa) { ?>
-                                            <?= $despesa['valor'] ?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
+                                <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null) foreach ($data['despesasViagem'] as $despesa) { ?>
+                                    <tr>
+                                        <td class="text-center"> <?= $despesa['descricao'] ?> </td>
+                                        <td class="text-center"> <?= $despesa['valor'] ?> </td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
@@ -88,19 +81,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="text-center">
-                                            <?php if (isset($data['roteiros']) && $data['roteiros'] != null) foreach ($data['roteiros'] as $roteiro) { ?>
-                                                <?= $roteiro['destino'] ?>
-                                            <?php } ?>
-                                        </td>
-
-                                        <td class="text-center">
-                                            <?php if (isset($data['roteiros']) && $data['roteiros'] != null) foreach ($data['roteiros'] as $roteiro) { ?>
-                                                <?= $roteiro['descricao'] ?>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
+                                    <?php if (isset($data['roteiros']) && $data['roteiros'] != null) foreach ($data['roteiros'] as $roteiro) { ?>
+                                        <tr>
+                                            <td class="text-center"><?= $roteiro['destino'] ?></td>
+                                            <td class="text-center"><?= $roteiro['descricao'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -115,7 +101,7 @@
                     <form action="<?= URL; ?>Solicitacao/auditado" method="POST">
                         <div class="pad-20-aud card-body--">
                             <div class="form-row">
-                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao']['id_solicitacao']; ?>">
+                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="col-lg-12 pad-bottom-20">
                                     <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
                                     <textarea class="form-control" aria-label="With textarea" name="auditoria"></textarea>

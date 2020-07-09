@@ -36,10 +36,10 @@
                             <p class="text-dark"><?= $data['solicitacao'][0]['data']; ?></p>
                         </div>
                         <div class="col-2">
-                        <p class="text-dark"><strong>Rateio</strong></p>
-                        <?php if (isset($data['rateios']) && $data['rateios'] != null) foreach ($data['rateios'] as $rateio) { ?>
+                            <p class="text-dark"><strong>Rateio</strong></p>
+                            <?php if (isset($data['rateios']) && $data['rateios'] != null) foreach ($data['rateios'] as $rateio) { ?>
                                 <p class="text-dark"><?= $rateio['descricao']; ?></p>
-                        <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="row mb-4 mt-4 border-dark border-bottom">
@@ -90,15 +90,15 @@
                         </div>
                     </div>
                     <div class="row">
-                       <div class="col">
-                            <form action="<?=URL;?>Solicitacao/auditado" method="post">
-                                    <input type="hidden" name="id_solicitacao" value="<?=$data['solicitacao'][0]['id_solicitacao'];?>">
-                                <button class="btn btn-warning" >Concluir</button>
+                        <div class="col">
+                            <form action="<?= URL; ?>Solicitacao/auditado" method="post">
+                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
+                                <button class="btn btn-warning">Concluir</button>
                             </form>
-                       </div>
-                       <div class="col">
-                            <a href="<?=URL;?>Solicitacao/index/<?=$data['solicitacao'][0]['id_solicitacao'];?>" class="btn btn-danger" >Excluir Solicitação</a>
-                       </div>
+                        </div>
+                        <div class="col">
+                            <a href="<?= URL; ?>Solicitacao/index/<?= $data['solicitacao'][0]['id_solicitacao']; ?>" class="btn btn-danger">Excluir Solicitação</a>
+                        </div>
                     </div>
 
                 </div>
@@ -191,7 +191,7 @@
                     <!-- Fim tabela -->
                 </div>
                 <!-- Fim Rateio -->
-                
+
             </div>
             <!-- Fim dos Conteudos -->
 
@@ -210,7 +210,7 @@
                         <div class="modal-body">
                             <!-- Formulário Novo Roteiro -->
                             <form action="<?= URL; ?>Solicitacao/adicionaRoteiro" method="POST">
-                                <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="form-row">
                                     <div class="col">
                                         <input type="text" class="form-control" required placeholder="Descrição" name="descricao">
@@ -251,7 +251,7 @@
 
                             <!-- Formulário Nova Despesa -->
                             <form action="<?= URL; ?>Solicitacao/adicionarDespesa" method="POST">
-                                <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="form-row">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -270,8 +270,8 @@
                                             <label class="input-group-text" for="selectRegioes">Região</label>
                                         </div>
                                         <select class="custom-select" id="selectRegioes" name="id_regiao">
-                                            <?php foreach($data['regioes'] as $regiao) { ?>
-                                                <option value="<?=$regiao['id_regiao'];?>"><?=$regiao['descricao'];?></option>
+                                            <?php foreach ($data['regioes'] as $regiao) { ?>
+                                                <option value="<?= $regiao['id_regiao']; ?>"><?= $regiao['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -308,7 +308,7 @@
 
                             <!-- Formulário Rateio -->
                             <form action="<?= URL; ?>Solicitacao/atualizaRateio" method="POST">
-                            <input type="hidden" name="id_solicitacao" value="<?= $solicitacao[0]['id_solicitacao']; ?>">
+                                <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="form-row">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">

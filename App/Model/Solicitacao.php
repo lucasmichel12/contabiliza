@@ -26,7 +26,7 @@ class Solicitacao extends Model
         return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_solicitacao = ? LIMIT 1", array("1"=>$id));
     }
-    public function getOpen()
+    public function getSolicitacao()
     {
         return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_status = 1 LIMIT 1");
@@ -128,11 +128,20 @@ class Solicitacao extends Model
         WHERE id_status = 2 ORDER BY data");
     }
 
-    public function listSolicitacoesAbertas()
+    public function listAllSolicitacoesAbertas()
     {
         return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
         WHERE id_status = 1 ORDER BY data");
+    }
+
+    public function listMySolicitacoesAbertas($id_usuario)
+    {
+        $parameter = array("1"=>$id_usuario);
+        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
+        INNER JOIN usuario AS u ON s.id_usuario = ? 
+        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
+        WHERE id_status = 1 ORDER BY data", $parameter);
     }
 }

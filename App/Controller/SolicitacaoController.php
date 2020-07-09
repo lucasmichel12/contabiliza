@@ -34,27 +34,17 @@ class SolicitacaoController extends Controller
         $this->Privilegio = $_SESSION['usuario_logado']['admin'];
     }
 
-    public function index()
+    public function aberta()
     {
-        $solicitacao = $this->Solicitacao->getOpen();
-
-        if (isset($solicitacao[0])) {
-
-            $id_solicitacao = intval($solicitacao[0]['id_solicitacao']);
-            $this->Solicitacao->updateValor($id_solicitacao);
-            $data['solicitacao'] = $solicitacao;
-            $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
-            $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
-            $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
-            $data['regioes'] = $this->Regiao->listActives();
-            $data['despesas'] = $this->Despesa->listActives();
-
-            parent::loadViewAdmin("solicitacao", "index", $data);
-        } else {
-
-            //!Implementar mensagem de erro
-            $this->Erro->index();
-        }
+        $solicitacao = $this->Solicitacao->getById($this->id);
+        $this->Solicitacao->updateValor($this->id);
+        $data['solicitacao'] = $solicitacao;
+        $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($this->id);
+        $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($this->id);
+        $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($this->id);
+        $data['regioes'] = $this->Regiao->listActives();
+        $data['despesas'] = $this->Despesa->listActives();
+        parent::loadViewAdmin("solicitacao", "solicitacao", $data);
     }
 
     public function abrirSolicitacao()
@@ -113,6 +103,17 @@ class SolicitacaoController extends Controller
 
         $this->Solicitacao->closeSolicitation($_POST);
         header("location:" . URL . "Home");
+    }
+
+    public function solicitacoesAbertas()
+    {
+        if ($this->Privilegio) {
+            $data['solicitacoes'] = $this->Solicitacao->listAllSolicitacoesAbertas();
+            parent::loadViewAdmin("solicitacao", "abertas", $data);
+        } else {
+            $data['solicitacoes'] = $this->Solicitacao->listMySolicitacoesAbertas($_SESSION['usuario_logado']['id']);
+            parent::loadViewUser("solicitacao", "abertas", $data);
+        }
     }
 
     public function solicitacoesPendentes()
