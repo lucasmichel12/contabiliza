@@ -106,36 +106,21 @@ class Solicitacao extends Model
         $this->query("UPDATE solicitacao SET id_status = ?, auditoria = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
 
-    public function listSolicitacoesConcluidas()
+    public function listSolicitacoes($status)
     {
         return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 3 ORDER BY data");
+        WHERE id_status = ? ORDER BY data", array("1" => $status));
     }
 
-    public function listSolicitacoesPendentes()
+    public function listMySolicitacoes($status, $id_usuario)
     {
-        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
-        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
-        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 2 ORDER BY data");
-    }
 
-    public function listAllSolicitacoesAbertas()
-    {
+        $parameter = array("1" => $status, "2" => $id_usuario);
         return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 1 ORDER BY data");
-    }
-
-    public function listMySolicitacoesAbertas($id_usuario)
-    {
-        $parameter = array("1" => $id_usuario);
-        return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
-        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
-        INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 1 AND s.id_usuario = ? ORDER BY data", $parameter);
+        WHERE id_status = ? AND s.id_usuario = ? ORDER BY data", $parameter);
     }
 }

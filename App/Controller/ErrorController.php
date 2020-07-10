@@ -8,6 +8,13 @@ class ErrorController extends Controller
 {
     public function index()
     {
-        parent::loadViewAdmin("erro", "index");
+        if($_SESSION['usuario_logado']['admin'])
+        {
+            parent::loadViewAdmin("erro", "index");     
+        } else {
+            parent::loadViewUser("erro", "index");
+        }
+
+
     }
 }

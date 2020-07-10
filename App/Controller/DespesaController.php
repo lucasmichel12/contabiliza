@@ -25,7 +25,7 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("cadastro", "despesa");;
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -38,7 +38,7 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("lista", "despesas", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -49,7 +49,7 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("lista", "despesas", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -60,7 +60,7 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("edita", "despesa", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 

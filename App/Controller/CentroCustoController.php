@@ -27,7 +27,7 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
             parent::loadViewAdmin("cadastro", "centroCusto");
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -39,7 +39,7 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
             parent::loadViewAdmin("lista", "centrosCusto", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -51,7 +51,7 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
             parent::loadViewAdmin("lista", "centrosCusto", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -62,7 +62,7 @@ class CentroCustoController extends Controller implements CadastrosControllerInt
             parent::loadViewAdmin("edita", "centroCusto", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 

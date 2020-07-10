@@ -25,7 +25,7 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("cadastro", "usuario");
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -38,7 +38,7 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("lista", "usuarios", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -50,7 +50,7 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("lista", "usuarios", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -74,7 +74,7 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
             parent::loadViewAdmin("edita", "usuario", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 

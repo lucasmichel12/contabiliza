@@ -44,9 +44,8 @@ class SolicitacaoController extends Controller
         $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($this->id);
         $data['regioes'] = $this->Regiao->listActives();
         $data['despesas'] = $this->Despesa->listActives();
-        
-        if($this->Privilegio)
-        {
+
+        if ($this->Privilegio) {
             parent::loadViewAdmin("solicitacao", "solicitacao", $data);
         } else {
             parent::loadViewUser("solicitacao", "solicitacao", $data);
@@ -111,17 +110,17 @@ class SolicitacaoController extends Controller
     public function solicitacoesAbertas()
     {
         if ($this->Privilegio) {
-            $data['solicitacoes'] = $this->Solicitacao->listAllSolicitacoesAbertas();
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoes(1);
             parent::loadViewAdmin("solicitacao", "abertas", $data);
         } else {
-            $data['solicitacoes'] = $this->Solicitacao->listMySolicitacoesAbertas($_SESSION['usuario_logado']['id']);
+            $data['solicitacoes'] = $this->Solicitacao->listMySolicitacoes(1, $_SESSION['usuario_logado']['id']);
             parent::loadViewUser("solicitacao", "abertas", $data);
         }
     }
 
     public function solicitacoesPendentes()
     {
-        $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesPendentes();
+        $data['solicitacoes'] = $this->Solicitacao->listSolicitacoes(2);
         parent::loadViewAdmin("solicitacao", "pendentes", $data);
     }
 
@@ -129,10 +128,10 @@ class SolicitacaoController extends Controller
     public function solicitacoesConcluidas()
     {
         if ($this->Privilegio) {
-            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesConcluidas();
+            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoes(3);
             parent::loadViewAdmin("solicitacao", "concluidas", $data);
         } else {
-            $data['solicitacoes'] = $this->Solicitacao->listSolicitacoesConcluidas();
+            $data['solicitacoes'] = $this->Solicitacao->listMySolicitacoes(3, $_SESSION['usuario_logado']['id']);
             parent::loadViewUser("solicitacao", "concluidas", $data);
         }
     }

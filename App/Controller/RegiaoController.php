@@ -28,7 +28,7 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
             parent::loadViewAdmin("cadastro", "regiao");
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -42,7 +42,7 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
             parent::loadViewAdmin("lista", "regioes", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -55,7 +55,7 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
             parent::loadViewAdmin("lista", "regioes", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 
@@ -68,7 +68,7 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
             parent::loadViewAdmin("edita", "regiao", $data);
         } else {
 
-            parent::loadViewUser("erro", "negado");
+            parent::loadViewUser("erro", "negado", array());
         }
     }
 

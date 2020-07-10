@@ -20,7 +20,7 @@ class Controller {
 
     }
 
-    public function loadViewUser(String $pasta, String $arquivo, array $data)
+    public function loadViewUser(String $pasta, String $arquivo, array $data = array())
     {
         
         $CentroCusto = new CentroCusto();
