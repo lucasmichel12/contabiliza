@@ -157,7 +157,7 @@
                                     <td class="text-center"><?= $despesa['descricao']; ?></td>
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
-                                    <td class="text-center"><?= $despesa['valor']; ?></td>
+                                    <td class="text-center">R$ <?= $despesa['valor']; ?>0</td>
                                     <th class="text-center">
                                         <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $data['despesa']['id_solicitacao_despesa']; ?>">Excluir</a>
                                     </th>
@@ -259,7 +259,7 @@
                                         </div>
                                         <select class="custom-select" id="selectDespesas" name="id_despesa">
                                             <?php foreach ($data['despesas'] as $despesa) { ?>
-                                                <option value="<?= $despesa['id_despesa']; ?>"><?= $despesa['descricao']; ?></option>
+                                                <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -271,7 +271,7 @@
                                         </div>
                                         <select class="custom-select" id="selectRegioes" name="id_regiao">
                                             <?php foreach ($data['regioes'] as $regiao) { ?>
-                                                <option value="<?= $regiao['id_regiao']; ?>"><?= $regiao['descricao']; ?></option>
+                                                <option value="<?= $regiao['id_regiao']; ?>" percentual="<?= $regiao['percentual'];?>"><?= $regiao['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -281,7 +281,7 @@
                                 </div>
                                 <div class="form-row mt-2">
                                     <div class="col">
-                                        <input type="text" class="form-control" required placeholder="R$ 00,00" name="valor">
+                                        <input type="text" class="form-control" placeholder="R$ 00,00" name="valor">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

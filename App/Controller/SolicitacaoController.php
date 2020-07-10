@@ -44,16 +44,19 @@ class SolicitacaoController extends Controller
         $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($this->id);
         $data['regioes'] = $this->Regiao->listActives();
         $data['despesas'] = $this->Despesa->listActives();
-        parent::loadViewAdmin("solicitacao", "solicitacao", $data);
+        
+        if($this->Privilegio)
+        {
+            parent::loadViewAdmin("solicitacao", "solicitacao", $data);
+        } else {
+            parent::loadViewUser("solicitacao", "solicitacao", $data);
+        }
     }
 
     public function abrirSolicitacao()
     {
-        if ($this->Solicitacao->insert($_POST)) {
-            header("location:" . URL . "Solicitacao/");
-        } else {
-            $this->Erro->index();
-        }
+        $this->Solicitacao->insert($_POST);
+        header("location:" . URL . "Solicitacao/solicitacoesAbertas");
     }
 
     public function atualizaRateio()

@@ -22,7 +22,9 @@ class Controller {
 
     public function loadViewUser(String $pasta, String $arquivo, array $data)
     {
-
+        
+        $CentroCusto = new CentroCusto();
+        $data['centrosCusto'] = $CentroCusto->listActives();
         require APP . "View/_template/header.php";
         require APP . "View/_template/user/menu.php";
         require APP . "View/$pasta/$arquivo.php";

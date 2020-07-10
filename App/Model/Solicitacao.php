@@ -11,20 +11,15 @@ class Solicitacao extends Model
 
     public function insert(array $param)
     {
-        $jaExiste = $this->select("SELECT id_solicitacao FROM solicitacao WHERE id_status = 1 AND id_usuario = ?", array("1" => $param['id_usuario']));
-        if (!$jaExiste) {
-            $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3"=> $param['idcentro_custo'], "4" => 1);
-            $this->query("INSERT INTO solicitacao (descricao, id_usuario, idcentro_custo, id_status) VALUES (?, ?, ? ,?)", $parameters);
-            return true;
-        } else {
-            return false;
-        }
+
+        $parameters = array("1" => $param['descricao'], "2" => $param['id_usuario'], "3" => $param['idcentro_custo'], "4" => 1);
+        $this->query("INSERT INTO solicitacao (descricao, id_usuario, idcentro_custo, id_status) VALUES (?, ?, ? ,?)", $parameters);
     }
 
     public function getById($id)
     {
         return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
-        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_solicitacao = ? LIMIT 1", array("1"=>$id));
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_solicitacao = ? LIMIT 1", array("1" => $id));
     }
     public function getSolicitacao()
     {
@@ -103,11 +98,10 @@ class Solicitacao extends Model
 
     public function closeSolicitation(array $param)
     {
-        if(isset($param['id_status']) && isset($param['auditoria']) && isset($param['id_solicitacao']))
-        {
-            $parameters = array("1"=>$param['id_status'], "2"=>$param['auditoria'], "3"=>$param['id_solicitacao']);
+        if (isset($param['id_status']) && isset($param['auditoria']) && isset($param['id_solicitacao'])) {
+            $parameters = array("1" => $param['id_status'], "2" => $param['auditoria'], "3" => $param['id_solicitacao']);
         } else {
-            $parameters = array("1"=>2, "2"=>"", "3"=>$param['id_solicitacao']);
+            $parameters = array("1" => 2, "2" => "", "3" => $param['id_solicitacao']);
         }
         $this->query("UPDATE solicitacao SET id_status = ?, auditoria = ? WHERE id_solicitacao = ? LIMIT 1", $parameters);
     }
@@ -138,10 +132,10 @@ class Solicitacao extends Model
 
     public function listMySolicitacoesAbertas($id_usuario)
     {
-        $parameter = array("1"=>$id_usuario);
+        $parameter = array("1" => $id_usuario);
         return $this->select("SELECT s.id_solicitacao, s.descricao, s.valor_total, s.id_usuario, s.idcentro_custo, u.nome, c.descricao AS centroCusto, DATE_FORMAT(data,'%d/%m/%Y') as 'data' FROM solicitacao AS s 
-        INNER JOIN usuario AS u ON s.id_usuario = ? 
+        INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario 
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
-        WHERE id_status = 1 ORDER BY data", $parameter);
+        WHERE id_status = 1 AND s.id_usuario = ? ORDER BY data", $parameter);
     }
 }
