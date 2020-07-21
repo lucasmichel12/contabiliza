@@ -24,6 +24,9 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="<?= URL; ?>Relatorio/"> <i class="menu-icon fa fa-cogs"></i>Relatórios Gerenciais</a>
+                </li>
                 <li class="menu-title">Prestação de contas</li><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
