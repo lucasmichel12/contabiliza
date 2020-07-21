@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="<?= URL; ?>Usuario">Despesa</a></li>
         </ol>
     </nav>
-    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?= URL; ?>Usuario/inserir" method="POST">
+    <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?= URL; ?>Relatorio/relDespesa" method="POST">
         <div class="form-row">
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <label for="">Data Inicial</label>

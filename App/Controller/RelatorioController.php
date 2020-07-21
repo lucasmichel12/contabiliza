@@ -19,4 +19,9 @@ class RelatorioController extends Controller
         $data['despesas'] = $this->Despesa->listActives();
         parent::loadViewAdmin('relatorios', 'despesas', $data);
     }
+
+    public function relDespesa()
+    {
+        parent::loadViewAdmin('relatorios', 'reldespesa');
+    }
 }
