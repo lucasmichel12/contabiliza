@@ -3,12 +3,16 @@
 namespace Contabiliza\Model;
 
 use Contabiliza\Core\Model;
+use Contabiliza\Helpers\Validacao;
 use Contabiliza\Interfaces\ModelInterface;
 
 class Usuario extends Model implements ModelInterface
 {
+
     public function insert(Array $param)
     {
+        $Validacao = new Validacao();
+        $Validacao->cpf($param['cpf']);
         $senha = password_hash($param['senha'], PASSWORD_DEFAULT);
         $parameters = array("1"=>$param['nome'], "2"=>$param['cpf'], "3"=>$param['login'], "4"=>$senha, "5"=>$param['admin'], "6"=>$param['ativo']);
         $this->query("INSERT INTO usuario (nome, cpf, login, senha, admin, ativo) VALUES (?,?,?,?,?,?)", $parameters);
