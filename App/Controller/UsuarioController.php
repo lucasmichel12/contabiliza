@@ -104,14 +104,14 @@ class UsuarioController extends Controller implements CadastrosControllerInterfa
     // Traz o registro da tabela pelo ID e monta a tela para alterar a senha
     public function alterarSenha()
     {
-        $data['usuario'] = $this->Usuario->getOne($this->id);
+        $data = $this->Usuario->getOne($this->id);
         parent::loadViewAdmin("edita", "alterarSenha", $data);
     }
 
     // Chama a função 'changeSenha()' da Model Usuario e registra a senha nova
     public function salvarSenha()
     {
-        $this->Usuario->changePassword($_POST['senha'], $_POST['id_usuario']);
+        $this->Usuario->changePassword($_POST);
         header("location:" . URL . "Usuario/listar");
     }
 }

@@ -22,7 +22,7 @@
                 <input type="password" class="form-control" placeholder="Senha" required name="senha">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
-                <input type="password" class="form-control" placeholder="Digite a senha novamente">
+                <input type="password" class="form-control" placeholder="Digite a senha novamente" required name="senhaConfere">
             </div>
         </div>
         <div class="form-row">

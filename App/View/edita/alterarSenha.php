@@ -2,21 +2,17 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Cadastro</li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="
-
-use Contabiliza\Model\Usuario;
-
-<?= URL; ?>Usuario/listar">Colaborador</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="<?= URL; ?>Usuario/listar">Colaborador</a></li>
         </ol>
     </nav>
     <form class="mt-4 shadow p-3 mb-5 bg-white rounded" action="<?= URL; ?>Usuario/salvarSenha" method="POST">
-        <input type="hidden" name="id_usuario" value="<?=$usuario[0]['id_usuario']; ?>">
+        <input type="hidden" name="id_usuario" value="<?=$data[0]['id_usuario']; ?>">
         <div class="form-row">
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="<?= $data['usuario']['login']; ?>" readonly>
+                <input type="text" class="form-control" placeholder="<?= $data[0]['login']; ?>" readonly>
             </div>
             <div class="col-8">
-                <input type="text" class="form-control" placeholder="<?= $data['usuario']['nome']; ?>" readonly>
+                <input type="text" class="form-control" placeholder="<?= $data[0]['nome']; ?>" readonly>
             </div>
         </div>
         <div class="form-row mt-3">
@@ -24,7 +20,7 @@ use Contabiliza\Model\Usuario;
                 <input type="password" class="form-control" placeholder="Nova senha" required name="senha">
             </div>
             <div class="col-4">
-                <input type="password" class="form-control" placeholder="Digite a senha novamente" name="senhaConfere">
+                <input type="password" class="form-control" placeholder="Digite a senha novamente" required name="senhaConfere">
             </div>
         </div>
         <div class="form-row mt-4">

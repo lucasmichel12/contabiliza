@@ -17,9 +17,10 @@ class Usuario extends Model implements ModelInterface
 
     public function insert(Array $param)
     {
-        
+        $this->Validacao->notEmpty($param);
         $this->Validacao->cpf($param['cpf']);
         $this->Validacao->user($param['login']);
+        $this->Validacao->senhas($param['senha'], $param['senhaConfere']);
         $senha = password_hash($param['senha'], PASSWORD_DEFAULT);
         $parameters = array("1"=>$param['nome'], "2"=>preg_replace('/[^0-9]/is', '', $param['cpf']), "3"=>$param['login'], "4"=>$senha, "5"=>$param['admin'], "6"=>$param['ativo']);
         $this->query("INSERT INTO usuario (nome, cpf, login, senha, admin, ativo) VALUES (?,?,?,?,?,?)", $parameters);
@@ -27,6 +28,7 @@ class Usuario extends Model implements ModelInterface
 
     public function update(Array $param)
     {
+        $this->Validacao->notEmpty($param);
         $this->Validacao->cpf($param['cpf'], $param['id_usuario']);
         $this->Validacao->user($param['login'], $param['id_usuario']);
         $parameters = array("1"=>$param['nome'], "2"=>preg_replace('/[^0-9]/is', '', $param['cpf']), "3"=>$param['login'], "4"=>$param['admin'], "5"=>$param['ativo'], "6"=>$param['id_usuario']);
@@ -64,10 +66,12 @@ class Usuario extends Model implements ModelInterface
     //! Funções Especificas desta classe 
 
     //* Função que altera apenas a senha(criptografada) do usuário
-    public function changePassword(String $senha, Int $id)
+    public function changePassword($dados)
     {
-        $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $parameter = array("1"=>$senha, "2"=>$id);
+        $this->Validacao->notEmpty($dados);
+        $this->Validacao->senhas($dados['senha'], $dados['senhaConfere']);
+        $senha = password_hash($dados['senha'], PASSWORD_DEFAULT);
+        $parameter = array("1"=>$senha, "2"=>$dados['id_usuario']);
         $this->query("UPDATE usuario SET senha = ? WHERE id_usuario = ? LIMIT 1", $parameter);
     }
 
