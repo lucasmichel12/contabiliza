@@ -43,26 +43,34 @@ class Validacao extends Model
 		}
 
 		if ($id_usuario != 0) {
-			$parameter = array("1" => $cpf, "2" => $id_usuario);
-			$result = $this->select("SELECT id_usuario FROM usuario WHERE cpf = ? AND id_usuario = ? LIMIT 1", $parameter);
-			if (count($result) != 1) {
-				$this->errorMessage->error("O CPF já está vinculado a outro usuario");
+			$parameter = array("1" => $cpf);
+			$result = $this->select("SELECT id_usuario FROM usuario WHERE cpf = ? LIMIT 1", $parameter);
+			if ($id_usuario != $result[0]['id_usuario'] && isset($result[0]['id_usuario'])) {
+				$this->errorMessage->error("O CPF já está vinculado a outro usuário");
 			}
 		} else {
 			$parameter = array("1" => $cpf);
-			$result = $this->select("SELECT * FROM usuario WHERE cpf = ? LIMIT 1", $parameter);
+			$result = $this->select("SELECT id_usuario FROM usuario WHERE cpf = ? LIMIT 1", $parameter);
 			if (count($result) == 1) {
 				$this->errorMessage->error("O CPF já está cadastrado na base de dados");
 			}
 		}
 	}
 
-	public function user($usuario)
+	public function user($usuario, $id_usuario = 0)
 	{
-		$parameter = array("1" => $usuario);
-		$result = $this->select("SELECT * FROM usuario WHERE login = ? LIMIT 1", $parameter);
-		if (count($result) == 1) {
-			$this->errorMessage->error("O usuário já está cadastrado na base de dados");
+		if ($id_usuario != 0) {
+			$parameter = array("1" => $usuario);
+			$result = $this->select("SELECT id_usuario FROM usuario WHERE login = ? LIMIT 1", $parameter);
+			if ($id_usuario != $result[0]['id_usuario'] && isset($result[0]['id_usuario'])) {
+				$this->errorMessage->error("O Usuário já está vinculado a outro usuário");
+			}
+		} else {
+			$parameter = array("1" => $usuario);
+			$result = $this->select("SELECT id_usuario FROM usuario WHERE login = ? LIMIT 1", $parameter);
+			if (count($result) == 1) {
+				$this->errorMessage->error("O Usuário já está cadastrado na base de dados");
+			}
 		}
 	}
 
