@@ -6,61 +6,91 @@ use Contabiliza\Core\Model;
 
 class Validacao extends Model
 {
-    public $errorMessage;
+	public $errorMessage;
 
-    public function __construct()
-    {
-        $this->errorMessage = new Message();
-    }
-    public function cpf($cpf)
-    {
-        // Elimina possivel mascara
-        $cpf = preg_replace("/[^0-9]/", "", $cpf);
-        // $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
+	public function __construct()
+	{
+		$this->errorMessage = new Message();
+		parent::__construct();
+	}
 
-        // Verifica se o numero de digitos informados é igual a 11 
-        if (strlen($cpf) != 11) {
-            $this->errorMessage->sucessMessage("O CPF deve conter 11 Digítos");
- 
-        }
-        // Verifica se nenhuma das sequências invalidas abaixo 
-        // foi digitada. Caso afirmativo, retorna falso
-        else if (
-            $cpf == '00000000000' ||
-            $cpf == '11111111111' ||
-            $cpf == '22222222222' ||
-            $cpf == '33333333333' ||
-            $cpf == '44444444444' ||
-            $cpf == '55555555555' ||
-            $cpf == '66666666666' ||
-            $cpf == '77777777777' ||
-            $cpf == '88888888888' ||
-            $cpf == '99999999999'
-        ) {
 
-            return $this->errorMessage = "O CPF digitado é inválido";
-            // Calcula os digitos verificadores para verificar se o
-            // CPF é válido
-        } else {
+	public function cpf($cpf, $id_usuario = 0)
+	{
 
-            for ($t = 9; $t < 11; $t++) {
+		// Extrai somente os números
+		$cpf = preg_replace('/[^0-9]/is', '', $cpf);
 
-                for ($d = 0, $c = 0; $c < $t; $c++) {
-                    $d += $cpf{
-                        $c} * (($t + 1) - $c);
-                }
-                $d = ((10 * $d) % 11) % 10;
-                if ($cpf{
-                    $c} != $d) {
-                    return $this->errorMessage = "O CPF digitado é inválido";
-                }
+		// Verifica se foi informado todos os digitos corretamente
+		if (strlen($cpf) != 11) {
+			return $this->errorMessage->error("O CPF precisa ter ao menos 11 números");
+		}
+		// Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+		if (preg_match('/(\d)\1{10}/', $cpf)) {
+			return $this->errorMessage->error("CPF inválido");
+		}
+		// Faz o calculo para validar o CPF
+		for ($t = 9; $t < 11; $t++) {
+			for ($d = 0, $c = 0; $c < $t; $c++) {
+				$d += $cpf{
+					$c} * (($t + 1) - $c);
+			}
+			$d = ((10 * $d) % 11) % 10;
+			if ($cpf{
+				$c} != $d) {
+				return $this->errorMessage->error("CPF inválido");
+			}
+		}
 
-                $parameter = array("1" => $cpf);
-                $result = $this->select("SELECT * FROM usuario WHERE cpf = ?", $parameter);
-                if (count($result) > 1) {
-                    return $this->errorMessage = "O CPF digitado já está cadastrado na base";
-                }
-            }
-        }
-    }
+		if ($id_usuario != 0) {
+			$parameter = array("1" => $cpf, "2" => $id_usuario);
+			$result = $this->select("SELECT id_usuario FROM usuario WHERE cpf = ? AND id_usuario = ? LIMIT 1", $parameter);
+			if (count($result) != 1) {
+				$this->errorMessage->error("O CPF já está vinculado a outro usuario");
+			}
+		} else {
+			$parameter = array("1" => $cpf);
+			$result = $this->select("SELECT * FROM usuario WHERE cpf = ? LIMIT 1", $parameter);
+			if (count($result) == 1) {
+				$this->errorMessage->error("O CPF já está cadastrado na base de dados");
+			}
+		}
+	}
+
+	public function user($usuario)
+	{
+		$parameter = array("1" => $usuario);
+		$result = $this->select("SELECT * FROM usuario WHERE login = ? LIMIT 1", $parameter);
+		if (count($result) == 1) {
+			$this->errorMessage->error("O usuário já está cadastrado na base de dados");
+		}
+	}
+
+	public function cnpj($cnpj)
+	{
+		$cnpj = preg_replace('/[^0-9]/', '', (string) $cnpj);
+		// Valida tamanho
+		if (strlen($cnpj) != 14)
+			return $this->errorMessage->error("CNPJ precisa ter ao menos 14 números");
+		// Valida primeiro dígito verificador
+		for ($i = 0, $j = 5, $soma = 0; $i < 12; $i++) {
+			$soma += $cnpj{
+				$i} * $j;
+			$j = ($j == 2) ? 9 : $j - 1;
+		}
+		$resto = $soma % 11;
+		if ($cnpj{
+			12} != ($resto < 2 ? 0 : 11 - $resto))
+			$this->errorMessage->error("CNPJ inválido");
+		// Valida segundo dígito verificador
+		for ($i = 0, $j = 6, $soma = 0; $i < 13; $i++) {
+			$soma += $cnpj{
+				$i} * $j;
+			$j = ($j == 2) ? 9 : $j - 1;
+		}
+		$resto = $soma % 11;
+		$cnpj{
+			13} == ($resto < 2 ? 0 : 11 - $resto);
+		return true;
+	}
 }
