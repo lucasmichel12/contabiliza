@@ -25,8 +25,30 @@
 <script src="<?= URL; ?>public/js/custom.js"></script>
 <script src="<?= URL; ?>public/bootbox/bootbox.min.js"></script>
 <script src="<?= URL; ?>public/bootbox/bootbox.locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 
 <script>
-
+    function excluir(link) {
+        bootbox.confirm({
+            title: "Excluir usuário?",
+            message: "Só será possivel excluir usuários que não tenham nenhuma solicitação já cadastrada, deseja prosseguir?",
+            buttons: {
+                confirm: {
+                    label: 'Continuar',
+                    className: 'btn-danger'
+                },
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                }
+            },
+            callback: function(result) {
+                if(result)
+                {
+                    window.location=link
+                }
+            }
+        });
+    }
 </script>
 </body>

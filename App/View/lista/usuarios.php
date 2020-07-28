@@ -20,10 +20,10 @@
                     <td class="text-center"><?=$usuario['login']?></td>
                     <td class="text-center"><?=$usuario['cpf']?></td>
                     <th class="text-center">
-                        <a class="btn btn-success" href="<?=URL;?>Usuario/editar/<?=$usuario['id_usuario'];?>">Editar</a>
+                        <button class="btn btn-success" href="<?=URL;?>Usuario/editar/<?=$usuario['id_usuario'];?>">Editar</button>
                         <a class="btn btn-info" href="<?=URL;?>Usuario/alterarSenha/<?=$usuario['id_usuario'];?>">Alterar Senha</a>
                         <?php if(isset($data['btn'])){echo "<a class='btn btn-warning' href=". URL . "Usuario/desabilitar/{$usuario['id_usuario']}'>Desabilitar</a>";} ?> 
-                        <a class="btn btn-danger" href="<?=URL;?>Usuario/deletar/<?=$usuario['id_usuario'];?>">Excluir</a> 
+                        <button class="btn btn-danger" onclick="excluir('<?=URL;?>Usuario/deletar/<?=$usuario['id_usuario'];?>')">Excluir</button> 
                     </th>
                 </tr>
             <?php } ?>
