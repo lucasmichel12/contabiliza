@@ -1,4 +1,5 @@
-w<!-- Left Panel -->
+w
+<!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -55,16 +56,8 @@ w<!-- Left Panel -->
 
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="<?= URL; ?>public/img/admin.jpg" alt="User Avatar">
+                        <a href="<?= URL; ?>/Login/logout">Sair</a>
                     </a>
-
-                    <div class="user-menu dropdown-menu">
-                        <!-- <a class="nav-link" href="#"><i class="fa fa- user"></i>Meu perfil</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Configurações</a> -->
-
-                        <a class="nav-link" href="<?= URL; ?>/Logout"><i class="fa fa-power -off"></i>Sair</a>
-                    </div>
                 </div>
 
             </div>

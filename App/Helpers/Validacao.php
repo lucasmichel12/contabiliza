@@ -74,10 +74,24 @@ class Validacao extends Model
 		}
 	}
 
+	public function login(array $dados)
+	{
+		$parameter = array("1"=>$dados['login']);
+		$result =  $this->select('SELECT * FROM usuario WHERE login = ? LIMIT 1', $parameter);
+		if (isset($result[0]['login']) && $result[0]['ativo'] != '0') {
+			if (password_verify($dados['senha'], $result[0]['senha'])) {
+				return $result;
+			} else {
+				$this->Message->error("Senha inválida");
+			}
+		} else {
+			$this->Message->error("O login informado não existe ou está desativado");
+		}
+	}
+
 	public function senhas($senha, $senhaConfere)
 	{
-		if($senha != $senhaConfere)
-		{
+		if ($senha != $senhaConfere) {
 			$this->Message->error("As senhas digitadas não conferem");
 		}
 	}
@@ -111,11 +125,9 @@ class Validacao extends Model
 
 	public function notEmpty($dados)
 	{
-		foreach($dados as $dado)
-		{
+		foreach ($dados as $dado) {
 			$validador = trim($dado);
-			if($validador == "")
-			{
+			if ($validador == "") {
 				$this->Message->error("O formulário não pode conter campos vazios!");
 			}
 		}

@@ -80,7 +80,7 @@
 
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="<?= URL; ?>public/img/admin.jpg" alt="User Avatar">
+                    <a href="<?= URL; ?>/Login/logout">Sair</a>
                     </a>
 
                     <div class="user-menu dropdown-menu">
