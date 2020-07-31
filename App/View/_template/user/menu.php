@@ -30,49 +30,11 @@ w
 
         <div class="top-right">
             <div class="header-menu">
-                <div class="header-left">
-                    <div class="dropdown for-notification">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">3</span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">Notificações</p>
-                            <a class="dropdown-item media" href="#">
-                                <i class="fa fa-check"></i>
-                                <p>Solicitação Concluída</p>
-                            </a>
-                            <a class="dropdown-item media" href="#">
-                                <i class="fa fa-info"></i>
-                                <p>2 Solicitações em Análise</p>
-                            </a>
-                            <a class="dropdown-item media" href="#">
-                                <i class="fa fa-warning"></i>
-                                <p>1 Solicitação Auditada</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <a href="<?= URL; ?>/Login/logout">Sair</a>
-                    </a>
                 </div>
-
             </div>
         </div>
-
-        <!-- <div class="top-right">
-            <div class="header-menu">
-                <div class="header-left">
-                    <div class="user-area dropdown float-right">
-                        <a href="<?= URL; ?>/Logout">Sair</a>
-                    </div>
-                </div>
-            </div> -->
-
-    </header>
 
     <!-- Modal -->
     <div class="modal fade" id="novaSolicitacao" tabindex="-1" role="dialog" aria-labelledby="novaSolicitacao" aria-hidden="true">

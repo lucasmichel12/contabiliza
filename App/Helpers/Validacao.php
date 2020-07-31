@@ -76,7 +76,7 @@ class Validacao extends Model
 
 	public function login(array $dados)
 	{
-		$parameter = array("1"=>$dados['login']);
+		$parameter = array("1" => $dados['login']);
 		$result =  $this->select('SELECT * FROM usuario WHERE login = ? LIMIT 1', $parameter);
 		if (isset($result[0]['login']) && $result[0]['ativo'] != '0') {
 			if (password_verify($dados['senha'], $result[0]['senha'])) {
@@ -95,12 +95,14 @@ class Validacao extends Model
 			$this->Message->error("As senhas digitadas não conferem");
 		}
 	}
-	public function cnpj($cnpj)
+
+	public function cnpj($cnpj, $idcentro_custo = 0)
 	{
+
 		$cnpj = preg_replace('/[^0-9]/', '', (string) $cnpj);
 		// Valida tamanho
 		if (strlen($cnpj) != 14)
-			return $this->errorMessage->error("CNPJ precisa ter ao menos 14 números");
+			$this->Message->error("CNPJ precisa ter ao menos 14 números");
 		// Valida primeiro dígito verificador
 		for ($i = 0, $j = 5, $soma = 0; $i < 12; $i++) {
 			$soma += $cnpj{
@@ -110,7 +112,7 @@ class Validacao extends Model
 		$resto = $soma % 11;
 		if ($cnpj{
 			12} != ($resto < 2 ? 0 : 11 - $resto))
-			$this->errorMessage->error("CNPJ inválido");
+			$this->Message->error("CNPJ inválido");
 		// Valida segundo dígito verificador
 		for ($i = 0, $j = 6, $soma = 0; $i < 13; $i++) {
 			$soma += $cnpj{
@@ -120,7 +122,20 @@ class Validacao extends Model
 		$resto = $soma % 11;
 		$cnpj{
 			13} == ($resto < 2 ? 0 : 11 - $resto);
-		return true;
+
+		if ($idcentro_custo != 0) {
+			$parameter = array("1" => $cnpj);
+			$result = $this->select("SELECT idcentro_custo FROM centro_custo WHERE cnpj = ? LIMIT 1", $parameter);
+			if ($idcentro_custo != $result[0]['idcentro_custo'] && isset($result[0]['idcentro_custo'])) {
+				$this->Message->error("O CNPJ já está vinculado a outro Centro de Custo");
+			}
+		} else {
+			$parameter = array("1" => $cnpj);
+			$result = $this->select("SELECT idcentro_custo FROM centro_custo WHERE cnpj = ? LIMIT 1", $parameter);
+			if (count($result) == 1) {
+				$this->Message->error("O CNPJ já está cadastrado na base de dados");
+			}
+		}
 	}
 
 	public function notEmpty($dados)
