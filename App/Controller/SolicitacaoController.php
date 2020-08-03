@@ -44,6 +44,7 @@ class SolicitacaoController extends Controller
         $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($this->id);
         $data['regioes'] = $this->Regiao->listActives();
         $data['despesas'] = $this->Despesa->listActives();
+        $data['msg'] = $solicitacao[0]['auditoria'] != null ? $solicitacao[0]['auditoria'] : false;
 
         if ($this->Privilegio) {
             parent::loadViewAdmin("solicitacao", "solicitacao", $data);

@@ -14,7 +14,7 @@ class Despesa extends Model implements ModelInterface
     }
     public function update(Array $param)
     {
-        $parameters = array("1"=>$param['descricao'], "2"=>$param['valor_definido'], "3"=>$param['valor'], "4"=>$param['ativo'], "5"=>$param['id']);
+        $parameters = array("1"=>$param['descricao'], "2"=>$param['valor_definido'], "3"=>$param['valor'], "4"=>$param['ativo'], "5"=>$param['id_despesa']);
         $this->query("UPDATE despesa SET descricao = ?, valor_definido = ?, valor = ?, ativo = ? WHERE id_despesa = ? LIMIT 1", $parameters);
     }
 

@@ -80,7 +80,7 @@ class RegiaoController extends Controller implements CadastrosControllerInterfac
             $this->Regiao->insert($_POST);
         }
 
-        header("location:" . URL . "Regiao/");
+        header("location:" . URL . "Regiao/listar");
     }
 
     public function deletar()

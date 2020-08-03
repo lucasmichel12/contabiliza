@@ -271,7 +271,7 @@
                                         </div>
                                         <select class="custom-select" id="selectRegioes" name="id_regiao">
                                             <?php foreach ($data['regioes'] as $regiao) { ?>
-                                                <option value="<?= $regiao['id_regiao']; ?>" percentual="<?= $regiao['percentual'];?>"><?= $regiao['descricao']; ?></option>
+                                                <option value="<?= $regiao['id_regiao']; ?>" percentual="<?= $regiao['percentual']; ?>"><?= $regiao['descricao']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -330,3 +330,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {  alerta("<?=$data['msg'];?>") }, 1000);
+</script>

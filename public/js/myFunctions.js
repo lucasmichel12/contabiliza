@@ -42,3 +42,10 @@ function desabilitar(link) {
         }
     });
 }
+
+function alerta(msg){
+    bootbox.alert({
+        title: "<strong>Houve problemas com sua solicitação</strong>",
+        message: msg,
+    });
+}

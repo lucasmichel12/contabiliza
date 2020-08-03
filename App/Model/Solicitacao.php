@@ -18,7 +18,7 @@ class Solicitacao extends Model
 
     public function getById($id)
     {
-        return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status FROM solicitacao AS s 
+        return $this->select("SELECT u.nome, s.id_solicitacao, s.descricao, DATE_FORMAT(data,'%d/%m/%Y') as 'data', s.valor_total, s.idcentro_custo, s.id_status, s.auditoria FROM solicitacao AS s 
         INNER JOIN usuario AS u ON s.id_usuario = u.id_usuario WHERE s.id_solicitacao = ? LIMIT 1", array("1" => $id));
     }
     public function getSolicitacao()

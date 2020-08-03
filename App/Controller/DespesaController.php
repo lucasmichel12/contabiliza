@@ -68,10 +68,10 @@ class DespesaController extends Controller implements CadastrosControllerInterfa
     {
         if (isset($_POST['id_despesa'])) {
             $this->Despesa->update($_POST);
-            header("location:" . URL . "Despesa/");
+            header("location:" . URL . "Despesa/listar");
         } else {
             $this->Despesa->insert($_POST);
-            header("location:" . URL . "Despesa/");
+            header("location:" . URL . "Despesa/listar");
         }
     }
 
