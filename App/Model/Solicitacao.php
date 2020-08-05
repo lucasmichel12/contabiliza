@@ -123,4 +123,12 @@ class Solicitacao extends Model
         INNER JOIN centro_custo AS c ON s.idcentro_custo = c.idcentro_custo 
         WHERE id_status = ? AND s.id_usuario = ? ORDER BY data", $parameter);
     }
+
+    public function deletar($id)
+    {
+        $parameter = array("1"=>$id);
+        $this->query("DELETE FROM roteiro WHERE id_solicitacao = ? LIMIT 1", $parameter);
+        $this->query("DELETE FROM solicitacao_despesa WHERE id_solicitacao = ? LIMIT 1", $parameter);
+        $this->query("DELETE FROM solicitacao WHERE id_solicitacao = ? LIMIT 1", $parameter);
+    }
 }

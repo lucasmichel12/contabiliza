@@ -168,4 +168,11 @@ class SolicitacaoController extends Controller
             }
         }
     }
+
+    public function deletar()
+    {
+        $this->Solicitacao->deletar(intval($this->id));
+        header("location:" . URL . "Home/");
+        
+    }
 }

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="imprimir">
     <div class="card-header bg-white">
         <h4>
             <p class="topo-auditoria"><strong><?= $data['solicitacao'][0]['descricao']; ?> | <?= $data['solicitacao'][0]['data']; ?> | R$ <?= $data['solicitacao'][0]['valor_total']; ?></strong></p>
@@ -116,10 +116,20 @@
 
                 </div>
                 <!-- /Painel de Auditoria -->
-                <button class="btn btn-info">Imprimir</button>
+                <button class="btn btn-info" onclick="imprimir()">Imprimir</button>
             </div>
         </div>
     </div>
     <!-- /Auditoria -->
 
 </div>
+<script>
+	function imprimir() {
+		var imprimir = document.querySelector("#imprimir");
+		    	window.print();
+		    	var time = window.setTimeout(function() {
+		    		imprimir.style.display = 'block';
+		    	}, 1000);
+		    }
+	
+</script>

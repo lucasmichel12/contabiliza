@@ -91,13 +91,13 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <form action="<?= URL; ?>Solicitacao/auditado" method="post">
+                            <form action="<?= URL; ?>Solicitacao/auditado" id="solicitacao" method="post">
                                 <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
-                                <button class="btn btn-warning">Concluir</button>
+                                <a onclick="fecharSolicitacao()" class="btn btn-warning">Concluir</a>
                             </form>
                         </div>
                         <div class="col">
-                            <button class="btn btn-danger" onclick="excluir('<?= URL; ?>Solicitacao/deletar/<?= $data['solicitacao'][0]['id_solicitacao']; ?>">Excluir</button>
+                            <button class="btn btn-danger" onclick="excluir('<?= URL; ?>Solicitacao/deletar/<?= $data['solicitacao'][0]['id_solicitacao']; ?>')">Excluir</button>
                         </div>
                     </div>
 
@@ -336,4 +336,28 @@
 
 <script>
     setTimeout(() => {  alerta("<?=$data['msg'];?>") }, 1000);
+
+    function fecharSolicitacao()
+    {
+        bootbox.confirm({
+        title: "<strong>Deseja realmente finalizar sua Solicitação?</strong>",
+        message: "Após enviada a solicitação não poderá ser alterada.",
+        buttons: {
+            confirm: {
+                label: 'Enviar',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'Cancelar',
+                className: 'btn-warning'
+            }
+        },
+        callback: function(result) {
+            if (result) {
+                document.getElementById("solicitacao").submit();
+            }
+        }
+    });
+}
+    
 </script>
