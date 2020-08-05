@@ -105,23 +105,19 @@ class Validacao extends Model
 			$this->Message->error("CNPJ precisa ter ao menos 14 números");
 		// Valida primeiro dígito verificador
 		for ($i = 0, $j = 5, $soma = 0; $i < 12; $i++) {
-			$soma += $cnpj{
-				$i} * $j;
+			$soma += $cnpj{$i} * $j;
 			$j = ($j == 2) ? 9 : $j - 1;
 		}
 		$resto = $soma % 11;
-		if ($cnpj{
-			12} != ($resto < 2 ? 0 : 11 - $resto))
+		if ($cnpj{12} != ($resto < 2 ? 0 : 11 - $resto))
 			$this->Message->error("CNPJ inválido");
 		// Valida segundo dígito verificador
 		for ($i = 0, $j = 6, $soma = 0; $i < 13; $i++) {
-			$soma += $cnpj{
-				$i} * $j;
+			$soma += $cnpj{$i} * $j;
 			$j = ($j == 2) ? 9 : $j - 1;
 		}
 		$resto = $soma % 11;
-		$cnpj{
-			13} == ($resto < 2 ? 0 : 11 - $resto);
+		$cnpj{13} == ($resto < 2 ? 0 : 11 - $resto);
 
 		if ($idcentro_custo != 0) {
 			$parameter = array("1" => $cnpj);

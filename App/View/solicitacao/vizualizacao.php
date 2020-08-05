@@ -104,17 +104,22 @@
                                 <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="col-lg-12 pad-bottom-20">
                                     <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
-                                    <textarea class="form-control" aria-label="With textarea" name="auditoria" value="<?= $data['solicitacao'][0]['auditoria']; ?>"></textarea>
+                                    <textarea class="form-control" readonly aria-label="With textarea" name="auditoria" value="<?= $data['solicitacao'][0]['auditoria']; ?>">
+                                        <?= $data['solicitacao'][0]['auditoria']; ?>
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
                     </form>
+
                     <!-- /Parecer Auditoria -->
 
                 </div>
                 <!-- /Painel de Auditoria -->
+                <button class="btn btn-info">Imprimir</button>
             </div>
         </div>
     </div>
     <!-- /Auditoria -->
+
 </div>

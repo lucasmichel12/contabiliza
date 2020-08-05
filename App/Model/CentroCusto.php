@@ -18,7 +18,7 @@ class CentroCusto extends Model implements ModelInterface
     {
         $this->Validacao->notEmpty($param);
         $this->Validacao->cnpj($param['cnpj']);
-        $paremeters = array("1"=>$param['descricao'], "2"=>$param['cnpj'], "3"=>$param['ativo']);
+        $paremeters = array("1"=>$param['descricao'], "2"=>preg_replace('/[^0-9]/is', '', $param['cnpj']), "3"=>$param['ativo']);
         $this->query("INSERT INTO centro_custo (descricao, cnpj, ativo) VALUES (?, ?, ?)", $paremeters);
     }
 

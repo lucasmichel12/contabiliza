@@ -97,7 +97,7 @@
                             </form>
                         </div>
                         <div class="col">
-                            <a href="<?= URL; ?>Solicitacao/index/<?= $data['solicitacao'][0]['id_solicitacao']; ?>" class="btn btn-danger">Excluir Solicitação</a>
+                            <button class="btn btn-danger" onclick="excluir('<?= URL; ?>Solicitacao/deletar/<?= $data['solicitacao'][0]['id_solicitacao']; ?>">Excluir</button>
                         </div>
                     </div>
 
@@ -157,9 +157,9 @@
                                     <td class="text-center"><?= $despesa['descricao']; ?></td>
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
-                                    <td class="text-center">R$ <?= $despesa['valor']; ?>0</td>
+                                    <td class="text-center">R$ <?= $despesa['valor']; ?></td>
                                     <th class="text-center">
-                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $data['despesa']['id_solicitacao_despesa']; ?>">Excluir</a>
+                                        <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $despesa['id_solicitacao_despesa']; ?>">Excluir</a>
                                     </th>
                                 </tr>
                             <?php } ?>

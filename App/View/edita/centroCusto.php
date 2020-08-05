@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" required placeholder="Nome Empresarial ou Fantasia" name="descricao" value="<?=$data['centroCusto'][0]['descricao'];?>">
             </div>
             <div class="col-4">
-                <input type="text" class="form-control" placeholder="00.000.000/0000-00" name="cnpj" value="<?=$data['centroCusto'][0]['cnpj'];?>">
+                <input type="text" class="form-control cnpj" placeholder="00.000.000/0000-00" name="cnpj" value="<?=$data['centroCusto'][0]['cnpj'];?>">
             </div>
         </div> 
         <div class="form-row">

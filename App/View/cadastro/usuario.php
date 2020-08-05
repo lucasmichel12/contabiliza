@@ -32,8 +32,8 @@
                     <label class="input-group-text" for="admin">Usúario Administrador?</label>
                 </div>
                 <select class="custom-select" id="admin" name="admin">
-                    <option value="Não">Não</option>
-                    <option value="Sim">Sim</option>
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
                 </select>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                         <label class="input-group-text" for="ativo">Usúario Ativo?</label>
                     </div>
                     <select class="custom-select" id="ativo" name="ativo">
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
                     </select>
                 </div>
             </div>

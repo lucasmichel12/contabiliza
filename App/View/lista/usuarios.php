@@ -18,7 +18,7 @@
                 <tr>
                     <td><?= $usuario['nome'] ?></td>
                     <td class="text-center"><?= $usuario['login'] ?></td>
-                    <td class="text-center"><?= $usuario['cpf'] ?></td>
+                    <td class="text-center cpf"><?= $usuario['cpf'] ?></td>
                     <th class="text-center">
                         <a class="btn btn-success" href="<?= URL; ?>Usuario/editar/<?= $usuario['id_usuario']; ?>">Editar</a>
                         <a class="btn btn-info" href="<?= URL; ?>Usuario/alterarSenha/<?= $usuario['id_usuario']; ?>">Alterar Senha</a>

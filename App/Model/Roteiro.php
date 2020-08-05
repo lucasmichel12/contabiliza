@@ -13,13 +13,13 @@ class Roteiro extends Model
         $this->query("INSERT INTO roteiro (destino, descricao, inicio, termino, id_solicitacao) VALUES (?, ?, ?, ?, ?)", $parameters);
     }
 
-    public function delete(Int $id)
+    public function delete($id)
     {
         $parameter = array("1"=>$id);
         $this->query("DELETE FROM roteiro WHERE id_roteiro = ? LIMIT 1", $parameter);
     }
 
-    public function getRoteirosSolicitacao(Int $id_solicitacao)
+    public function getRoteirosSolicitacao($id_solicitacao)
     {
         $parameter = array("1"=>$id_solicitacao);
         return $this->select("SELECT * FROM roteiro WHERE id_solicitacao = ? ORDER BY inicio", $parameter);

@@ -34,14 +34,15 @@ class SolicitacaoController extends Controller
         $this->Privilegio = $_SESSION['usuario_logado']['admin'];
     }
 
-    public function aberta()
+    public function aberta($id = 0)
     {
-        $solicitacao = $this->Solicitacao->getById($this->id);
-        $this->Solicitacao->updateValor($this->id);
+        $id_solicitacao = $id == 0 ? $this->id : intval($id);
+        $solicitacao = $this->Solicitacao->getById($id_solicitacao);
+        $this->Solicitacao->updateValor($id_solicitacao );
         $data['solicitacao'] = $solicitacao;
-        $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($this->id);
-        $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($this->id);
-        $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($this->id);
+        $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao );
+        $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao );
+        $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao );
         $data['regioes'] = $this->Regiao->listActives();
         $data['despesas'] = $this->Despesa->listActives();
         $data['msg'] = $solicitacao[0]['auditoria'] != null ? $solicitacao[0]['auditoria'] : false;
@@ -62,14 +63,14 @@ class SolicitacaoController extends Controller
     public function atualizaRateio()
     {
         $this->Solicitacao->updateRateio($_POST);
-        header("location:" . URL . "Solicitacao/");
+        $this->aberta($_POST['id_solicitacao']);
     }
 
     // Adiciona um Roteiro na Viagem
     public function adicionaRoteiro()
     {
         $this->Roteiro->insert($_POST);
-        header("location:" . URL . "Solicitacao/");
+        $this->aberta($_POST['id_solicitacao']);
     }
 
     // Exclui um Roteiro da viagem 
@@ -83,13 +84,13 @@ class SolicitacaoController extends Controller
     public function adicionarDespesa()
     {
         $this->Solicitacao->insertDespesa($_POST);
-        header("location:" . URL . "Solicitacao/");
+        $this->aberta($_POST['id_solicitacao']);
     }
 
     public function deletaDespesaViagem()
     {
         $this->Solicitacao->deleteDespesa(intval($this->id));
-        header("location:" . URL . "Solicitacao/");
+        $this->aberta($this->id);
     }
 
     public function setId()
@@ -147,6 +148,24 @@ class SolicitacaoController extends Controller
             $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
             $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
             parent::loadViewAdmin("solicitacao", "auditoria", $data);
+        }
+    }
+
+    
+    public function vizualizar()
+    {
+        if (isset($this->id)) {
+            $id_solicitacao = intval($this->id);
+            $data['solicitacao'] = $this->Solicitacao->getById($this->id);
+            $data['despesasViagem'] = $this->Solicitacao->getDespesasSolicitacao($id_solicitacao);
+            $data['roteiros'] = $this->Roteiro->getRoteirosSolicitacao($id_solicitacao);
+            $data['rateios'] = $this->Solicitacao->getRateioSolicitacao($id_solicitacao);
+            
+            if ($this->Privilegio) {
+                parent::loadViewAdmin("solicitacao", "vizualizacao", $data);
+            } else {
+                parent::loadViewUser("solicitacao", "vizualizacao", $data);
+            }
         }
     }
 }

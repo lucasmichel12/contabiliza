@@ -16,7 +16,7 @@
             <?php foreach ($data['centroscusto'] as $item) { ?>
                 <tr>
                     <td><?= $item['descricao'] ?></td>
-                    <td class="text-center"><?= $item['cnpj'] ?></td>
+                    <td class="text-center cnpj"><?= $item['cnpj'] ?></td>
                     <th class="text-center">
                         <a class="btn btn-info" href="<?= URL; ?>CentroCusto/editar/<?= $item['idcentro_custo']; ?>">Alterar</a>
                         <?php if ($data['btn']) {

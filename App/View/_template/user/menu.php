@@ -1,4 +1,3 @@
-w
 <!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
@@ -35,7 +34,7 @@ w
                 </div>
             </div>
         </div>
-
+    </header>
     <!-- Modal -->
     <div class="modal fade" id="novaSolicitacao" tabindex="-1" role="dialog" aria-labelledby="novaSolicitacao" aria-hidden="true">
         <div class="modal-dialog">
