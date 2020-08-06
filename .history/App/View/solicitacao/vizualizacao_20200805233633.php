@@ -1,4 +1,4 @@
-<div class="content pad-responsivo">
+<div class="content pad-responsivo" id="imprimir">
     <div class="card-header bg-white">
         <h4>
             <p class="topo-auditoria"><strong><?= $data['solicitacao'][0]['descricao']; ?> | <?= $data['solicitacao'][0]['data']; ?> | R$ <?= $data['solicitacao'][0]['valor_total']; ?></strong></p>
@@ -6,7 +6,7 @@
     </div>
 
     <!-- Auditoria -->
-    <div class="orders mt-4 pad-home pad-responsivo">
+    <div class="orders mt-4 pad-home ">
         <div class="row">
             <div class="col-xl-12">
                 <!-- Painel de Auditoria -->
@@ -104,26 +104,32 @@
                                 <input type="hidden" name="id_solicitacao" value="<?= $data['solicitacao'][0]['id_solicitacao']; ?>">
                                 <div class="col-lg-12 pad-bottom-20">
                                     <!-- <input type="text" class="form-control" required placeholder="Almoço, Janta, KM" name="descricao"> -->
-                                    <textarea class="form-control" aria-label="With textarea" name="auditoria"></textarea>
-                                </div>
-                                <div class="col-2">
-                                    <select class="form-control" name="id_status">
-                                        <option value="1">Rejeitar</option>
-                                        <option value="3">Aprovar</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-success" type="submit">Concluir!</button>
+                                    <textarea class="form-control" readonly aria-label="With textarea" name="auditoria" value="<?= $data['solicitacao'][0]['auditoria']; ?>">
+                                        <?= $data['solicitacao'][0]['auditoria']; ?>
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
                     </form>
+
                     <!-- /Parecer Auditoria -->
 
                 </div>
                 <!-- /Painel de Auditoria -->
+                <button class="btn btn-info mar-bottom-20" onclick="imprimir()">Imprimir</button>
             </div>
         </div>
     </div>
     <!-- /Auditoria -->
+
 </div>
+<script>
+	function imprimir() {
+		var imprimir = document.querySelector("#imprimir");
+		    	window.print();
+		    	var time = window.setTimeout(function() {
+		    		imprimir.style.display = 'block';
+		    	}, 1000);
+		    }
+	
+</script>

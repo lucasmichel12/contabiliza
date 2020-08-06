@@ -5,9 +5,6 @@
 .pad-right-25 {
         padding-right: 25px !important;
 }
-.pad-right-0 {
-        padding-right: 0px !important;
-}
 .mar-bottom-0 {
         margin-bottom: 0px;
 }
@@ -26,14 +23,11 @@
 .pad-20 {
         padding: 20px!important;
 }
-.margin-15{
-        margin: 15px;
-}
 
 /* Fim Margens e Paddings */
 
 .pad-responsivo{
-        padding-bottom: 80px;
+        padding-bottom: 80px!important;
 }
 .bg-login {
         background-color: #757671;
@@ -159,24 +153,6 @@
         padding: 0px 20px 20px 20px!important
 }
 .table-stats table th, .table-stats table td {
+        
         font-weight: 700 !important;
-}
-
-.table-stats table td {
-        color: #3a3c3e;
-        font-size: 14px;
-        font-weight: 600!important;
-        text-transform: inherit !important;
-        vertical-align: middle;
-}
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-color: #495057;
-background-color: #ececec!important;
-border-color: #dee2e6 #dee2e6 #fff;
-}
-
-.pad-solicitacao{
-        padding-left: 0;
-        padding-right: 0;
 }

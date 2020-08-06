@@ -1,7 +1,7 @@
-<div class="content pad-responsivo">
+<div class="content">
 
     <!-- Solicitações Pendentes -->
-    <div class="orders ">
+    <div class="orders pad-responsivo">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">

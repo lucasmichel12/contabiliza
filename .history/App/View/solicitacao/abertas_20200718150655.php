@@ -1,16 +1,16 @@
-<div class="content pad-responsivo">
+<div class="content">
 
-    <!-- Solicitações Pendentes -->
-    <div class="orders ">
+    <!-- Solicitações Abertas -->
+    <div class="orders">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="box-title">Solicitações Concluídas </h4>
+                        <h4 class="box-title">Solicitações Abertas </h4>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h table-hover">
-                            <table class="table ">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">Usuário</th>
@@ -26,7 +26,7 @@
                                             <td><?= $solicitacao['descricao'] ?></td>
                                             <td><?= $solicitacao['data'] ?></td>
                                             <td class="text-center">
-                                                <a class="btn btn-info" href="<?= URL; ?>Solicitacao/vizualizar/<?= $solicitacao['id_solicitacao']; ?>">Visualizar</a>
+                                                <a class="btn btn-warning" href="<?= URL; ?>Solicitacao/aberta/<?= $solicitacao['id_solicitacao']; ?>">Continuar</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -39,4 +39,5 @@
         </div>
     </div>
     <!-- /Solicitações Pendentes -->
-</div>
+
+ 

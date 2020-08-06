@@ -5,9 +5,6 @@
 .pad-right-25 {
         padding-right: 25px !important;
 }
-.pad-right-0 {
-        padding-right: 0px !important;
-}
 .mar-bottom-0 {
         margin-bottom: 0px;
 }
@@ -33,7 +30,7 @@
 /* Fim Margens e Paddings */
 
 .pad-responsivo{
-        padding-bottom: 80px;
+        padding-bottom: 80px!important;
 }
 .bg-login {
         background-color: #757671;

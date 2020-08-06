@@ -111,8 +111,8 @@
                                 <a onclick="fecharSolicitacao()" class="btn btn-warning">Concluir</a>
                             </form>
                         </div>
-                        <div class="col-5 margin-15 pad-bottom-10 pad-right-0">
-                            <button class="btn btn-danger pull-right" onclick="excluir('<?= URL; ?>Solicitacao/deletar/<?= $data['solicitacao'][0]['id_solicitacao']; ?>')">Excluir</button>
+                        <div class="col-5 margin-15 pad-bottom-10 pull-right">
+                            <button class="btn btn-danger" onclick="excluir('<?= URL; ?>Solicitacao/deletar/<?= $data['solicitacao'][0]['id_solicitacao']; ?>')">Excluir</button>
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@
 
                 <!-- Conteudo Roteiros -->
                 <div class="tab-pane fade" id="nav-roteiro" role="tabpanel" aria-labelledby="nav-roteiro-tab">
-                    <button type="button" class="btn btn-success float-right mb-4 margin-15" data-toggle="modal" data-target="#novoRoteiro">+ Adicionar</button>
+                    <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novoRoteiro">+ Adicionar</button>
                     <!-- Tabela de Roteiros ativos -->
                     <table class="table table-hover  mt-4">
                         <thead>
@@ -153,7 +153,7 @@
 
                 <!-- Conteudo Despesa -->
                 <div class="tab-pane fade" id="nav-despesas" role="tabpanel" aria-labelledby="nav-despesas-tab">
-                    <button type="button" class="btn btn-success float-right mb-4 margin-15" data-toggle="modal" data-target="#novaDespesa">+ Adicionar</button>
+                    <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#novaDespesa">+ Adicionar</button>
                     <!-- Tabela de Despesas -->
                     <table class="table table-hover  mt-4">
                         <thead>
@@ -186,7 +186,7 @@
 
                 <!-- Conteudo Rateio -->
                 <div class="tab-pane fade" id="nav-rateio" role="tabpanel" aria-labelledby="nav-rateio-tab">
-                    <button type="button" class="btn btn-success float-right mb-4 margin-15" data-toggle="modal" data-target="#rateio">+ Adicionar</button>
+                    <button type="button" class="btn btn-success float-right mb-4" data-toggle="modal" data-target="#rateio">+ Adicionar</button>
                     <!-- Tabela de Despesas -->
                     <table class="table table-hover  mt-4">
                         <thead>
