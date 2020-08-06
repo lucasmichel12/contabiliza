@@ -1,6 +1,6 @@
 <?php
 
-//Mostra qualquer problema com o codigo 
+/*Mostra qualquer problema com o codigo 
 define('ENVIRONMENT', 'development');
 
 
@@ -9,7 +9,7 @@ if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev')
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
 }
-
+*/
 
 
 //Setendo algumas constantes para segura valores que seram frequentemente usados durante o projeto
