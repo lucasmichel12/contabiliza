@@ -19,7 +19,7 @@
                 <tr>
                     <td class="text-center"><?= $centrocusto['centro_custo'] ?></td>
                     <td class="text-center"><?= $centrocusto['despesa'] ?></td>   
-                    <td class="text-center"><?= $centrocusto['valor'] ?></td>         
+                    <td class="text-center">R$ <?= $centrocusto['valor'] ?></td>         
                     <td class="text-center"><?= $centrocusto['qtd_despesa'] ?></td>         
                     <td class="text-center"><?= $centrocusto['descricao'] ?></td>         
                 </tr>

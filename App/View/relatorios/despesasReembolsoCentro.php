@@ -20,19 +20,6 @@
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="selectDespesas">Despesa</label>
-                    </div>
-                    <select class="custom-select" id="selectDespesas" name="id_despesa">
-                        <option value="0">Todas</option>
-                        <?php foreach ($data['despesas'] as $despesa) { ?>
-                            <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
                         <label class="input-group-text" for="selectCentro">Centros de Custo</label>
                     </div>
                     <select class="custom-select" id="selectCentro" name="idcentro_custo">
@@ -41,7 +28,6 @@
                             <option value="<?= $centrocusto['idcentro_custo']; ?>"><?= $centrocusto['descricao']; ?></option>
                         <?php } ?>
                     </select>
-
                 </div>
             </div>
         </div>

@@ -172,7 +172,7 @@
                                     <td class="text-center"><?= $despesa['descricao']; ?></td>
                                     <td class="text-center"><?= $despesa['regiao']; ?></td>
                                     <td class="text-center"><?= $despesa['qtd_despesa']; ?></td>
-                                    <td class="text-center">R$ <?= $despesa['valor']; ?></td>
+                                    <td class="text-center"><?= $despesa['valor']; ?></td>
                                     <th class="text-center">
                                         <a class="btn btn-danger" href="<?= URL; ?>Solicitacao/deletaDespesaViagem/<?= $despesa['id_solicitacao_despesa']; ?>">Excluir</a>
                                     </th>
@@ -274,7 +274,7 @@
                                         </div>
                                         <select class="custom-select" id="selectDespesas" name="id_despesa">
                                             <?php foreach ($data['despesas'] as $despesa) { ?>
-                                                <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?></option>
+                                                <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?> - R$ <?= $despesa['valor']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -374,5 +374,7 @@
         }
     });
 }
-    
+    window.onload(()  => {
+        document.getElementById("valor").toLocalString('pt-br',{style:'currency', currency: 'BRL'});
+    })
 </script>
