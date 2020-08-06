@@ -26,14 +26,7 @@
 <script src="<?= URL; ?>public/bootbox/bootbox.min.js"></script>
 <script src="<?= URL; ?>public/bootbox/bootbox.locales.min.js"></script>
 <script src="<?=URL;?>public/js/myFunctions.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script> 
-<!-- MDBootstrap Datatables  -->
-<script type="text/javascript" src="js/addons/datatables2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 
-<script>
-$(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-  });
-</script>
 </body>

@@ -30,10 +30,4 @@
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="js/addons/datatables2.min.js"></script>
 
-<script>
-$(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-  });
-</script>
 </body>

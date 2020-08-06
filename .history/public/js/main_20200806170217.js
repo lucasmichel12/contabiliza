@@ -46,6 +46,18 @@ jQuery(document).ready(function($) {
 		});
 	});
 
+
+	 
+
+	//Data Tables
+	$(document).ready(function() {
+		$('#example').DataTable( {
+			"paging":   false,
+			"ordering": false,
+			"info":     false
+		} );
+	} );
+	
 	// Menu Trigger
 	$('#menuToggle').on('click', function(event) {
 		var windowWidth = $(window).width();   		 

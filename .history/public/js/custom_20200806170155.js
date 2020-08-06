@@ -1,4 +1,3 @@
-;
 (function($) {
     $('.phone').mask('(99)9999-9999');
     $('.cel').mask('(99)99999-9999');
@@ -9,8 +8,3 @@
     $('.percentual').mask("000%", { reverse: true });
     $('.dinheiro').mask("#.##0,00", { reverse: true });
 })(jQuery);
-
-$(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-  });

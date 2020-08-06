@@ -1,10 +1,10 @@
-<div class="content pad-responsivo">
+<div class="content">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><strong>Despesas</strong></li>
         </ol>
     </nav>
-    <table id="dtBasicExample" class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">
+    <table id="exemplo" class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">
         <thead>
             <tr>
                 <th scope="col" class="text-center">Despesa</th>

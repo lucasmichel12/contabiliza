@@ -1,4 +1,4 @@
-<div class="content pad-responsivo">
+<div class="content">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><strong>Despesas</strong></li>

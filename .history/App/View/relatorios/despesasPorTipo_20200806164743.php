@@ -1,4 +1,4 @@
-<div class="content full-height pad-responsivo">
+<div class="content full-height">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Relatorio</li>
