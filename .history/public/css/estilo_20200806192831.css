@@ -186,12 +186,6 @@ border-color: #dee2e6 #dee2e6 #fff;
 
 .dataTables_wrapper .dataTables_filter input {
         margin-left: 0.5em;
-        border: 2px solid #cecece!important;
-        border-radius: 14px!important;
+        border: 2px solid #cecece;
+        border-radius: 14px;
 }
-
-select {
-        text-transform: none;
-        border: 2px solid #cecece!important;
-        border-radius: 10px!important;
-    }

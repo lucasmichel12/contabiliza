@@ -18,7 +18,7 @@
         "language": {
             "paginate": {
               "previous": "Anterior",
-              "next": "Proxima"
+              "next": "Proximo"
             }
           }
     } );

@@ -2,7 +2,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <p class="topo-auditoria text center font-700">Despesas</p>
+                <p class="topo-auditoria text center">Despesas</p>
             </li>
         </ol>
     </nav>

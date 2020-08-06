@@ -17,8 +17,7 @@
         "info":     false,
         "language": {
             "paginate": {
-              "previous": "Anterior",
-              "next": "Proxima"
+              "previous": "Anterior"
             }
           }
     } );
