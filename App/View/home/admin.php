@@ -89,7 +89,7 @@
                         </div>
                         <div class="card-body--">
                             <div class="table-stats order-table ov-h table-hover">
-                                <table class="table ">
+                                <table id="example" class="table ">
                                     <thead>
                                         <tr>
                                             <th>Data</th>

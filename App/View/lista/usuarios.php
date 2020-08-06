@@ -4,7 +4,7 @@
             <li class="breadcrumb-item"><strong>Usuários cadastrados</strong></li>
         </ol>
     </nav>
-    <table class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">
+    <table id="example" class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">
         <thead>
             <tr>
                 <th scope="col">Nome</th>
