@@ -22,6 +22,6 @@ class Roteiro extends Model
     public function getRoteirosSolicitacao($id_solicitacao)
     {
         $parameter = array("1"=>$id_solicitacao);
-        return $this->select("SELECT * FROM roteiro WHERE id_solicitacao = ? ORDER BY inicio", $parameter);
+        return $this->select("SELECT destino, descricao, DATE_FORMAT(inicio,'%d/%m/%Y') as 'inicio', DATE_FORMAT(termino,'%d/%m/%Y') as 'termino', id_solicitacao FROM roteiro WHERE id_solicitacao = ? ORDER BY inicio", $parameter);
     }
 }
