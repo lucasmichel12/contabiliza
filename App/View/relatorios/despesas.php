@@ -9,32 +9,21 @@
         <div class="form-row">
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <label for="">Data Inicial</label>
-                <input type="date" id="dataInicio" class="form-control" placeholder="login" required name="login">
+                <input type="date" class="form-control"  name="dataIni">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <label for="">Data Final</label>
-                <input type="date" class="form-control" placeholder="Senha" required name="senha">
+                <input type="date" class="form-control" name="dataFim">
             </div>
         </div>
         <div class="form-row">
-            <div class="col-lg-6 col-md-6 col-sm-12 pad-bottom-10">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="ativo">Despesas Ativas?</label>
-                    </div>
-                    <select class="custom-select" id="ativo" name="ativo">
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
-                    </select>
-                </div>
-            </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="selectDespesas">Despesa</label>
                     </div>
                     <select class="custom-select" id="selectDespesas" name="id_despesa">
-                        <option value="0">-</option>
+                        <option value="0">Todas</option>
                         <?php foreach ($data['despesas'] as $despesa) { ?>
                             <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?></option>
                         <?php } ?>

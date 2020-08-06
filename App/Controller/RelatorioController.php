@@ -4,10 +4,16 @@ namespace Contabiliza\Controller;
 
 use Contabiliza\Core\Controller;
 use Contabiliza\Model\Despesa;
+use Contabiliza\Model\Relatorios;
 
 class RelatorioController extends Controller
 {
 
+    private $Relatorios;
+    public function __construct()
+    {
+        $this->Relatorios = new Relatorios();
+    }
     public function index()
     {
         parent::loadViewAdmin('relatorios', 'allrelatorios');
@@ -22,6 +28,7 @@ class RelatorioController extends Controller
 
     public function relDespesa()
     {
-        parent::loadViewAdmin('relatorios', 'reldespesa');
+        $data = $this->Relatorios->despesas($_POST);
+        parent::loadViewAdmin('relatorios', 'despesasrel', $data);
     }
 }
