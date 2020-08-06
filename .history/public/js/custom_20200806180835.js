@@ -12,8 +12,8 @@
 
 (function($) {
     $('#example').DataTable( {
-        "paging":   true,
-        "ordering": true,
+        "paging":   false,
+        "ordering": false,
         "info":     false
     } );
 })(jQuery);
