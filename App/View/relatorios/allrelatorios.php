@@ -15,13 +15,13 @@
                                 <tr>
                                     <td>Despesas por Periodo e Tipo</td>
                                     <th>
-                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesas">Selecionar</a>
+                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesaPorTipo">Selecionar</a>
                                     </th>
                                 </tr>
                                 <tr>
                                     <td>Despesas por Centro de Custo e Tipo</td>
                                     <th>
-                                        <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
+                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesaCentroTipo">Selecionar</a>
                                     </th>
                                 </tr>
                                 <tr>

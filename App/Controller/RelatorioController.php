@@ -3,6 +3,7 @@
 namespace Contabiliza\Controller;
 
 use Contabiliza\Core\Controller;
+use Contabiliza\Model\CentroCusto;
 use Contabiliza\Model\Despesa;
 use Contabiliza\Model\Relatorios;
 
@@ -19,16 +20,31 @@ class RelatorioController extends Controller
         parent::loadViewAdmin('relatorios', 'allrelatorios');
     }
 
-    public function despesas()
+    public function despesaPorTipo()
     {
         $this->Despesa = new Despesa();
         $data['despesas'] = $this->Despesa->listActives();
-        parent::loadViewAdmin('relatorios', 'despesas', $data);
+        parent::loadViewAdmin('relatorios', 'despesasPorTipo', $data);
+    }
+    
+    public function despesaCentroTipo()
+    {
+        $this->Despesa = new Despesa();
+        $data['despesas'] = $this->Despesa->listActives();
+        $this->CentroCusto = new CentroCusto();
+        $data['centrocusto'] = $this->CentroCusto->listActives();
+        parent::loadViewAdmin('relatorios', 'despesasCentroTipo', $data);
     }
 
-    public function relDespesa()
+    public function despesaPorTipoRel()
     {
         $data['relatorio'] = $this->Relatorios->despesas($_POST);
-        parent::loadViewAdmin('relatorios', 'despesasrel', $data);
+        parent::loadViewAdmin('relatorios', 'despesasPorTipoRel', $data);
+    }
+
+    public function despesaCentroTipoRel()
+    {
+        $data['relatorio'] = $this->Relatorios->centro($_POST);
+        parent::loadViewAdmin('relatorios', 'despesasCentroTipoRel', $data);
     }
 }
