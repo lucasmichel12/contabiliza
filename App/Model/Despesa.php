@@ -21,17 +21,17 @@ class Despesa extends Model implements ModelInterface
     public function getOne(Int $id)
     {
         $paremeter = array("1"=>$id);
-        return $this->select("SELECT * FROM despesa WHERE id_despesa = ? LIMIT 1", $paremeter);
+        return $this->select("SELECT id_despesa, descricao, valor_definido, ativo, format(valor,2,'de_DE') AS valor FROM despesa WHERE id_despesa = ? LIMIT 1", $paremeter);
     }
 
     public function listActives()
     {
-        return $this->select("SELECT * FROM despesa WHERE ativo = true ORDER BY descricao");
+        return $this->select("SELECT id_despesa, descricao, valor_definido, ativo, format(valor,2,'de_DE') AS valor FROM despesa WHERE ativo = true ORDER BY descricao");
     }
 
     public function listInactives()
     {
-        return $this->query("SELECT * FROM despesa WHERE ativo = false ORDER BY descricao");
+        return $this->query("SELECT id_despesa, descricao, valor_definido, ativo, format(valor,2,'de_DE') AS valor FROM despesa WHERE ativo = false ORDER BY descricao");
     }
 
     public function delete(Int $id)

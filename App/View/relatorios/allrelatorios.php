@@ -27,15 +27,10 @@
                                 <tr>
                                     <td>Valor Reembolsado por periodo e Centro de Custo</td>
                                     <th>
-                                        <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
+                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesasReembolsoCentro">Selecionar</a>
                                     </th>
                                 </tr>
-                                <tr>
-                                    <td>Valor Reembolsado por usuário</td>
-                                    <th>
-                                        <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
-                                    </th>
-                                </tr>
+
                             </tbody>
                         </table>
  

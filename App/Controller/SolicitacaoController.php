@@ -77,7 +77,7 @@ class SolicitacaoController extends Controller
     public function deletaRoteiroViagem()
     {
         $this->Roteiro->delete($this->id);
-        header("location:" . URL . "Solicitacao/");
+        $this->aberta($this->id);
     }
 
     //Adiciona uma Despesa na Viagem
