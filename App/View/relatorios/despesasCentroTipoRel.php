@@ -1,7 +1,7 @@
 <div class="content pad-responsivo">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><strong>Despesas</strong></li>
+            <li class="breadcrumb-item"><strong>Despesa por Centro de Custo e Tipo</strong></li>
         </ol>
     </nav>
     <table class="table table-hover border shadow-sm p-3 mb-5 bg-white rounded mt-4">

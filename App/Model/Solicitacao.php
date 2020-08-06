@@ -63,7 +63,7 @@ class Solicitacao extends Model
     public function getDespesasSolicitacao($param)
     {
         $parameter = array("1" => $param);
-        return $this->select("SELECT s.id_solicitacao_despesa, s.id_solicitacao, s.id_despesa, s.id_regiao, s.qtd_despesa, s.valor, d.descricao, r.descricao AS regiao FROM solicitacao_despesa AS s INNER JOIN despesa as d ON s.id_despesa = d.id_despesa INNER JOIN regiao AS r ON s.id_regiao = r.id_regiao WHERE id_solicitacao = ?", $parameter);
+        return $this->select("SELECT s.id_solicitacao_despesa, s.id_solicitacao, s.id_despesa, s.id_regiao, s.qtd_despesa, format(s.valor,2,'de_DE') AS valor, d.descricao, r.descricao AS regiao FROM solicitacao_despesa AS s INNER JOIN despesa as d ON s.id_despesa = d.id_despesa INNER JOIN regiao AS r ON s.id_regiao = r.id_regiao WHERE id_solicitacao = ?", $parameter);
     }
 
     public function getValorDespesa($param)

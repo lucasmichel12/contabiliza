@@ -6,6 +6,7 @@ use Contabiliza\Core\Controller;
 use Contabiliza\Model\CentroCusto;
 use Contabiliza\Model\Despesa;
 use Contabiliza\Model\Relatorios;
+use Contabiliza\Model\Usuario;
 
 class RelatorioController extends Controller
 {
@@ -52,7 +53,25 @@ class RelatorioController extends Controller
     {
         $this->CentroCusto = new CentroCusto();
         $data['centrocusto'] = $this->CentroCusto->listActives();
-        $data['relatorio'] = $this->Relatorios->reembolso($_POST);
         parent::loadViewAdmin('relatorios', 'despesasReembolsoCentro', $data);
+    }
+
+    public function despesasReembolsoCentroRel()
+    {
+        $data['relatorio'] = $this->Relatorios->reembolso($_POST);
+        parent::loadViewAdmin('relatorios', 'despesasReembolsoCentroRel', $data);
+    }
+
+    public function despesasReembolsoUsuario()
+    {
+        $this->Usuario = new Usuario();
+        $data['usuario'] = $this->Usuario->listActives();
+        parent::loadViewAdmin('relatorios', 'despesasReembolsoUsuarios', $data);
+    }
+
+    public function despesasReembolsoUsuariosRel()
+    {
+        $data['relatorio'] = $this->Relatorios->usuario($_POST);
+        parent::loadViewAdmin('relatorios', 'despesasReembolsoUsuariosrel', $data);
     }
 }
