@@ -13,19 +13,25 @@
                         <table class="table table-hover shadow-sm p-3 mb-5 bg-white rounded mt-4 font-600">
                             <tbody>
                                 <tr>
-                                    <td>Despesas</td>
+                                    <td>Despesas por Periodo e Tipo</td>
                                     <th>
                                         <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesas">Selecionar</a>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td>Centros de Custo</td>
+                                    <td>Despesas por Centro de Custo e Tipo</td>
                                     <th>
                                         <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td>Financeiro</td>
+                                    <td>Valor Reembolsado por periodo e Centro de Custo</td>
+                                    <th>
+                                        <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Valor Reembolsado por usuário</td>
                                     <th>
                                         <a class="btn btn-info pull-right" href="<?= URL; ?>CentroCusto/?>">Selecionar</a>
                                     </th>

@@ -28,8 +28,7 @@ class RelatorioController extends Controller
 
     public function relDespesa()
     {
-        $data = $this->Relatorios->despesas($_POST);
-        var_dump($data);
+        $data['relatorio'] = $this->Relatorios->despesas($_POST);
         parent::loadViewAdmin('relatorios', 'despesasrel', $data);
     }
 }
