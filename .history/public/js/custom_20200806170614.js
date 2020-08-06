@@ -10,18 +10,17 @@
     $('.dinheiro').mask("#.##0,00", { reverse: true });
 })(jQuery);
 
-(function($) {
+$(document).ready(function() {
     $('#example').DataTable( {
-        "paging":   true,
-        "ordering": true,
-        "info":     false
+        columnDefs: [ {
+            targets: [ 0 ],
+            orderData: [ 0, 1 ]
+        }, {
+            targets: [ 1 ],
+            orderData: [ 1, 0 ]
+        }, {
+            targets: [ 4 ],
+            orderData: [ 4, 0 ]
+        } ]
     } );
-})(jQuery);
-
-// $(document).ready(function() {
-//     $('#example').DataTable( {
-//         "paging":   false,
-//         "ordering": false,
-//         "info":     false
-//     } );
-// } );
+} );

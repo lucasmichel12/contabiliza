@@ -46,6 +46,9 @@ jQuery(document).ready(function($) {
 		});
 	});
 
+
+	 
+	 
 	// Menu Trigger
 	$('#menuToggle').on('click', function(event) {
 		var windowWidth = $(window).width();   		 

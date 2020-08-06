@@ -1,4 +1,4 @@
-<div class="content full-height pad-responsivo">
+<div class="content full-height">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Relatorio</li>
@@ -9,7 +9,7 @@
         <div class="form-row">
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <label for="">Data Inicial</label>
-                <input type="date" class="form-control" required name="dataIni">
+                <input type="date" class="form-control" required  name="dataIni">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
                 <label for="">Data Final</label>
@@ -28,6 +28,7 @@
                             <option value="<?= $despesa['id_despesa']; ?>" valor="<?= $despesa['valor']; ?>"><?= $despesa['descricao']; ?></option>
                         <?php } ?>
                     </select>
+                    
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 pad-bottom-10">
@@ -41,7 +42,7 @@
                             <option value="<?= $centrocusto['idcentro_custo']; ?>"><?= $centrocusto['descricao']; ?></option>
                         <?php } ?>
                     </select>
-
+                    
                 </div>
             </div>
         </div>

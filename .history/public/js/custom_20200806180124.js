@@ -10,18 +10,11 @@
     $('.dinheiro').mask("#.##0,00", { reverse: true });
 })(jQuery);
 
-(function($) {
+
+$(document).ready(function() {
     $('#example').DataTable( {
-        "paging":   true,
-        "ordering": true,
+        "paging":   false,
+        "ordering": false,
         "info":     false
     } );
-})(jQuery);
-
-// $(document).ready(function() {
-//     $('#example').DataTable( {
-//         "paging":   false,
-//         "ordering": false,
-//         "info":     false
-//     } );
-// } );
+} );
