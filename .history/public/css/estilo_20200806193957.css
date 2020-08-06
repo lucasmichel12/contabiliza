@@ -189,4 +189,9 @@ border-color: #dee2e6 #dee2e6 #fff;
         border: 2px solid #cecece!important;
         border-radius: 14px!important;
 }
- 
+
+/* select {
+        text-transform: none;
+        border: 2px solid #cecece!important;
+        border-radius: 10px!important;
+    } */
