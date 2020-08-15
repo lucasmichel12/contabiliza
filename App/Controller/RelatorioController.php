@@ -40,12 +40,14 @@ class RelatorioController extends Controller
     public function despesaPorTipoRel()
     {
         $data['relatorio'] = $this->Relatorios->despesas($_POST);
+        $data['periodo'] = $_POST;
         parent::loadViewAdmin('relatorios', 'despesasPorTipoRel', $data);
     }
 
     public function despesaCentroTipoRel()
     {
         $data['relatorio'] = $this->Relatorios->centro($_POST);
+        $data['periodo'] = $_POST;
         parent::loadViewAdmin('relatorios', 'despesasCentroTipoRel', $data);
     }
 

@@ -13,26 +13,21 @@ class Relatorios extends Model
             $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim']);
             $result = $this->select(
                 "SELECT
-                            s.descricao AS solicitacao,
-                            sd.qtd_despesa,
-                            d.descricao AS despesa,
-                            u.nome
-                        FROM
-                            solicitacao_despesa AS sd
-                        INNER JOIN solicitacao AS s
-                        ON
-                            sd.id_solicitacao = s.id_solicitacao
-                        INNER JOIN despesa AS d
-                        ON
-                            d.id_despesa = sd.id_despesa
-                        INNER JOIN usuario AS u
-                        ON
-                            u.id_usuario = s.id_usuario
-                        WHERE
-                            s.data BETWEEN ? AND ?
-                        ORDER BY
-                            s.data
-                        DESC",
+                s.descricao AS solicitacao,
+                sd.qtd_despesa,
+                d.descricao AS despesa,
+                format(sd.valor,2,'de_DE') AS valor
+            FROM
+                solicitacao_despesa AS sd
+            INNER JOIN solicitacao AS s
+            ON
+                sd.id_solicitacao = s.id_solicitacao
+            INNER JOIN despesa AS d
+            ON
+                d.id_despesa = sd.id_despesa
+            WHERE
+                s.data BETWEEN ? AND ?
+            ORDER BY sd.valor  DESC",
                 $parameter
             );
             return $result;
@@ -44,7 +39,7 @@ class Relatorios extends Model
                             s.descricao AS solicitacao,
                             sd.qtd_despesa,
                             d.descricao AS despesa,
-                            u.nome
+                            format(sd.valor,2,'de_DE') AS valor
                         FROM
                             solicitacao_despesa AS sd
                         INNER JOIN solicitacao AS s
@@ -53,14 +48,9 @@ class Relatorios extends Model
                         INNER JOIN despesa AS d
                         ON
                             d.id_despesa = sd.id_despesa
-                        INNER JOIN usuario AS u
-                        ON
-                            u.id_usuario = s.id_usuario
                         WHERE
                             s.data BETWEEN ? AND ? AND sd.id_despesa = ?
-                        ORDER BY
-                            s.data
-                        DESC",
+                            ORDER BY sd.valor  DESC",
                 $parameter
             );
             return $result;
@@ -73,27 +63,18 @@ class Relatorios extends Model
             $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim']);
             $result = $this->select(
                 "SELECT
-            cc.descricao AS centro_custo,
-            d.descricao AS despesa,
-            format(SUM(sd.valor),2,'de_DE') AS valor,
-            sd.qtd_despesa,
-            s.descricao
-        FROM
-            solicitacao_despesa AS sd
-        INNER JOIN solicitacao AS s
-        ON
-            sd.id_solicitacao = s.id_solicitacao
-        INNER JOIN centro_custo AS cc
-        ON
-            cc.idcentro_custo = s.idcentro_custo
-        INNER JOIN despesa AS d
-        ON
-            sd.id_despesa = d.id_despesa
-        WHERE
-            s.data BETWEEN ? AND ?
-        ORDER BY
-            s.data
-        DESC",
+                cc.descricao AS centro_custo,
+                format(SUM(sd.valor),2, 'de_DE') AS valor
+               FROM solicitacao AS s
+               INNER JOIN centro_custo AS cc
+               ON
+                cc.idcentro_custo = s.idcentro_custo
+               INNER JOIN solicitacao_despesa AS sd
+                ON s.id_solicitacao = sd.id_solicitacao
+                
+                WHERE s.data BETWEEN ? AND ?
+                GROUP BY cc.descricao
+                ORDER BY sd.valor",
                 $parameter
             );
             return $result;
@@ -217,7 +198,7 @@ class Relatorios extends Model
             return $result;
         } else {
 
-            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3"=>$params['idcentro_custo']);
+            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3" => $params['idcentro_custo']);
             $result = $this->select(
                 "SELECT
                 cc.descricao AS centrocusto,
@@ -275,7 +256,7 @@ class Relatorios extends Model
             return $result;
         } else {
 
-            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3"=>$params['idcentro_custo']);
+            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3" => $params['idcentro_custo']);
             $result = $this->select(
                 "SELECT
                 cc.descricao AS centrocusto,

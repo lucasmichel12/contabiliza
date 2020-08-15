@@ -2,7 +2,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-            <p class="topo-auditoria text center font-700">Reembolso por Centro de Custo e Tipo</p>
+            <p class="topo-auditoria text center font-600">Reembolso por Centro de Custo e Tipo <strong><?=$data['periodo']['dataIni'];?></strong> até <strong><?=$data['periodo']['dataFim'];?></strong></p>
             </li>
         </ol>
     </nav>
