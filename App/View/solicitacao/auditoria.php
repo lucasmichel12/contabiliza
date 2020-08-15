@@ -58,7 +58,7 @@
                                 <?php if (isset($data['despesasViagem']) && $data['despesasViagem'] != null) foreach ($data['despesasViagem'] as $despesa) { ?>
                                     <tr>
                                         <td class="text-center"> <?= $despesa['descricao'] ?> </td>
-                                        <td class="text-center"> <?= $despesa['valor'] ?> </td>
+                                        <td class="text-center">R$ <?= $despesa['valor'] ?> </td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
