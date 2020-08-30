@@ -143,4 +143,14 @@ class Validacao extends Model
 			}
 		}
 	}
+
+	public function solicitacaoVazia($param)
+	{
+		$parameter = array("1" => $param);
+		$result = $this->select("SELECT id_solicitacao_despesa FROM solicitacao_despesa WHERE id_solicitacao = ?",$parameter);
+		if(!isset($result[0]))
+		{
+			$this->Message->error("VocÇe deve cadastrar ao menos uma despesa!!");
+		}
+	}
 }

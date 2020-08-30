@@ -64,7 +64,8 @@ class Relatorios extends Model
             $result = $this->select(
                 "SELECT
                 cc.descricao AS centro_custo,
-                format(SUM(sd.valor),2, 'de_DE') AS valor
+                format(SUM(sd.valor),2, 'de_DE') AS valor,
+                count(sd.qtd_despesa) AS qtd
                FROM solicitacao AS s
                INNER JOIN centro_custo AS cc
                ON
@@ -143,7 +144,7 @@ class Relatorios extends Model
                 "SELECT
             cc.descricao AS centro_custo,
             d.descricao AS despesa,
-            sd.valor,
+            format(SUM(sd.valor),2, 'de_DE') AS valor,
             sd.qtd_despesa,
             s.descricao
         FROM
@@ -168,65 +169,6 @@ class Relatorios extends Model
         }
     }
 
-    public function reembolso($params)
-    {
-        if ($params['idcentro_custo'] == "0") {
-            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim']);
-            $result = $this->select(
-                "SELECT
-                cc.descricao AS centrocusto,
-                d.descricao AS despesa,
-                format(SUM(sd.valor),2,'de_DE') AS valor
-            FROM
-                solicitacao_despesa AS sd
-            INNER JOIN solicitacao AS s
-            ON
-                sd.id_solicitacao = s.id_solicitacao
-            INNER JOIN centro_custo AS cc
-            ON
-                cc.idcentro_custo = s.idcentro_custo
-            INNER JOIN despesa AS d
-            ON
-                sd.id_despesa = d.id_despesa
-            WHERE
-                s.data BETWEEN ? AND ?
-            ORDER BY
-                s.data
-            DESC",
-                $parameter
-            );
-            return $result;
-        } else {
-
-            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3" => $params['idcentro_custo']);
-            $result = $this->select(
-                "SELECT
-                cc.descricao AS centrocusto,
-                d.descricao AS despesa,
-                format(SUM(sd.valor),2,'de_DE') AS valor
-            FROM
-                solicitacao_despesa AS sd
-            INNER JOIN solicitacao AS s
-            ON
-                sd.id_solicitacao = s.id_solicitacao
-            INNER JOIN centro_custo AS cc
-            ON
-                cc.idcentro_custo = s.idcentro_custo
-            INNER JOIN despesa AS d
-            ON
-                sd.id_despesa = d.id_despesa
-            WHERE
-                s.data BETWEEN ? AND ? AND cc.idcentro_custo = ?
-            ORDER BY
-                s.data
-            DESC",
-                $parameter
-            );
-
-            return $result;
-        }
-    }
-
     public function usuario($params)
     {
         if ($params['id_usuario'] == "0") {
@@ -234,47 +176,48 @@ class Relatorios extends Model
             $result = $this->select(
                 "SELECT
                 u.nome,
-                format(SUM(sd.valor),2,'de_DE') AS valor
+                format(sd.valor,2, 'de_DE') AS valor,
+                d.descricao
             FROM
                 solicitacao_despesa AS sd
             INNER JOIN solicitacao AS s
             ON
                 sd.id_solicitacao = s.id_solicitacao
-            INNER JOIN centro_custo AS u
+            INNER JOIN usuario AS u
             ON
                 u.id_usuario = s.id_usuario
             INNER JOIN despesa AS d
             ON
                 sd.id_despesa = d.id_despesa
             WHERE
-                s.data BETWEEN ? AND ?
-            ORDER BY
-                s.data
-            DESC",
+                s.data BETWEEN ? AND ?  
+            ORDER BY `d`.`descricao` ASC",
                 $parameter
             );
             return $result;
+
         } else {
 
-            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3" => $params['idcentro_custo']);
+            $parameter = array("1" => $params['dataIni'], "2" => $params['dataFim'], "3" => $params['id_usuario']);
             $result = $this->select(
                 "SELECT
-                cc.descricao AS centrocusto,
-                d.descricao AS despesa,
-                format(SUM(sd.valor),2,'de_DE') AS valor
+                u.nome,
+                format(SUM(sd.valor),2, 'de_DE') AS valor,
+                2,
+                'de_DE') AS valor
             FROM
                 solicitacao_despesa AS sd
             INNER JOIN solicitacao AS s
             ON
                 sd.id_solicitacao = s.id_solicitacao
-            INNER JOIN centro_custo AS cc
+            INNER JOIN usuario AS u
             ON
-                cc.idcentro_custo = s.idcentro_custo
+                u.id_usuario = s.id_usuario
             INNER JOIN despesa AS d
             ON
                 sd.id_despesa = d.id_despesa
             WHERE
-                s.data BETWEEN ? AND ? AND cc.idcentro_custo = ?
+                s.data BETWEEN ? AND ? AND u.id_usuario = ?
             ORDER BY
                 s.data
             DESC",

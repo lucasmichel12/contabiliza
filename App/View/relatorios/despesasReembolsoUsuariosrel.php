@@ -15,7 +15,7 @@
             <?php foreach ($data['relatorio'] as $despesa) { ?>
                 <tr>
                     <td class="text-center"><?= $despesa['nome'] ?></td>
-                    <td class="text-center"><?= $despesa['valor'] ?></td>      
+                    <td class="text-center">R$<?= $despesa['valor'] ?></td>      
                 </tr>
             <?php } ?>
         </tbody>

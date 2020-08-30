@@ -4,10 +4,16 @@ namespace Contabiliza\Model;
 
 
 use Contabiliza\Core\Model;
-
+use Contabiliza\Helpers\Validacao;
 
 class Solicitacao extends Model
 {
+    private $Validacao;
+    public function __construct()
+    {
+        $this->Validacao = new Validacao();
+        parent::__construct();
+    }
 
     public function insert(array $param)
     {
@@ -98,6 +104,7 @@ class Solicitacao extends Model
 
     public function closeSolicitation(array $param)
     {
+        $this->Validacao->solicitacaoVazia($param['id_solicitacao']);
         if (isset($param['id_status']) && isset($param['auditoria']) && isset($param['id_solicitacao'])) {
             $parameters = array("1" => $param['id_status'], "2" => $param['auditoria'], "3" => $param['id_solicitacao']);
         } else {

@@ -48,20 +48,8 @@ class RelatorioController extends Controller
     {
         $data['relatorio'] = $this->Relatorios->centro($_POST);
         $data['periodo'] = $_POST;
+ 
         parent::loadViewAdmin('relatorios', 'despesasCentroTipoRel', $data);
-    }
-
-    public function despesasReembolsoCentro()
-    {
-        $this->CentroCusto = new CentroCusto();
-        $data['centrocusto'] = $this->CentroCusto->listActives();
-        parent::loadViewAdmin('relatorios', 'despesasReembolsoCentro', $data);
-    }
-
-    public function despesasReembolsoCentroRel()
-    {
-        $data['relatorio'] = $this->Relatorios->reembolso($_POST);
-        parent::loadViewAdmin('relatorios', 'despesasReembolsoCentroRel', $data);
     }
 
     public function despesasReembolsoUsuario()

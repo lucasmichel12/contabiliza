@@ -25,9 +25,9 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td>Valor Reembolsado por periodo e Centro de Custo</td>
+                                    <td>Valor Reembolsado por Colaborador</td>
                                     <th>
-                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesasReembolsoCentro">Selecionar</a>
+                                        <a class="btn btn-info pull-right" href="<?= URL; ?>Relatorio/despesasReembolsoUsuario">Selecionar</a>
                                     </th>
                                 </tr>
 
